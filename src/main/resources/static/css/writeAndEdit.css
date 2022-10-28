@@ -1,0 +1,11 @@
+#boardContent{
+    border:none;
+}
+#titleInput{
+    border: none;
+    width: 200px;
+}
+.button{
+    display: inline-block;
+    vertical-align: middle;
+}

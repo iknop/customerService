@@ -1,0 +1,31 @@
+@import url('initial.css');
+#wrap{
+    position: relative;
+    min-height: 100%;
+    padding-bottom: 114px;
+}
+.header{
+    width: 100%;
+    height: 100px;
+    color: white;
+    padding: 25px 10px 10px 25px;
+}
+.header .navbar-brand{
+    font-size: 45px;
+    display: inline-block;
+}
+
+menu.loginInfo{
+    padding: 15px;
+
+}
+div.content{
+    margin: 150px 100px 100px 100px;
+}
+footer{
+    /*background-color: #dcdcdc;*/
+    height: 180px;
+    text-align: center;
+    position : absolute;
+    bottom : 0;
+}

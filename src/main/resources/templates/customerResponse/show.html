@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+<th:block layout:fragment="css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/layout.css}"/>
+</th:block>
+<div layout:fragment="content_area">
+    <div class="container-fluid">
+        <div class="content">
+            <div id="pageTitle">
+                <h2>내용상세보기</h2>
+            </div>
+            <table class="table">
+                <tr>
+                    <th scope="col">고객</th>
+                    <td>부천성모</td>
+                    <th scope="col">서비스구분</th>
+                    <td>프로그램문의</td>
+                    <th scope="col">접수일시</th>
+                    <td>2022-10-18 15:00:01</td>
+                </tr>
+                <tr>
+                    <th scope="col">제목</th>
+                    <td colspan="3">소견이 PACS에서 보이지 않음</td>
+                    <th scope="col">응대자</th>
+                    <td>홍길동</td>
+                </tr>
+                <tr>
+                    <th scope="col">내용</th>
+                    <td colspan="5">17일 영상부터 PACS에서 소견이 보이지 않음</td>
+                </tr>
+                <tr>
+                    <th scope="col">첨부파일</th>
+                    <td colspan="5">캡처.pdf</td>
+                </tr>
+
+                <tr>
+                    <!--TODO: rowspan="댓글갯수 +1(댓글입력) "-->
+                    <th rowspan="4">처리내용</th>
+                    <input type="hidden" name="" id="">
+                    <th:block th:replace="customerResponse/responseResult/responseResult"></th:block>
+            </table>
+            <div class="buttons">
+                <div class="d-grid gap-2 d-md-block">
+                    <button class="btn btn-secondary" type="button">목록</button>
+                    <button class="btn btn-secondary" type="button">수정</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

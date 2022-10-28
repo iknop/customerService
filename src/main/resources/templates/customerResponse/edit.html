@@ -1,0 +1,62 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+<th:block layout:fragment="css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/writeAndEdit.css}"/>
+</th:block>
+<div layout:fragment="content_area">
+    <div class="container-fluid">
+        <div class="content">
+            <div id="pageTitle">
+                <h2>내용수정</h2>
+            </div>
+            <table class="table">
+                <tr>
+                    <th scope="col">고객</th>
+                    <td><select name="고객" id="">
+                        <option selected>전체</option>
+                    </select></td>
+                    <th scope="col">서비스구분</th>
+                    <td><select name="서비스구분" id="">
+                        <option selected>서비스구분을 선택하세요</option>
+                        <option value="">프로그램문의</option>
+                        <option value="">일반</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <th scope="col">제목</th>
+                    <td><input type="text" name="제목" id="titleInput" placeholder="제목을 입력하세요"></td>
+                </tr>
+                <tr>
+                    <th scope="col">내용</th>
+                    <td colspan="5"><textarea class="form-control" id="boardContent" rows="5" placeholder="내용을 입력하세요."
+                                              name="내용"></textarea></td>
+                </tr>
+                <tr>
+                    <th scope="col">사용여부</th>
+                    <td colspan="5">
+                        <select name="" id="">
+                            <option value="Y" selected>사용</option>
+                            <option value="N">삭제</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="col">첨부파일</th>
+                    <td colspan="5">
+                        <div class="input-group">
+                            <input type="file" class="form-control" id="inputGroupFile04"
+                                   aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                            <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div class="button">
+                <button class="btn btn-secondary" type="submit">수정</button>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

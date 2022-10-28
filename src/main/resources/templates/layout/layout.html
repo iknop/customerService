@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <!--Bootstap CSS-->
+    <link rel="stylesheet" type="text/css" th:href="@{/ext/bootstrap-5.2.2-dist/css/bootstrap.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/ext/css/common.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/ext/css/contents.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/ext/css/daterangepicker.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/ext/css/jquery-ui.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/ext/css/jquery.dataTables.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/ext/css/login.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/ext/css/pretendard.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/ext/css/SpoqaHanSansNeo.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/layout.css}"/>
+</head>
+<body>
+<!--header-->
+<div id="wrap">
+<div th:replace="fragments/header::header"></div>
+<!--  content  -->
+<div layout:fragment="content_area" class="content"></div>
+<!--footer-->
+<footer th:replace="fragments/footer::footer"></footer>
+</div>
+<!--반드시 공용스크립트 먼저 선언-->
+<script type="text/javascript" th:src="@{/ext/js/jquery-3.3.1.min.js}"></script>
+<script type="text/javascript" th:src="@{/ext/js/jquery-ui.min.js}"></script>
+<script type="text/javascript" th:src="@{/ext/js/common.js}"></script>
+<script type="text/javascript" th:src="@{/ext/js/daterangepicker.js}"></script>
+<script type="text/javascript" th:src="@{/ext/js/header.js}"></script>
+<script type="text/javascript" th:src="@{/ext/js/moment.js}"></script>
+<script type="text/javascript" th:src="@{/ext/js/moment.min.js}"></script>
+<script type="text/javascript" th:src="@{/ext/bootstrap-5.2.2-dist/js/bootstrap.bundle.js}"></script>
+<script type="text/javascript" th:src="@{/ext/handlebar/js/handlebars-v4.7.7.js}"></script>
+<!--개별 script-->
+<th:block layout:fragment="script_area">
+</th:block>
+</body>
+</html>
