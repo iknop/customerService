@@ -1,0 +1,14 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+<div layout:fragment="content_area">
+
+    <h3>Hello <p th:text="${home.name}"> !!</p></h3>
+
+    <span>Course Duration: </span>
+    <span th:text="${home.duration}"></span>
+    <br>
+    <span>Frameworks Selected: </span>
+    <span th:text="${home.framework}"></span>
+</div>
+</html>

@@ -23,11 +23,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
     implementation 'com.googlecode.json-simple:json-simple:1.1.1'
-    implementation 'com.github.pagehelper:pagehelper-spring-boot-starter:1.4.5'// db -> hadlebar
+    implementation 'com.github.pagehelper:pagehelper-spring-boot-starter:1.4.5'
+    implementation 'org.webjars.npm:bootstrap:5.2.1'// db -> hadlebar
     compileOnly 'org.projectlombok:lombok'
     implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2:1.16'
     implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
-    implementation 'org.springframework.boot:spring-boot-starter-jdbc:2.7.4'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc:2.7.5'
     implementation 'com.microsoft.sqlserver:mssql-jdbc:11.2.1.jre8'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'

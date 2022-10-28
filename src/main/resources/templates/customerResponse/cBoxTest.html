@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+<div layout:fragment="content_area">
+
+
+    <h1>Welcome to GeeksforGeeks!</h1>
+    <form action="submit" method="post" >
+        <table>
+            <tr>
+                <td><label for="name">Enter your name: </label></td>
+                <td><input name="name" id="name" /></td>
+            </tr>
+            <tr>
+                <td><label path="duration">Select duration of course: </label></td>
+                <td>
+                     <input type="checkbox" name="duration" id="3 months" value="3 months"><label for="3 months">3 months</label>
+                     <input type="checkbox" name="duration" id="6 months" value="6 months"><label for="6 months">6 months</label>
+
+                </td>
+            </tr>
+            <tr>
+                <td><label for="framework">Java Frameworks: </label></td>
+                <td>
+                    <checkboxes path="framework" items="${javaFramworks}" delimiter="|"/>
+                    <input type="checkbox" name="duration" id="framework"  items="${javaFramworks}" delimiter="|">
+
+                </td>
+            </tr>
+            <tr>
+                <td><button>Submit</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</html>
