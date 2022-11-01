@@ -1,31 +1,45 @@
 package com.pshc.customerservice.controller.apiController;
 
-import com.pshc.customerservice.dto.customer.SearchInfoRequest;
-import com.pshc.customerservice.dto.customer.SearchInfoResponse;
-import com.pshc.customerservice.service.CustomerListService;
+import com.pshc.customerservice.dto.customerResponse.CRSelectResponseDto;
+import com.pshc.customerservice.dto.customerResponseList.SearchInfoRequest;
+import com.pshc.customerservice.dto.customerResponseList.SearchInfoResponse;
+import com.pshc.customerservice.service.CustomerResponseService;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
 
+@Log4j2
 @RestController
 @RequestMapping("/api/board")
 public class CustomerResponseApiController {
-
+    // cutomerResponseList + customerResponse 컨트롤러
     @Autowired
-    CustomerListService service;
+    CustomerResponseService service;
 
-    public CustomerResponseApiController(CustomerListService service){
+    public CustomerResponseApiController(CustomerResponseService service) {
         this.service = service;
     }
+
+    /* 인덱스 페이지(서비스 목록) */
     @GetMapping("/list")
-    public List<SearchInfoResponse> getList(SearchInfoRequest request){
-//        System.out.println("request="+request);
-//        service.getList(request);
+    public List<SearchInfoResponse> getList(SearchInfoRequest request) {
         return service.getList(request);
     }
+
+    @GetMapping("/list/{customerCode}/{responseType}")
+    public List<SearchInfoResponse> getList(SearchInfoRequest request, @PathVariable String customerCode, @PathVariable String responseType) {
+        log.info(request);
+        return service.getList(request);
+    }
+
+
+    /* 상세보기 페이지 */
+    @GetMapping("/{crId}")
+    public CRSelectResponseDto getResponseById(@PathVariable int crId){
+        log.info("getResponseById: "+ service.getResponseById(crId));
+        return service.getResponseById(crId);
+    }
 }
+

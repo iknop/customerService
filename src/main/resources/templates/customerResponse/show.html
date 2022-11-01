@@ -9,32 +9,36 @@
         <div class="content">
             <div id="pageTitle">
                 <h2>내용상세보기</h2>
+                <input type="hidden" name="crId" id="crID" th:value="${response.crID}">
             </div>
             <table class="table">
                 <tr>
                     <th scope="col">고객</th>
-                    <td>부천성모</td>
+                    <td th:text="${response.customerCode}"></td>
                     <th scope="col">서비스구분</th>
-                    <td>프로그램문의</td>
+                    <input type="hidden" name="responseType" th:value="${response.responseType}">
+                    <td name="responseType" id="responseType"></td>
                     <th scope="col">접수일시</th>
-                    <td>2022-10-18 15:00:01</td>
+                    <td th:text="${response.createDateTime}"></td>
                 </tr>
                 <tr>
                     <th scope="col">제목</th>
-                    <td colspan="3">소견이 PACS에서 보이지 않음</td>
+                    <td colspan="3" th:text="${response.responseTitle}"></td>
                     <th scope="col">응대자</th>
-                    <td>홍길동</td>
+                    <td th:text="${response.createUserCode}"></td>
                 </tr>
                 <tr>
                     <th scope="col">내용</th>
-                    <td colspan="5">17일 영상부터 PACS에서 소견이 보이지 않음</td>
+                    <td colspan="5" th:text="${response.responseContents}"></td>
                 </tr>
                 <tr>
+                    <!--TODO:첨부파일 : SVC_sd_ResponseImage -->
                     <th scope="col">첨부파일</th>
                     <td colspan="5">캡처.pdf</td>
                 </tr>
 
                 <tr>
+                    <!--TODO: 처리내용등록 : SVC_in_ResponseResult-->
                     <!--TODO: rowspan="댓글갯수 +1(댓글입력) "-->
                     <th rowspan="4">처리내용</th>
                     <input type="hidden" name="" id="">
@@ -49,4 +53,7 @@
         </div>
     </div>
 </div>
+<th:blcok layout:fragment="script_area">
+    <script src="/js/show/getCustomerResponse.js" th:inline="javascript"></script>
+</th:blcok>
 </html>

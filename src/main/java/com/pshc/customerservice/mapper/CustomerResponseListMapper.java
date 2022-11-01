@@ -1,7 +1,5 @@
 package com.pshc.customerservice.mapper;
 
-
-import com.pshc.customerservice.dto.customerResponse.CRSelectResponseDto;
 import com.pshc.customerservice.dto.customerResponseList.SearchInfoRequest;
 import com.pshc.customerservice.dto.customerResponseList.SearchInfoResponse;
 import org.apache.ibatis.annotations.Mapper;
@@ -11,7 +9,6 @@ import java.util.List;
 
 @Repository
 @Mapper
-public interface CustomerResponseMapper {
-    List<SearchInfoResponse> getList(SearchInfoRequest request);
-    CRSelectResponseDto getResponseById(int crID);
+public interface CustomerResponseListMapper {
+
 }

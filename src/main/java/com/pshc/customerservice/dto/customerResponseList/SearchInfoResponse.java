@@ -1,4 +1,4 @@
-package com.pshc.customerservice.dto.customer;
+package com.pshc.customerservice.dto.customerResponseList;
 
 public class SearchInfoResponse {
     private int totCnt;
@@ -89,12 +89,13 @@ public class SearchInfoResponse {
                 "totCnt=" + totCnt +
                 ", listNo=" + listNo +
                 ", crID=" + crID +
-                ", customerCode='" + customerCode + '\'' +
-                ", customerName='" + customerName + '\'' +
-                ", responseTitle='" + responseTitle + '\'' +
-                ", responseContents='" + responseContents + '\'' +
-                ", createdDateTime='" + createdDateTime + '\'' +
-                ", createUserName='" + createUserName + '\'' +
+                ", customerCode=" + customerCode + '\'' +
+                ", customerName=" + customerName + '\'' +
+                ", responseTitle=" + responseTitle + '\'' +
+                ", responseContents=" + responseContents + '\'' +
+                ", createdDateTime=" + createdDateTime + '\'' +
+                ", createUserName=" + createUserName + '\'' +
                 '}';
+
     }
 }

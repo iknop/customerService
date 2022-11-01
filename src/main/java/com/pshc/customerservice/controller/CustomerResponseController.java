@@ -1,16 +1,19 @@
 package com.pshc.customerservice.controller;
 
+import com.pshc.customerservice.dto.customerResponse.CRSelectResponseDto;
+import com.pshc.customerservice.service.CustomerResponseService;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 @Log4j2
 @Controller
 @RequestMapping("/")
 public class CustomerResponseController {
-
+    @Autowired
+    CustomerResponseService customerResponseService;
     // 홈: 서비스 목록
     @GetMapping
     public String home() {
@@ -19,9 +22,10 @@ public class CustomerResponseController {
     }
 
     // 내용상세보기 페이지
-    @GetMapping("/board/{bid}")
-    public String show() {
-
+    @GetMapping("/board/{crID}")
+    public String show(@PathVariable int crID, Model model) {
+        CRSelectResponseDto dto = customerResponseService.getResponseById(crID);
+        model.addAttribute("response", dto);
         log.info("page: board > show 상세보기");
         return "customerResponse/show";
     }

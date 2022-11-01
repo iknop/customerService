@@ -13,166 +13,67 @@
             </nav>
             <div id="search-bar">
                 < class="cCategory">
-                    <!-- 라디오-->
-                <form id="form" method="post">
+                <!-- 라디오-->
+                <form method="post">
                     <label class="bold-character">고객구분</label>
-                    <input type="checkbox" name="customerCode" value="hospital" class="checkbox_customer" id="cs_hsp"><label for="cs_hsp">병원</label>
-                    <input type="checkbox" name="customerCode" value="doctor" class="checkbox_customer" id="cs_dr"><label for="cs_dr">판독의</label>
-                    <input type="hidden" name="arrayParam" id="arrayParam">
+                    <input type="checkbox" name="customerType" value="hospital" onclick="getCheckboxValue()"
+                           id="cs_hsp"><label for="cs_hsp">병원</label>
+                    <input type="checkbox" name="customerType" value="doctor" onclick="getCheckboxValue()"
+                           id="cs_dr"><label for="cs_dr">판독의</label>
+                    <div id='result'></div>
                 </form>
-                    <div class="select">
-                        <select name="고객" th:name="customerCode">
-                            <option selected>고객을 선택해주세요</option>
-                            <option value="1">병원1</option>
-                            <option value="2">병원2</option>
-                            <option value="3">병원3</option>
-                        </select>
-                    </div>
-                    <div class="serviceType" >
-                        <select class="form-select" aria-label="Default select example" name="responseType" >
-                            <option selected name="serviceType">서비스를 선택해주세요</option>
-                            <option value="N">일반</option>
-                            <option value="P">프로그램</option>
-                        </select>
-                    </div>
-                    <div class="btn">
-                        <button type="button" class="btn btn-primary" id="service-btn">검색</button>
-                    </div>
-                    <div class="select_pagination">
-                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                            <option selected></option>
-                            <option value="10">10</option>
-                            <option value="30">30</option>
-                            <option value="50">50</option>
-                        </select>
-                    </div>
+                <div class="select">
+                    <select name="고객" th:name="customerCode" id="customerCode" onclick="showCustomerList()">
+                        <option selected>고객을 선택해주세요</option>
+                    </select>
+                </div>
+                <div class="serviceType">
+                    <select class="form-select" aria-label="Default select example" name="responseType"
+                            id="responseType">
+                        <option selected name="serviceType">서비스를 선택해주세요</option>
+                        <option value="N">일반</option>
+                        <option value="P">프로그램</option>
+                    </select>
+                </div>
+                <div class="btn">
+                    <button type="button" class="btn btn-primary" id="service-btn">검색</button>
+                </div>
+                <div class="select_pagination">
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                        <option selected></option>
+                        <option value="10">10</option>
+                        <option value="30">30</option>
+                        <option value="50">50</option>
+                    </select>
                 </div>
             </div>
-            <section>
-                <div class="list">
-                    <!--서비스 목록-->
-                    <table class="table table-bordered" id="serviceList">
-<!--                        {{!&#45;&#45; 조각 템플릿은 #> 를 사용해서 포함시킬 수 있다. &#45;&#45;}}-->
-<!--                        {{#> partial}}-->
-<!--                        partial template 로드 실패시 보여지는 내용-->
-<!--                        {{/partial}}-->
-
-<!--                        {{!&#45;&#45;리스트&#45;&#45;}}-->
-                        <thead>
-                        <th scope="col">고객</th>
-                        <th scope="col">서비스구분</th>
-                        <th scope="col">서비스제목</th>
-                        <th scope="col">접수일시</th>
-                        <th scope="col">응대자</th>
-                        </thead>
-                        <tbody>
-
-<!--                        {{#board}}-->
-<!--                        <tr>-->
-<!--                            <td>{{customerName}}</td>-->
-<!--                            <td>{{serviceType}}</td>-->
-<!--                            <td>{{serviceTitle}}</td>-->
-<!--                            <td>{{registeredDate}}</td>-->
-<!--                            <td>{{inCharge}}</td>-->
-<!--                        </tr>-->
-<!--                        {{/board}}-->
-                        </tbody>
-                    </table>
-                </div>
-            </section>
         </div>
+        <section>
+            <div class="list">
+                <!--서비스 목록-->
+                <table class="table table-bordered" id="serviceList">
+                    <thead>
+                    <th>totCnt</th>
+                    <th>listNo</th>
+                    <th>crID</th>
+                    <th>customerCode</th>
+                    <th>customerName</th>
+                    <th>responseTitle</th>
+                    <th>responseContents</th>
+                    <th>createdDateTime</th>
+                    <th>createUserName</th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </section>
     </div>
 </div>
 <th:blcok layout:fragment="script_area">
-
-<!--    <script id="partial-template" type="text/x-handlebars-template">-->
-<!--        {{!&#45;&#45;#unless 헬퍼는 #if의 정반대 기능&#45;&#45;}}-->
-<!--        {{#unless board}} <small>접수된 서비스가 없습니다.</small>{{/unless}}-->
-<!--    </script>-->
-<!--    <script id="entry-template" type="text/x-handlebars-template">-->
-
-<!--    </script>-->
-
-    <script type="text/javascript">
-        function search(){
-
-            const searchData = {
-                 customerCode : "T",
-                 responseType : "N",
-                 currentIndexNo : 1,
-                 pagingSize : 10
-            }
-
-            $.ajax({
-                type: 'GET',
-                url: '/api/board/list',
-                data: searchData
-
-            }).done(function (response){
-                console.log(response)
-            }).fail(function (response){
-                console.log(response)
-            })
-        }
-        $("#service-btn").on("click",function(){
-            search()
-        })
-
-
-        // $(document).ready(function () {
-        //     $('#dt').DataTable();
-        //
-        //     const listTable = $("#serviceList").DataTable({
-        //         columns: [
-        //             { data: ''}
-        //         ]
-        //     });
-
-
-            //
-            // <th scope="col">고객</th>
-            // <th scope="col">서비스구분</th>
-            // <th scope="col">서비스제목</th>
-            // <th scope="col">접수일시</th>
-            // <th scope="col">응대자</th>
-
-        // });
-
-        //
-        // var partial = $("#partial-template").html();
-        // var source = $("#entry-template").html();
-        //
-        // //핸들바 템플릿 컴파일
-        // const template = Handlebars.compile(source);
-        //
-        // //핸들바 템플릿에 바인딩할 데이터
-        // var data = {
-        //     board: [
-        //         {
-        //             customerName: "부천성모",
-        //             serviceType: "프로그램문의",
-        //             serviceTitle: "17일 소견이 PACS에서 보이지 않음.",
-        //             registeredDate: "2022-10-18 15:00:01",
-        //             inCharge: "홍길동"
-        //         },
-        //         {
-        //             customerName: "일산병원",
-        //             serviceType: "일반",
-        //             serviceTitle: "일반 서비스 제목",
-        //             registeredDate: "2022-10-18 15:00:01",
-        //             inCharge: "아크로밧"
-        //         },
-        //     ]
-        // };
-        //
-        //
-        // Handlebars.registerPartial('partial', partial);
-        //
-        // //핸들바 템플릿에 데이터를 바인딩해서 HTML 생성
-        // var html = template(data);
-        //
-        // //생성된 HTML을 DOM에 주입
-        // $('.list').append(html);
-    </script>
+    <!--서비스목록-->
+    <script src="/js/index/index_searchInfoList.js" th:inline="javascript"></script>
+    <script src="/js/index/customerList.js" th:inline="javascript"></script>
 </th:blcok>
 </html>

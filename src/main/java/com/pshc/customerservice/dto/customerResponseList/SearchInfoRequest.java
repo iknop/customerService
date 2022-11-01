@@ -1,4 +1,4 @@
-package com.pshc.customerservice.dto.customer;
+package com.pshc.customerservice.dto.customerResponseList;
 
 public class SearchInfoRequest {
     private String customerCode;
@@ -41,9 +41,9 @@ public class SearchInfoRequest {
     @Override
     public String toString() {
         return "SearchInfoRequest{" +
-                "customerCode='" + customerCode + '\'' +
-                ", responseType='" + responseType + '\'' +
-                ", currentIndexNo=" + currentIndexNo +
+                "customerCode=" + customerCode + '\'' +
+                ", responseType=" + responseType + '\'' +
+                ", currentIndexNo=" + currentIndexNo +'\'' +
                 ", pagingSize=" + pagingSize +
                 '}';
     }
