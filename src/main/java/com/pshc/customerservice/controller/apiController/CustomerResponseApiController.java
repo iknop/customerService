@@ -1,5 +1,6 @@
 package com.pshc.customerservice.controller.apiController;
 
+import com.pshc.customerservice.dto.customerResponse.CRInsertRequestDto;
 import com.pshc.customerservice.dto.customerResponse.CRSelectResponseDto;
 import com.pshc.customerservice.dto.customerResponseList.SearchInfoRequest;
 import com.pshc.customerservice.dto.customerResponseList.SearchInfoResponse;
@@ -37,9 +38,17 @@ public class CustomerResponseApiController {
 
     /* 상세보기 페이지 */
     @GetMapping("/{crId}")
-    public CRSelectResponseDto getResponseById(@PathVariable int crId){
-        log.info("getResponseById: "+ service.getResponseById(crId));
+    public CRSelectResponseDto getResponseById(@PathVariable int crId) {
+        log.info("getResponseById: " + service.getResponseById(crId));
         return service.getResponseById(crId);
+    }
+
+    /* 내용 등록 */
+    @PostMapping("/write")
+    public CRInsertRequestDto insertCustomerResponse(CRInsertRequestDto request) {
+//        log.info(service.insertCustomerResponse(request));
+        service.insertCustomerResponse(request);
+        return request;
     }
 }
 

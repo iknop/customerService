@@ -15,25 +15,33 @@
                     <th scope="col">고객</th>
                     <td>
                         <label class="bold-character">고객구분</label>
-                        <input type="checkbox" name="customerType" value="" id="customer_hosp"><label for="customer_hosp">병원</label>
-                        <input type="checkbox" name="customerType" value="판독의" id="customer_dr"><label for="customer_dr">판독의</label>
-                        <select name="고객" id="">
-                        <option selected>전체</option>
-                    </select></td>
+                        <input type="checkbox" name="customerType" value="hospital" onclick="getCheckboxValue()"
+                               id="cs_hsp"><label for="cs_hsp">병원</label>
+                        <input type="checkbox" name="customerType" value="doctor" onclick="getCheckboxValue()"
+                               id="cs_dr"><label for="cs_dr">판독의</label>
+                        <select name="고객" th:name="customerCode" id="customerCode" onclick="showCustomerList()">
+                            <option selected>고객을 선택해주세요</option>
+                        </select>
+                    </td>
                     <th scope="col">서비스구분</th>
-                    <td><select name="서비스구분" id="">
-                        <option selected>서비스구분을 선택하세요</option>
-                        <option value="">프로그램문의</option>
-                        <option value="">일반</option>
-                    </select></td>
+                    <td>
+                        <select class="form-select" aria-label="Default select example" name="responseType"
+                                id="responseType">
+                            <option selected name="serviceType">서비스를 선택해주세요</option>
+                            <option value="N">일반</option>
+                            <option value="P">프로그램</option>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <th scope="col">제목</th>
-                    <td><input type="text" name="제목" id="titleInput" placeholder="제목을 입력하세요"></td>
+                    <td><input type="text" name="responseTitle" id="responseTitle" placeholder="제목을 입력하세요">
+                        <input type="text" name="loginId" id="loginId" value="admin" placeholder="로그인: admin" disabled>
+                    </td>
                 </tr>
                 <tr>
                     <th scope="col">내용</th>
-                    <td colspan="5"><textarea class="form-control" id="boardContent" rows="5" placeholder="내용을 입력하세요."
+                    <td colspan="5"><textarea class="form-control" id="responseContents" rows="5" placeholder="내용을 입력하세요."
                                               name="내용"></textarea></td>
                 </tr>
                 <tr>
@@ -49,9 +57,12 @@
                 </tr>
             </table>
             <div class="button">
-                <button class="btn btn-secondary" type="submit">등록</button>
+                <button class="btn btn-secondary" type="submit" onclick="insertCustomerResponse()" th:action="location">등록</button>
             </div>
         </div>
     </div>
 </div>
+<th:block layout:fragment="script_area">
+    <script src="/js/write/insertCustomerResponse.js" th:inline="javascript"></script>
+</th:block>
 </html>

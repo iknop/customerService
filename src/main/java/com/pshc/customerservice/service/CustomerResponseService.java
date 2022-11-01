@@ -1,9 +1,9 @@
 package com.pshc.customerservice.service;
 
+import com.pshc.customerservice.dto.customerResponse.CRInsertRequestDto;
 import com.pshc.customerservice.dto.customerResponse.CRSelectResponseDto;
 import com.pshc.customerservice.dto.customerResponseList.SearchInfoRequest;
 import com.pshc.customerservice.dto.customerResponseList.SearchInfoResponse;
-import com.pshc.customerservice.mapper.CustomerResponseListMapper;
 import com.pshc.customerservice.mapper.CustomerResponseMapper;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +30,10 @@ public class CustomerResponseService {
     public CRSelectResponseDto getResponseById(int crID) {
         log.info(mapper.getResponseById(crID));
         return mapper.getResponseById(crID);
+    }
+
+    public void insertCustomerResponse(CRInsertRequestDto request) {
+//        log.info(mapper.insertCustomerResponse(request));
+        mapper.insertCustomerResponse(request);
     }
 }

@@ -1,3 +1,7 @@
+/* 에러: Cannot use import statement outside a module -> type=module 404d에러 */
+// import getCheckboxValue from '/js/index/customerList'
+// import showCustomerList from '/js/index/customerList'
+
 // 병원/판독의 체크박스
 function getCheckboxValue() {
     const query = 'input[name="customerType"]:checked';
@@ -60,4 +64,32 @@ function showCustomerList() {
     } else{
         // todo: 선택값 없음
     }
+}
+
+function insertCustomerResponse(){
+    let customerCode = $("#customerCode").val();
+    let responseType = $("#responseType").val();
+    let responseTitle = $("#responseTitle").val();
+    let responseContents = $("#responseContents").val();
+    let loginId = $("#loginId").val();
+
+    const insertData = {
+        customerCode: customerCode,
+        responseType: responseType,
+        responseTitle: responseTitle,
+        responseContents: responseContents,
+        loginId: loginId
+    }
+
+    $.ajax({
+        type: 'POST',
+        url: '/api/board/write',
+        data: insertData,
+        async: false
+    }).done(function (response) {
+        console.log(response)
+        window.location.href='/';
+    }).fail(function (response) {
+        console.log(response)
+    })
 }

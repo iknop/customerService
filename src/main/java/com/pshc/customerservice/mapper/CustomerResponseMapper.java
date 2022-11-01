@@ -1,6 +1,7 @@
 package com.pshc.customerservice.mapper;
 
 
+import com.pshc.customerservice.dto.customerResponse.CRInsertRequestDto;
 import com.pshc.customerservice.dto.customerResponse.CRSelectResponseDto;
 import com.pshc.customerservice.dto.customerResponseList.SearchInfoRequest;
 import com.pshc.customerservice.dto.customerResponseList.SearchInfoResponse;
@@ -14,4 +15,5 @@ import java.util.List;
 public interface CustomerResponseMapper {
     List<SearchInfoResponse> getList(SearchInfoRequest request);
     CRSelectResponseDto getResponseById(int crID);
+    void insertCustomerResponse(CRInsertRequestDto request);
 }
