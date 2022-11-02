@@ -1,5 +1,3 @@
-//import getCheckboxValue from  './customerList'
-
 // 인덱스 기본화면 리스트 출력
 $(function () {
     const searchData = {
@@ -18,7 +16,7 @@ $(function () {
         console.log(response)
         $('#serviceList').DataTable({
             paging: false,
-            data:response
+            data: response
             ,
             columns: [
                 {data: 'totCnt'},
@@ -32,6 +30,8 @@ $(function () {
                 {data: 'createUserName'}
             ]
         });
+    }).fail(function (response){
+        console.log(response)
     })
 });
 

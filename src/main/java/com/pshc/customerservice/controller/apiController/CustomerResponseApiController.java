@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/board")
 public class CustomerResponseApiController {
-    // cutomerResponseList + customerResponse 컨트롤러
+    // cutomerResponseList(인덱스 목록) + customerResponse(내용상세보기) 컨트롤러
     @Autowired
     CustomerResponseService service;
 

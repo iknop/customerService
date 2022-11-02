@@ -12,7 +12,7 @@
                 <h2>원격판독 고객응대</h2>
             </nav>
             <div id="search-bar">
-                < class="cCategory">
+                <div class="cCategory">
                 <!-- 라디오-->
                 <form method="post">
                     <label class="bold-character">고객구분</label>
@@ -21,6 +21,7 @@
                     <input type="checkbox" name="customerType" value="doctor" onclick="getCheckboxValue()"
                            id="cs_dr"><label for="cs_dr">판독의</label>
                 </form>
+                </div>
                 <div class="select">
                     <select name="고객" th:name="customerCode" id="customerCode" onclick="showCustomerList()">
                         <option selected>고객을 선택해주세요</option>
@@ -36,6 +37,9 @@
                 </div>
                 <div class="btn">
                     <button type="button" class="btn btn-primary" id="service-btn">검색</button>
+                </div>
+                <div class="writeBtn">
+                    <button class="btn btn-secondary" type="submit" onclick="location.href='/board/write'">등록</button>
                 </div>
                 <div class="select_pagination">
                     <select class="form-select form-select-sm" aria-label=".form-select-sm example">
@@ -72,7 +76,7 @@
 </div>
 <th:blcok layout:fragment="script_area">
     <!--서비스목록-->
-    <script src="/js/index/index_searchInfoList.js" th:inline="javascript"></script>
     <script src="/js/index/customerList.js" th:inline="javascript"></script>
+    <script src="/js/index/index_searchInfoList.js" th:inline="javascript"></script>
 </th:blcok>
 </html>

@@ -36,24 +36,43 @@
                     <th scope="col">첨부파일</th>
                     <td colspan="5">캡처.pdf</td>
                 </tr>
-
-                <tr>
+                <tr id="resultList">
                     <!--TODO: 처리내용등록 : SVC_in_ResponseResult-->
                     <!--TODO: rowspan="댓글갯수 +1(댓글입력) "-->
-                    <th rowspan="4">처리내용</th>
-                    <input type="hidden" name="" id="">
-                    <th:block th:replace="customerResponse/responseResult/responseResult"></th:block>
+                    <th rowspan="10">처리내용</th>
+
+                    <!--                <th:block th:replace="customerResponse/responseResult/responseResult"></th:block>-->
+                    <!--댓글 입력-->
+                <tr>
+                    <td colspan="4">
+                        <form action="" id="responseResultInsert">
+                            <!--TODO: 로그인 아이디 값-->
+                            <input type="text" id="loginId" name="loginId" value="admin" readonly>
+<!--                            <input type="text" id="createUserName" name="createUserName" value="admin" readonly>-->
+                            <textarea class="form-control" id="resultContents" name="resultContents" rows="3"
+                                      placeholder="처리내용을 입력하세요."></textarea>
+                        </form>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-lg" onclick="insertResult()">등록</button>
+                    </td>
+                </tr>
+                </tr>
             </table>
             <div class="buttons">
                 <div class="d-grid gap-2 d-md-block">
                     <button class="btn btn-secondary" type="submit" onclick="location.href='/'">목록</button>
-                    <button class="btn btn-secondary" type="submit" onclick="location.href ='/board/update/{bid}'">수정</button>
+                    <button class="btn btn-secondary" type="submit" onclick="location.href ='/board/update/{bid}'">수정
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <th:blcok layout:fragment="script_area">
     <script src="/js/show/getCustomerResponse.js" th:inline="javascript"></script>
+    <script src="/js/show/getResponseResultList.js" th:inline="javascript"></script>
+    <script src="/js/show/insertResponseResult.js" th:inline="javascript"></script>
 </th:blcok>
 </html>

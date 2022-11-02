@@ -1,6 +1,6 @@
 package com.pshc.customerservice.dto.responseResult;
 
-public class RRListResultDto {
+public class RRListResponseDto {
     private int rrId;
     private int crId;
     private String resultContents;
@@ -49,7 +49,7 @@ public class RRListResultDto {
 
     @Override
     public String toString() {
-        return "RRListResultDto{" +
+        return "RRListResponseDto{" +
                 "rrId=" + rrId +
                 ", crId=" + crId +
                 ", resultContents='" + resultContents + '\'' +
