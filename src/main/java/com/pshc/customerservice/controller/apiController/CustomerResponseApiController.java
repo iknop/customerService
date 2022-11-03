@@ -46,8 +46,8 @@ public class CustomerResponseApiController {
     /* 내용 등록 */
     @PostMapping("/write")
     public CRInsertRequestDto insertCustomerResponse(CRInsertRequestDto request) {
-//        log.info(service.insertCustomerResponse(request));
         service.insertCustomerResponse(request);
+        log.info("service: insertCustomerResponse");
         return request;
     }
 }

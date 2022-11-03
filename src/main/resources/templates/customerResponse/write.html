@@ -36,7 +36,7 @@
                 <tr>
                     <th scope="col">제목</th>
                     <td><input type="text" name="responseTitle" id="responseTitle" placeholder="제목을 입력하세요">
-                        <input type="text" name="loginId" id="loginId" value="admin" placeholder="로그인: admin" disabled>
+<!--                        <input type="text" name="loginId" id="loginId" value="admin" placeholder="로그인: admin" disabled>-->
                     </td>
                 </tr>
                 <tr>
@@ -63,6 +63,8 @@
     </div>
 </div>
 <th:block layout:fragment="script_area">
+
+    <script src="/js/index/customerList.js" th:inline="javascript"></script>
     <script src="/js/write/insertCustomerResponse.js" th:inline="javascript"></script>
 </th:block>
 </html>

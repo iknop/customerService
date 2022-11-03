@@ -2,6 +2,7 @@ package com.pshc.customerservice.service;
 
 import com.pshc.customerservice.dto.customerResponse.CRInsertRequestDto;
 import com.pshc.customerservice.dto.customerResponse.CRSelectResponseDto;
+import com.pshc.customerservice.dto.customerResponse.CRUpdateRequestDto;
 import com.pshc.customerservice.dto.customerResponseList.SearchInfoRequest;
 import com.pshc.customerservice.dto.customerResponseList.SearchInfoResponse;
 import com.pshc.customerservice.mapper.CustomerResponseMapper;
@@ -33,7 +34,11 @@ public class CustomerResponseService {
     }
 
     public void insertCustomerResponse(CRInsertRequestDto request) {
-//        log.info(mapper.insertCustomerResponse(request));
         mapper.insertCustomerResponse(request);
+        log.info("mapper.insertCustomerResponse(request)");
+    }
+    public void updateCustomerResponse(CRUpdateRequestDto request){
+        log.info("updateCustomerResponse");
+        mapper.updateCustomerResponse(request);
     }
 }

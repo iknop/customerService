@@ -1,55 +1,59 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
-<th:block layout:fragment="css">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
     <link rel="stylesheet" type="text/css" th:href="@{/css/writeAndEdit.css}"/>
-</th:block>
+</head>
 <div layout:fragment="content_area">
     <div class="container-fluid">
         <div class="content">
             <div id="pageTitle">
                 <h2>내용수정</h2>
             </div>
+            <!--데이터-->
             <table class="table">
                 <tr>
                     <th scope="col">고객</th>
-                    <td><select name="고객" id="">
-                        <option selected>전체</option>
-                    </select></td>
+                    <td>
+                        <input type="hidden" name="crId" id="crID" th:value="${response.crID}">
+                        <input type="hidden" name="crId" id="origianlCsType" th:value="${response.customerCode}">
+
+                        <label class="bold-character">고객구분</label>
+                        <input type="checkbox" name="customerType" value="hospital" onclick="getCheckboxValue()"
+                               id="cs_hsp"><label for="cs_hsp">병원</label>
+                        <input type="checkbox" name="customerType" value="doctor" onclick="getCheckboxValue()"
+                               id="cs_dr"><label for="cs_dr">판독의</label>
+                        <select name="고객" th:name="customerCode" id="customerCode" onclick="showCustomerList()">
+                            <option selected th:value="${response.customerCode}"></option>
+                        </select>
+                        </select></td>
                     <th scope="col">서비스구분</th>
-                    <td><select name="서비스구분" id="">
-                        <option selected>서비스구분을 선택하세요</option>
-                        <option value="">프로그램문의</option>
-                        <option value="">일반</option>
+                    <td><select name="서비스구분" id="responseType">
+                        <option selected th:value="${response.responseType}" >서비스구분을 선택하세요</option>
+                        <option value="P">프로그램문의</option>
+                        <option value="N">일반</option>
                     </select></td>
                 </tr>
                 <tr>
                     <th scope="col">제목</th>
-                    <td><input type="text" name="제목" id="titleInput" placeholder="제목을 입력하세요"></td>
+                    <td><input type="text" name="제목" id="responseTitle" th:value="${response.responseTitle}" ></td>
                 </tr>
                 <tr>
                     <th scope="col">내용</th>
-                    <td colspan="5"><textarea class="form-control" id="boardContent" rows="5" placeholder="내용을 입력하세요."
-                                              name="내용"></textarea></td>
+                    <td colspan="5">
+                        <textarea class="form-control" id="responseContents" rows="5"
+                                  th:value="${response.responseContents}"
+                                  name="responseContents" th:text="${response.responseContents}"></textarea>
+                    </td>
                 </tr>
                 <tr>
                     <th scope="col">사용여부</th>
                     <td colspan="5">
-                        <select name="" id="">
+                        <select name="useYN" id="useYN">
                             <option value="Y" selected>사용</option>
                             <option value="N">삭제</option>
                         </select>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="col">첨부파일</th>
-                    <td colspan="5">
-                        <div class="input-group">
-                            <input type="file" class="form-control" id="inputGroupFile04"
-                                   aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                            <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button
-                            </button>
-                        </div>
                     </td>
                 </tr>
             </table>
@@ -59,4 +63,8 @@
         </div>
     </div>
 </div>
+<th:block layout:fragment="script_area">
+    <script src="/js/index/customerList.js" th:inline="javascript"></script>
+    <script src="/js/edit/getOriginalData.js" th:inline="javascript"></script>
+</th:block>
 </html>

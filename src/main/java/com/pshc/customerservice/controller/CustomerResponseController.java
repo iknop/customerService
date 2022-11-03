@@ -1,6 +1,7 @@
 package com.pshc.customerservice.controller;
 
 import com.pshc.customerservice.dto.customerResponse.CRSelectResponseDto;
+import com.pshc.customerservice.dto.customerResponse.CRUpdateRequestDto;
 import com.pshc.customerservice.service.CustomerResponseService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,16 +39,14 @@ public class CustomerResponseController {
     }
 
     // 내용수정 페이지
-    @GetMapping("/board/update/{bid}")
-    public String editGet(/*@RequestParam Long bid*/) {
+    @GetMapping("/board/update/{crID}")
+    public String edit(@PathVariable int crID, Model model) {
+        CRSelectResponseDto dto = customerResponseService.getResponseById(crID);
+        model.addAttribute("response", dto);
 
         log.info("page: board > edit 수정하기");
         return "customerResponse/edit";
     }
 
-    @PostMapping("/board/update/{bid}")
-    public String editPost(/*@RequestParam Long bid*/) {
-        return "customerResponse/{bid}";
-    }
 
 }

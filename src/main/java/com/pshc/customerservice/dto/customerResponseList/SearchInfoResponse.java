@@ -8,7 +8,7 @@ public class SearchInfoResponse {
     private String customerName;
     private String responseTitle;
     private String responseContents;
-    private String createdDateTime;
+    private String createDateTime;
     private String createUserName;
 
     public int getTotCnt() {
@@ -67,20 +67,20 @@ public class SearchInfoResponse {
         this.responseContents = responseContents;
     }
 
-    public String getCreatedDateTime() {
-        return createdDateTime;
-    }
-
-    public void setCreatedDateTime(String createdDateTime) {
-        this.createdDateTime = createdDateTime;
-    }
-
     public String getCreateUserName() {
         return createUserName;
     }
 
     public void setCreateUserName(String createUserName) {
         this.createUserName = createUserName;
+    }
+
+    public String getCreateDateTime() {
+        return createDateTime;
+    }
+
+    public void setCreateDateTime(String createDateTime) {
+        this.createDateTime = createDateTime;
     }
 
     @Override
@@ -93,7 +93,7 @@ public class SearchInfoResponse {
                 ", customerName=" + customerName + '\'' +
                 ", responseTitle=" + responseTitle + '\'' +
                 ", responseContents=" + responseContents + '\'' +
-                ", createdDateTime=" + createdDateTime + '\'' +
+                ", createDateTime=" + createDateTime + '\'' +
                 ", createUserName=" + createUserName + '\'' +
                 '}';
 

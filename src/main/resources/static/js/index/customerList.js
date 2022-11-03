@@ -4,6 +4,7 @@ function getCheckboxValue() {
     const selectedEls = document.querySelectorAll(query);
     let result = '';
 
+    // TODO:
     selectedEls.forEach((el) => {
         result += el.value;
     });

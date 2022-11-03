@@ -24,13 +24,13 @@
                 </div>
                 <div class="select">
                     <select name="고객" th:name="customerCode" id="customerCode" onclick="showCustomerList()">
-                        <option selected>고객을 선택해주세요</option>
+                        <option selected value="T">고객을 선택해주세요</option>
                     </select>
                 </div>
                 <div class="serviceType">
                     <select class="form-select" aria-label="Default select example" name="responseType"
                             id="responseType">
-                        <option selected name="serviceType">서비스를 선택해주세요</option>
+                        <option selected name="serviceType" value="N">서비스를 선택해주세요</option>
                         <option value="N">일반</option>
                         <option value="P">프로그램</option>
                     </select>
@@ -41,14 +41,6 @@
                 <div class="writeBtn">
                     <button class="btn btn-secondary" type="submit" onclick="location.href='/board/write'">등록</button>
                 </div>
-                <div class="select_pagination">
-                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                        <option selected></option>
-                        <option value="10">10</option>
-                        <option value="30">30</option>
-                        <option value="50">50</option>
-                    </select>
-                </div>
             </div>
         </div>
         <section>
@@ -56,18 +48,13 @@
                 <!--서비스 목록-->
                 <table class="table table-bordered" id="serviceList">
                     <thead>
-                    <th>totCnt</th>
-                    <th>listNo</th>
-                    <th>crID</th>
-                    <th>customerCode</th>
-                    <th>customerName</th>
-                    <th>responseTitle</th>
-                    <th>responseContents</th>
-                    <th>createdDateTime</th>
-                    <th>createUserName</th>
+                    <th>고객</th>
+                    <th>서비스구분</th>
+                    <th>서비스제목</th>
+                    <th>접수일시</th>
+                    <th>응대자</th>
                     </thead>
                     <tbody>
-
                     </tbody>
                 </table>
             </div>

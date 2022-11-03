@@ -4,7 +4,7 @@ $(function () {
         customerCode: "T",
         responseType: "N",
         currentIndexNo: 1,
-        pagingSize: 10
+        pagingSize: 255 //tinyint 최댓값
     }
 
     $.ajax({
@@ -15,20 +15,31 @@ $(function () {
     }).done(function (response) {
         console.log(response)
         $('#serviceList').DataTable({
-            paging: false,
+            // TODO: 테이블헤드 일부 칼럼 삭제
             data: response
             ,
             columns: [
-                {data: 'totCnt'},
-                {data: 'listNo'},
-                {data: 'crID'},
-                {data: 'customerCode'},
-                {data: 'customerName'},
+                // {data: 'totCnt'},
+                // {data: 'listNo'},
+                // {data: 'crID'},
+                {data: 'customerCode', render: function(data, type, row) {
+                    return `${row.customerName}(${data})`;
+                    }},
+                {data: 'serviceType' , render: function(data) {
+                    let serviceType;
+                    if(data=='P'){
+                        serviceType='프로그램문의';
+                    }else{
+                        serviceType='일반';
+                    }
+
+                    return serviceType;
+                    }},
                 {data: 'responseTitle'},
-                {data: 'responseContents'},
-                {data: 'createdDateTime'},
+                {data: 'createDateTime'},
                 {data: 'createUserName'}
-            ]
+            ],
+            searching: false
         });
     }).fail(function (response){
         console.log(response)
@@ -58,17 +69,24 @@ function search() {
             destroy: true,
             searching: false,
             //
-
+            // TODO: 테이블헤드 일부 칼럼 삭제
             data:response,
             columns: [
-                {data: 'totCnt'},
-                {data: 'listNo'},
-                {data: 'crID'},
-                {data: 'customerCode'},
-                {data: 'customerName'},
+                {data: 'customerCode', render: function(data, type, row) {
+                        return `${row.customerName}(${data})`;
+                    }},
+                {data: 'serviceType' , render: function(data) {
+                        let serviceType;
+                        if(data=='P'){
+                            serviceType='프로그램문의';
+                        }else{
+                            serviceType='일반';
+                        }
+
+                        return serviceType;
+                    }},
                 {data: 'responseTitle'},
-                {data: 'responseContents'},
-                {data: 'createdDateTime'},
+                {data: 'createDateTime'},
                 {data: 'createUserName'}
             ]
         });

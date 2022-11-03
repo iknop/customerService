@@ -1,3 +1,8 @@
+$(function () {
+    let loginId = $('#loginId').val(); // 헤더
+    $('#resultLoginId').val(loginId)// 처리내용입력 아이디
+})
+// 처리내용 등록 버튼 onclick
 function insertResult() {
     let crId = $('#crID').val();
     let resultContents = $('#resultContents').val();

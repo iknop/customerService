@@ -33,4 +33,20 @@
             )
             }
     </insert>
+    <update id="updateCustomerResponse" parameterType="com.pshc.customerservice.dto.customerResponse.CRUpdateRequestDto"
+            statementType="CALLABLE">
+        {
+            call dbo.SVC_un_CustomerResponse(
+                #{crId},
+                #{customerCode},
+                #{responseType},
+                #{responseTitle},
+                #{responseContents},
+                #{useYN},
+                #{loginId},
+                #{successYN ,mode=OUT, jdbcType= CHAR, javaType= String},
+                #{errorMessage, mode=OUT, jdbcType=NVARCHAR, javaType=String}
+            )
+            }
+    </update>
 </mapper>
