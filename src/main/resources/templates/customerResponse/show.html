@@ -27,7 +27,6 @@
                     <td colspan="3" th:text="${response.responseTitle}"></td>
                     <th scope="col">응대자</th>
                     <td id="createUserCode"  th:text="${response.createUserName}"></td>
-
                 </tr>
                 <tr>
                     <th scope="col">내용</th>
@@ -45,7 +44,7 @@
                     <td colspan="4">
                         <form action="" id="responseResultInsert">
                             <!--TODO: 로그인 아이디 값-->
-                            <input type="text" id="resultLoginId" readonly>
+                            <input type="hidden" id="resultLoginId" readonly>
                             <textarea class="form-control" id="resultContents" name="resultContents" rows="3"
                                       placeholder="처리내용을 입력하세요."></textarea>
                         </form>

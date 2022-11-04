@@ -4,9 +4,13 @@ $(function () {
 })
 // 처리내용 등록 버튼 onclick
 function insertResult() {
-    let crId = $('#crID').val();
+    let crId = $('#crId').val();
+    console.log(crId)
     let resultContents = $('#resultContents').val();
+    console.log(resultContents)
+
     let loginId = $('#loginId').val();
+    console.log(loginId)
 
     const insertData = {
         crId: crId,

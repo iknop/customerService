@@ -27,7 +27,7 @@
     <!--    </update>-->
     <update id="updateResult" parameterType="com.pshc.customerservice.dto.responseResult.RRUpdateRequestDto" statementType="CALLABLE">
         {
-            call dbo.exec dbo.SVC_un_ResponseResult(
+            call dbo.SVC_un_ResponseResult(
                 #{rrId},
                 #{resultContents},
                 #{loginId},

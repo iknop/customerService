@@ -5,6 +5,7 @@ public class RRListResponseDto {
     private int crId;
     private String resultContents;
     private String createDateTime;
+    private String createUserCode;
     private String createUserName;
 
     public int getRrId() {
@@ -39,6 +40,14 @@ public class RRListResponseDto {
         this.createDateTime = createDateTime;
     }
 
+    public String getCreateUserCode() {
+        return createUserCode;
+    }
+
+    public void setCreateUserCode(String createUserCode) {
+        this.createUserCode = createUserCode;
+    }
+
     public String getCreateUserName() {
         return createUserName;
     }
@@ -54,6 +63,7 @@ public class RRListResponseDto {
                 ", crId=" + crId +
                 ", resultContents='" + resultContents + '\'' +
                 ", createDateTime='" + createDateTime + '\'' +
+                ", createUserCode='" + createUserCode + '\'' +
                 ", createUserName='" + createUserName + '\'' +
                 '}';
     }

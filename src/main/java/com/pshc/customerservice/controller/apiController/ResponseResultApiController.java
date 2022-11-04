@@ -6,9 +6,11 @@ import com.pshc.customerservice.dto.responseResult.RRUpdateRequestDto;
 import com.pshc.customerservice.service.ResponseResultService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @Log4j2
 @RestController
@@ -29,13 +31,15 @@ public class ResponseResultApiController {
         return service.getResultList(crId);
     }
     @PostMapping("/save")
-    public void insertResult(RRInsertRequestDto requestDto) {
+    public ResponseEntity<Object> insertResult(RRInsertRequestDto requestDto) {
         service.insertResult(requestDto);
         log.info("insertResult(requestDto)");
+        return ResponseEntity.ok().body(requestDto);
     }
-    @GetMapping("/update")
-    public void upateResult(RRUpdateRequestDto requestDto) {
+    @PostMapping("/update")
+    public ResponseEntity<Object> updateResult(RRUpdateRequestDto requestDto) {
         service.updateResult(requestDto);
         log.info("Api controller");
+        return ResponseEntity.ok().body(requestDto);
     }
 }
