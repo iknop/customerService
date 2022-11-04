@@ -59,7 +59,7 @@
                 </tr>
             </table>
             <div class="button">
-                <button class="btn btn-secondary" type="submit">수정</button>
+                <button class="btn btn-secondary" type="submit" th:onclick="updateResponse()">수정</button>
             </div>
         </div>
     </div>
@@ -67,5 +67,6 @@
 <th:block layout:fragment="script_area">
     <script src="/js/edit/getOriginalData.js" th:inline="javascript"></script>
     <script src="/js/index/customerList.js" th:inline="javascript"></script>
+    <script src="/js/edit/updateCustomerResponse.js" th:inline="javascript"></script>
 </th:block>
 </html>

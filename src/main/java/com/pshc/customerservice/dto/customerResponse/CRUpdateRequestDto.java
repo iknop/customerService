@@ -6,8 +6,8 @@ public class CRUpdateRequestDto {
     private String responseType;
     private String responseTitle;
     private String responseContents;
-    private String useYN;
     private String loginId;
+    private String useYN;
     private String successYN;
     private String errorMessage;
 

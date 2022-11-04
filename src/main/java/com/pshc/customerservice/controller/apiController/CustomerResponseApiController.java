@@ -2,6 +2,7 @@ package com.pshc.customerservice.controller.apiController;
 
 import com.pshc.customerservice.dto.customerResponse.CRInsertRequestDto;
 import com.pshc.customerservice.dto.customerResponse.CRSelectResponseDto;
+import com.pshc.customerservice.dto.customerResponse.CRUpdateRequestDto;
 import com.pshc.customerservice.dto.customerResponseList.SearchInfoRequest;
 import com.pshc.customerservice.dto.customerResponseList.SearchInfoResponse;
 import com.pshc.customerservice.service.CustomerResponseService;
@@ -48,6 +49,12 @@ public class CustomerResponseApiController {
     public CRInsertRequestDto insertCustomerResponse(CRInsertRequestDto request) {
         service.insertCustomerResponse(request);
         log.info("service: insertCustomerResponse");
+        return request;
+    }
+
+    @PostMapping("/{crId}/update")
+    public CRUpdateRequestDto updateCustomerResponse(CRUpdateRequestDto request, @PathVariable int crId){
+        service.updateCustomerResponse(request);
         return request;
     }
 }
