@@ -28,9 +28,9 @@ public class CustomerResponseService {
         return mapper.getList(request);
     }
 
-    public CRSelectResponseDto getResponseById(int crID) {
-        log.info(mapper.getResponseById(crID));
-        return mapper.getResponseById(crID);
+    public CRSelectResponseDto getResponseById(int crId) {
+        log.info(mapper.getResponseById(crId));
+        return mapper.getResponseById(crId);
     }
 
     public void insertCustomerResponse(CRInsertRequestDto request) {

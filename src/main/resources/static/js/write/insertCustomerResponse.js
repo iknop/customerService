@@ -1,8 +1,8 @@
 // 병원/판독의 체크박스
-
-getCheckboxValue()
-// 셀렉트박스 고객목록 출력
-showCustomerList()
+//
+// getCheckboxValue()
+// // 셀렉트박스 고객목록 출력
+// showCustomerList()
 
 function insertCustomerResponse(){
     let customerCode = $("#customerCode").val();

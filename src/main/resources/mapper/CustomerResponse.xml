@@ -15,9 +15,11 @@
     </select>
     <select id="getResponseById" resultType="com.pshc.customerservice.dto.customerResponse.CRSelectResponseDto"
             parameterType="int">
-        select *
-        from CustomerResponse
-        where CRID = #{crID}
+        {
+            call dbo.SVC_sr_CustomerService(
+                #{crId}
+            )
+            }
     </select>
     <insert id="insertCustomerResponse" parameterType="com.pshc.customerservice.dto.customerResponse.CRInsertRequestDto"
             statementType="CALLABLE">

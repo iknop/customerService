@@ -2,24 +2,24 @@ package com.pshc.customerservice.dto.customerResponse;
 
 
 public class CRSelectResponseDto {
-    private int crID;
+    private int crId;
     private String customerCode;
+    private String customerName;
     private String responseType;
     private String responseTitle;
     private String responseContents;
-    private String reqFileYN;
-    private String useYn;
+    private String useYN;
     private String createDateTime;
-    private String createUserCode;
     private String updateDateTime;
-    private String updateUserCode;
+    private String createUserCode;
+    private String createUserName;
 
-    public int getCrID() {
-        return crID;
+    public int getCrId() {
+        return crId;
     }
 
-    public void setCrID(int crID) {
-        this.crID = crID;
+    public void setCrId(int crId) {
+        this.crId = crId;
     }
 
     public String getCustomerCode() {
@@ -28,6 +28,14 @@ public class CRSelectResponseDto {
 
     public void setCustomerCode(String customerCode) {
         this.customerCode = customerCode;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public String getResponseType() {
@@ -54,20 +62,12 @@ public class CRSelectResponseDto {
         this.responseContents = responseContents;
     }
 
-    public String getReqFileYN() {
-        return reqFileYN;
+    public String getUseYN() {
+        return useYN;
     }
 
-    public void setReqFileYN(String reqFileYN) {
-        this.reqFileYN = reqFileYN;
-    }
-
-    public String getUseYn() {
-        return useYn;
-    }
-
-    public void setUseYn(String useYn) {
-        this.useYn = useYn;
+    public void setUseYN(String useYN) {
+        this.useYN = useYN;
     }
 
     public String getCreateDateTime() {
@@ -78,14 +78,6 @@ public class CRSelectResponseDto {
         this.createDateTime = createDateTime;
     }
 
-    public String getCreateUserCode() {
-        return createUserCode;
-    }
-
-    public void setCreateUserCode(String createUserCode) {
-        this.createUserCode = createUserCode;
-    }
-
     public String getUpdateDateTime() {
         return updateDateTime;
     }
@@ -94,29 +86,36 @@ public class CRSelectResponseDto {
         this.updateDateTime = updateDateTime;
     }
 
-    public String getUpdateUserCode() {
-        return updateUserCode;
+    public String getCreateUserCode() {
+        return createUserCode;
     }
 
-    public void setUpdateUserCode(String updateUserCode) {
-        this.updateUserCode = updateUserCode;
+    public void setCreateUserCode(String createUserCode) {
+        this.createUserCode = createUserCode;
+    }
+
+    public String getCreateUserName() {
+        return createUserName;
+    }
+
+    public void setCreateUserName(String createUserName) {
+        this.createUserName = createUserName;
     }
 
     @Override
     public String toString() {
         return "CRSelectResponseDto{" +
-                "crID=" + crID +
-                ", customerCode=" + customerCode + '\'' +
-                ", responseType=" + responseType + '\'' +
-                ", responseTitle=" + responseTitle + '\'' +
-                ", responseContents=" + responseContents + '\'' +
-                ", reqFileYN=" + reqFileYN + '\'' +
-                ", useYn=" + useYn + '\'' +
-                ", createDateTime=" + createDateTime + '\'' +
-                ", createUserCode=" + createUserCode + '\'' +
-                ", updateDateTime=" + updateDateTime + '\'' +
-                ", updateUserCode=" + updateUserCode + '\'' +
+                "crId=" + crId +
+                ", customerCode='" + customerCode + '\'' +
+                ", customerName='" + customerName + '\'' +
+                ", responseType='" + responseType + '\'' +
+                ", responseTitle='" + responseTitle + '\'' +
+                ", responseContents='" + responseContents + '\'' +
+                ", useYN='" + useYN + '\'' +
+                ", createDateTime='" + createDateTime + '\'' +
+                ", updateDateTime='" + updateDateTime + '\'' +
+                ", createUserCode='" + createUserCode + '\'' +
+                ", createUserName='" + createUserName + '\'' +
                 '}';
-
     }
 }

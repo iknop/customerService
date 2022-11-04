@@ -19,8 +19,8 @@
                                id="cs_hsp"><label for="cs_hsp">병원</label>
                         <input type="checkbox" name="customerType" value="doctor" onclick="getCheckboxValue()"
                                id="cs_dr"><label for="cs_dr">판독의</label>
-                        <select name="고객" th:name="customerCode" id="customerCode" onclick="showCustomerList()">
-                            <option selected>고객을 선택해주세요</option>
+                        <select name="고객" th:name="customerCode" id="customerCode" >
+<!--                            <option selected>고객을 선택해주세요</option>-->
                         </select>
                     </td>
                     <th scope="col">서비스구분</th>
@@ -44,17 +44,6 @@
                     <td colspan="5"><textarea class="form-control" id="responseContents" rows="5" placeholder="내용을 입력하세요."
                                               name="내용"></textarea></td>
                 </tr>
-                <tr>
-                    <th scope="col">첨부파일</th>
-                    <td colspan="5">
-                        <div class="input-group">
-                            <input type="file" class="form-control" id="inputGroupFile04"
-                                   aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                            <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAdd">Button
-                            </button>
-                        </div>
-                    </td>
-                </tr>
             </table>
             <div class="button">
                 <button class="btn btn-secondary" type="submit" onclick="insertCustomerResponse()" th:action="location">등록</button>
@@ -63,7 +52,12 @@
     </div>
 </div>
 <th:block layout:fragment="script_area">
-
+    <script th:inline="javascript">
+        $(function () {
+            getCheckboxValue()
+            showCustomerList()
+        })
+    </script>
     <script src="/js/index/customerList.js" th:inline="javascript"></script>
     <script src="/js/write/insertCustomerResponse.js" th:inline="javascript"></script>
 </th:block>

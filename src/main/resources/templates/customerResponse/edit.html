@@ -16,16 +16,17 @@
                 <tr>
                     <th scope="col">고객</th>
                     <td>
-                        <input type="hidden" name="crId" id="crID" th:value="${response.crID}">
-                        <input type="hidden" name="crId" id="origianlCsType" th:value="${response.customerCode}">
+                        <input type="hidden" name="crId" id="crId" th:value="${response.crId}">
+                        <input type="hidden" name="customerCode" id="originalCsType" th:value="${response.customerCode}">
 
                         <label class="bold-character">고객구분</label>
                         <input type="checkbox" name="customerType" value="hospital" onclick="getCheckboxValue()"
                                id="cs_hsp"><label for="cs_hsp">병원</label>
                         <input type="checkbox" name="customerType" value="doctor" onclick="getCheckboxValue()"
                                id="cs_dr"><label for="cs_dr">판독의</label>
-                        <select name="고객" th:name="customerCode" id="customerCode" onclick="showCustomerList()">
-                            <option selected th:value="${response.customerCode}"></option>
+                        <input type="hidden" id="originalCustomerCode" th:value="${response.customerCode}">
+                        <select name="고객" th:name="customerCode" id="customerCode" >
+
                         </select>
                         </select></td>
                     <th scope="col">서비스구분</th>
@@ -64,7 +65,7 @@
     </div>
 </div>
 <th:block layout:fragment="script_area">
-    <script src="/js/index/customerList.js" th:inline="javascript"></script>
     <script src="/js/edit/getOriginalData.js" th:inline="javascript"></script>
+    <script src="/js/index/customerList.js" th:inline="javascript"></script>
 </th:block>
 </html>

@@ -9,12 +9,13 @@
         <div class="content">
             <div id="pageTitle">
                 <h2>내용상세보기</h2>
-                <input type="hidden" name="crId" id="crID" th:value="${response.crID}">
+                <input type="hidden" name="crId" id="crId" th:value="${response.crId}">
             </div>
             <table class="table">
                 <tr>
                     <th scope="col">고객</th>
-                    <td th:text="${response.customerCode}"></td>
+                    <input type="hidden" id="customerCode" name="customerCode" th:value="${response.customerCode}">
+                    <td id="customerInfo" th:text="${response.customerCode}+'('+${response.customerName}+')'"></td>
                     <th scope="col">서비스구분</th>
                     <input type="hidden" name="responseType" th:value="${response.responseType}">
                     <td name="responseType" id="responseType"></td>
@@ -25,24 +26,21 @@
                     <th scope="col">제목</th>
                     <td colspan="3" th:text="${response.responseTitle}"></td>
                     <th scope="col">응대자</th>
-                    <td th:text="${response.createUserCode}"></td>
+                    <td id="createUserCode"  th:text="${response.createUserName}"></td>
+
                 </tr>
                 <tr>
                     <th scope="col">내용</th>
                     <td colspan="5" th:text="${response.responseContents}"></td>
                 </tr>
-                <tr>
-                    <!--TODO:첨부파일 : SVC_sd_ResponseImage -->
-                    <th scope="col">첨부파일</th>
-                    <td colspan="5"></td>
-                </tr>
+                <input type="hidden" name="useYN" id="useYN" th:value="${response.useYN}">
                 <tr id="resultList">
                     <!--TODO: 처리내용등록 : SVC_in_ResponseResult-->
                     <!--TODO: rowspan="댓글갯수 +1(댓글입력) "-->
                     <th rowspan="10">처리내용</th>
 
-                <!--                <th:block th:replace="customerResponse/responseResult/responseResult"></th:block>-->
-                <!--댓글 입력-->
+                    <!--                <th:block th:replace="customerResponse/responseResult/responseResult"></th:block>-->
+                    <!--댓글 입력-->
                 <tr>
                     <td colspan="4">
                         <form action="" id="responseResultInsert">
@@ -61,7 +59,8 @@
             <div class="buttons">
                 <div class="d-grid gap-2 d-md-block">
                     <button class="btn btn-secondary" type="submit" onclick="location.href='/'">목록</button>
-                    <button class="btn btn-secondary" type="submit" th:onclick="|location.href='/board/update/'+'${response.crID}'|" >수정
+                    <button class="btn btn-secondary" type="submit"
+                            th:onclick="|location.href='/board/'+'${response.crId}'+'/update'|">수정
                     </button>
                 </div>
             </div>
@@ -70,8 +69,11 @@
 </div>
 
 <th:blcok layout:fragment="script_area">
+    <!--서비스 내용 불러오기-->
     <script src="/js/show/getCustomerResponse.js" th:inline="javascript"></script>
+    <!--처리내용 목록 불러오기-->
     <script src="/js/show/getResponseResultList.js" th:inline="javascript"></script>
+    <!--처리내용 입력-->
     <script src="/js/show/insertResponseResult.js" th:inline="javascript"></script>
 </th:blcok>
 </html>

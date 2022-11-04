@@ -15,7 +15,7 @@ import java.util.List;
 @Mapper
 public interface CustomerResponseMapper {
     List<SearchInfoResponse> getList(SearchInfoRequest request);
-    CRSelectResponseDto getResponseById(int crID);
+    CRSelectResponseDto getResponseById(int crId);
     void insertCustomerResponse(CRInsertRequestDto request);
 
     void updateCustomerResponse(CRUpdateRequestDto request);

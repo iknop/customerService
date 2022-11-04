@@ -23,11 +23,11 @@ public class CustomerResponseController {
     }
 
     // 내용상세보기 페이지
-    @GetMapping("/board/{crID}")
-    public String show(@PathVariable int crID, Model model) {
-        CRSelectResponseDto dto = customerResponseService.getResponseById(crID);
+    @GetMapping("/board/{crId}")
+    public String show(@PathVariable int crId, Model model) {
+        CRSelectResponseDto dto = customerResponseService.getResponseById(crId);
         model.addAttribute("response", dto);
-        log.info("page: board > show 상세보기");
+        log.info(model.getAttribute("response").toString());
         return "customerResponse/show";
     }
 
@@ -39,7 +39,7 @@ public class CustomerResponseController {
     }
 
     // 내용수정 페이지
-    @GetMapping("/board/update/{crID}")
+    @GetMapping("/board/{crID}/update")
     public String edit(@PathVariable int crID, Model model) {
         CRSelectResponseDto dto = customerResponseService.getResponseById(crID);
         model.addAttribute("response", dto);
