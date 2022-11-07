@@ -30,14 +30,6 @@ public class CustomerResponseApiController {
         log.info("SearchInfoRequest : {}", request);
         return service.getList(request);
     }
-
-    @GetMapping("/list/{customerCode}/{responseType}")
-    public List<SearchInfoResponse> getList(SearchInfoRequest request, @PathVariable String customerCode, @PathVariable String responseType) {
-        log.info(request);
-        return service.getList(request);
-    }
-
-
     /* 상세보기 페이지 */
     @GetMapping("/{crId}")
     public CRSelectResponseDto getResponseById(@PathVariable int crId) {

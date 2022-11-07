@@ -4,38 +4,29 @@ $(function () {
         columns: [
             {
                 data: 'customerCode', render: function (data, type, row) {
-                    return '<a href="/board/' + row.crId + '"><i class="fa fa-edit"></i>' + `${row.customerName}(${data})` + '</a>';
+                    return row.crId +`${row.customerName}(${data})`
                 }
             },
             {
                 data: 'responseType',
-                render: function (data, type, row) {
+                render: function (data) {
                     let responseType;
                     if (data === 'P') {
                         responseType = '프로그램문의';
                     } else {
                         responseType = '일반';
                     }
-                    return '<a href="/board/' + row.crId + '"><i class="fa fa-edit"></i>' + responseType + '</a>';
+                    return responseType
                 }
             },
             {
-                data: 'responseTitle',
-                render: function (data, type, row) {
-                    return '<a href="/board/' + row.crId + '"><i class="fa fa-edit"></i>' + data + '</a>';
-                }
+                data: 'responseTitle'
             },
             {
-                data: 'createDateTime',
-                render: function (data, type, row) {
-                    return '<a href="/board/' + row.crId + '"><i class="fa fa-edit"></i>' + data + '</a>';
-                }
+                data: 'createDateTime'
             },
             {
-                data: 'createUserName',
-                render: function (data, type, row) {
-                    return '<a href="/board/' + row.crId + '"><i class="fa fa-edit"></i>' + data + '</a>';
-                }
+                data: 'createUserName'
             }
         ],
         searching: false,
@@ -51,12 +42,9 @@ $(function () {
 
 // 검색 버튼 클릭
     $("#service-btn").on("click", function () {
-        // search()
-        let customerCode = $("#customerCode").val(); //고객id
-        let responseType = $("#responseType").val(); // 서비스 구분: N/P
         const searchData = {
-            customerCode: customerCode,
-            responseType: responseType,
+            customerCode: $("#customerCode").val(),
+            responseType: $("#responseType").val(),
             currentIndexNo: 1,
             pagingSize: 255 //tinyint 최댓값
         }
@@ -74,8 +62,22 @@ $(function () {
             paginationBtn.removeClass('col-md-7');
             paginationBtn.addClass('d-flex justify-content-center');
 
-        }).fail(function (response) {
-            console.log(response)
+            // 등록버튼 추가
+            let btnSave_position = $('#serviceList_length').parent().next()
+            btnSave_position.addClass('text-right');
+            btnSave_position.append('<button class="btn btn-secondary" type="submit" onclick="location.href=`/board/write`">등록</button>')
+
+        }).fail(function (xhr, error) {
+            console.log(xhr, error)
         })
     }).click();
+
+    $('#serviceList tbody').on('click','tr', function() {
+        const rowData = serviceDataTable.row(this).data();
+        console.log(rowData);
+        if (rowData !== undefined) {
+            console.log(rowData.crId);
+            window.location = `/board/${rowData.crId}`;
+        }
+    })
 });
