@@ -3,6 +3,7 @@ package com.pshc.customerservice.service;
 import com.pshc.customerservice.dto.responseResult.RRInsertRequestDto;
 import com.pshc.customerservice.dto.responseResult.RRListResponseDto;
 import com.pshc.customerservice.dto.responseResult.RRUpdateRequestDto;
+import com.pshc.customerservice.dto.responseResult.RRUseNRequestDto;
 import com.pshc.customerservice.mapper.ResponseResultMapper;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,10 @@ public class ResponseResultService {
     public void updateResult(RRUpdateRequestDto requestDto) {
         mapper.updateResult(requestDto);
         log.info("svc");
+    }
+
+    public void useNResult(RRUseNRequestDto requestDto){
+        mapper.useNResult(requestDto);
+        log.info("useNResult");
     }
 }

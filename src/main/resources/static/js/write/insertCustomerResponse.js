@@ -1,9 +1,3 @@
-// 병원/판독의 체크박스
-//
-// getCheckboxValue()
-// // 셀렉트박스 고객목록 출력
-// showCustomerList()
-
 function insertCustomerResponse(){
     let customerCode = $("#customerCode").val();
     let responseType = $("#responseType").val();
@@ -27,7 +21,7 @@ function insertCustomerResponse(){
         async: false
     }).done(function (response) {
         console.log(response)
-        window.location.href='/';
+        // window.location.href='/';
     }).fail(function (response) {
         console.log(response)
     })

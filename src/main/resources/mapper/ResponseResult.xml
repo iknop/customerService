@@ -22,16 +22,24 @@
             )
             }
     </insert>
-    <!--    <update id="setUseYNResult" >-->
-
-    <!--    </update>-->
     <update id="updateResult" parameterType="com.pshc.customerservice.dto.responseResult.RRUpdateRequestDto" statementType="CALLABLE">
         {
             call dbo.SVC_un_ResponseResult(
                 #{rrId},
                 #{resultContents},
                 #{loginId},
-                #{sucessYN, mode=OUT, jdbcType=CHAR, javaType= String},
+                #{successYN, mode=OUT, jdbcType=CHAR, javaType= String},
+                #{errorMessage,mode= OUT, jdbcType=NVARCHAR, javaType=String}
+            )
+            }
+    </update>
+    <update id="useNResult" parameterType="com.pshc.customerservice.dto.responseResult.RRUseNRequestDto" statementType="CALLABLE">
+        {
+            call dbo.SVC_un_ResponseResultYN(
+                #{rrId},
+                #{useYN},
+                #{loginId},
+                #{successYN, mode=OUT, jdbcType=CHAR, javaType= String},
                 #{errorMessage,mode= OUT, jdbcType=NVARCHAR, javaType=String}
             )
             }

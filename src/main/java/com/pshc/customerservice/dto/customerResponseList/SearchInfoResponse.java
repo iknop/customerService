@@ -3,7 +3,7 @@ package com.pshc.customerservice.dto.customerResponseList;
 public class SearchInfoResponse {
     private int totCnt;
     private int listNo;
-    private int crID;
+    private int crId;
     private String customerCode;
     private String customerName;
     private String responseTitle;
@@ -27,12 +27,12 @@ public class SearchInfoResponse {
         this.listNo = listNo;
     }
 
-    public int getCrID() {
-        return crID;
+    public int getCrId() {
+        return crId;
     }
 
-    public void setCrID(int crID) {
-        this.crID = crID;
+    public void setCrId(int crId) {
+        this.crId = crId;
     }
 
     public String getCustomerCode() {
@@ -67,14 +67,6 @@ public class SearchInfoResponse {
         this.responseContents = responseContents;
     }
 
-    public String getCreateUserName() {
-        return createUserName;
-    }
-
-    public void setCreateUserName(String createUserName) {
-        this.createUserName = createUserName;
-    }
-
     public String getCreateDateTime() {
         return createDateTime;
     }
@@ -83,19 +75,26 @@ public class SearchInfoResponse {
         this.createDateTime = createDateTime;
     }
 
+    public String getCreateUserName() {
+        return createUserName;
+    }
+
+    public void setCreateUserName(String createUserName) {
+        this.createUserName = createUserName;
+    }
+
     @Override
     public String toString() {
         return "SearchInfoResponse{" +
                 "totCnt=" + totCnt +
                 ", listNo=" + listNo +
-                ", crID=" + crID +
-                ", customerCode=" + customerCode + '\'' +
-                ", customerName=" + customerName + '\'' +
-                ", responseTitle=" + responseTitle + '\'' +
-                ", responseContents=" + responseContents + '\'' +
-                ", createDateTime=" + createDateTime + '\'' +
-                ", createUserName=" + createUserName + '\'' +
+                ", crId=" + crId +
+                ", customerCode='" + customerCode + '\'' +
+                ", customerName='" + customerName + '\'' +
+                ", responseTitle='" + responseTitle + '\'' +
+                ", responseContents='" + responseContents + '\'' +
+                ", createDateTime='" + createDateTime + '\'' +
+                ", createUserName='" + createUserName + '\'' +
                 '}';
-
     }
 }

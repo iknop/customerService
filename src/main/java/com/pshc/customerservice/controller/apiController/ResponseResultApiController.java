@@ -3,6 +3,7 @@ package com.pshc.customerservice.controller.apiController;
 import com.pshc.customerservice.dto.responseResult.RRInsertRequestDto;
 import com.pshc.customerservice.dto.responseResult.RRListResponseDto;
 import com.pshc.customerservice.dto.responseResult.RRUpdateRequestDto;
+import com.pshc.customerservice.dto.responseResult.RRUseNRequestDto;
 import com.pshc.customerservice.service.ResponseResultService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,7 @@ public class ResponseResultApiController {
         log.info(service.getResultList(crId));
         return service.getResultList(crId);
     }
+    //ResponseEntity<Object> : 반환값: successYN
     @PostMapping("/save")
     public ResponseEntity<Object> insertResult(RRInsertRequestDto requestDto) {
         service.insertResult(requestDto);
@@ -40,6 +42,11 @@ public class ResponseResultApiController {
     public ResponseEntity<Object> updateResult(RRUpdateRequestDto requestDto) {
         service.updateResult(requestDto);
         log.info("Api controller");
+        return ResponseEntity.ok().body(requestDto);
+    }
+    @PostMapping("/delete")
+    public ResponseEntity<Object> useNResult(RRUseNRequestDto requestDto){
+        service.useNResult(requestDto);
         return ResponseEntity.ok().body(requestDto);
     }
 }

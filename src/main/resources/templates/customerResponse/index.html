@@ -3,7 +3,9 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout}">
 <head>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/layout.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common/initial.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common/layout.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
 </head>
 <div layout:fragment="content_area">
     <div class="container-fluid">
@@ -13,14 +15,14 @@
             </nav>
             <div id="search-bar">
                 <div class="cCategory">
-                <!-- 라디오-->
-                <form method="post">
-                    <label class="bold-character">고객구분</label>
-                    <input type="checkbox" name="customerType" value="hospital" onclick="getCheckboxValue()"
-                           id="cs_hsp"><label for="cs_hsp">병원</label>
-                    <input type="checkbox" name="customerType" value="doctor" onclick="getCheckboxValue()"
-                           id="cs_dr"><label for="cs_dr">판독의</label>
-                </form>
+                    <!-- 라디오-->
+                    <form method="post">
+                        <label class="bold-character">고객구분</label>
+                        <input type="checkbox" name="customerType" value="hospital" onclick="getCheckboxValue()"
+                               id="cs_hsp"><label for="cs_hsp">병원</label>
+                        <input type="checkbox" name="customerType" value="doctor" onclick="getCheckboxValue()"
+                               id="cs_dr"><label for="cs_dr">판독의</label>
+                    </form>
                 </div>
                 <div class="select">
                     <select name="고객" th:name="customerCode" id="customerCode" onclick="showCustomerList()">
@@ -48,6 +50,7 @@
                 <!--서비스 목록-->
                 <table class="table table-bordered" id="serviceList">
                     <thead>
+                    <th>게시글 아이디</th>
                     <th>고객</th>
                     <th>서비스구분</th>
                     <th>서비스제목</th>

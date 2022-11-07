@@ -19,29 +19,57 @@ $(function () {
             data: response
             ,
             columns: [
-                // {data: 'totCnt'},
-                // {data: 'listNo'},
-                // {data: 'crID'},
-                {data: 'customerCode', render: function(data, type, row) {
-                    return `${row.customerName}(${data})`;
-                    }},
-                {data: 'serviceType' , render: function(data) {
-                    let serviceType;
-                    if(data=='P'){
-                        serviceType='프로그램문의';
-                    }else{
-                        serviceType='일반';
+                {
+                    data: 'crId',
+                    visible: false
+                },
+                {
+                    data: 'customerCode', render: function (data, type, row) {
+                        let a = '<a href="/board/' + row.crId + '"><i class="fa fa-edit"></i>' + `${row.customerName}(${data})` + '</a>';
+                        // return `${row.customerName}(${data})`;
+                        return a;
                     }
+                },
+                {
+                    data: 'serviceType',
+                    render: function (data, type, row) {
+                        data = row.serviceType;
+                        let serviceType;
+                        if (data == 'P') {
+                            serviceType = '프로그램문의';
+                        } else {
+                            serviceType = '일반';
+                        }
+                        let a = '<a href="/board/' + row.crId + '"><i class="fa fa-edit"></i>' + serviceType + '</a>';
 
-                    return serviceType;
-                    }},
-                {data: 'responseTitle'},
-                {data: 'createDateTime'},
-                {data: 'createUserName'}
+                        return a;
+                    }
+                },
+                {
+                    data: 'responseTitle',
+                    render: function (data, type, row) {
+                        let a = '<a href="/board/' + row.crId + '"><i class="fa fa-edit"></i>' + row.responseTitle + '</a>';
+                        return a;
+                    }
+                },
+                {
+                    data: 'createDateTime',
+                    render: function (data, type, row) {
+                        let a = '<a href="/board/' + row.crId + '"><i class="fa fa-edit"></i>' + row.createDateTime + '</a>';
+                        return a;
+                    }
+                },
+                {
+                    data: 'createUserName',
+                    render: function(data, type, row) {
+                        let a = '<a href="/board/' + row.crId + '"><i class="fa fa-edit"></i>' + row.createUserName + '</a>';
+                        return a;
+                    }
+                }
             ],
             searching: false
         });
-    }).fail(function (response){
+    }).fail(function (response) {
         console.log(response)
     })
 });
@@ -61,30 +89,32 @@ function search() {
 
     $.ajax({
         type: 'GET',
-        url: '/api/board/list/'+customerCode+'/'+responseType,
+        url: '/api/board/list/' + customerCode + '/' + responseType,
         data: searchData
     }).done(function (response) {
         $('#serviceList').DataTable({
             // Cannot reinitialise 에러 방지
             destroy: true,
             searching: false,
-            //
-            // TODO: 테이블헤드 일부 칼럼 삭제
-            data:response,
+            data: response,
             columns: [
-                {data: 'customerCode', render: function(data, type, row) {
+                {
+                    data: 'customerCode', render: function (data, type, row) {
                         return `${row.customerName}(${data})`;
-                    }},
-                {data: 'serviceType' , render: function(data) {
+                    }
+                },
+                {
+                    data: 'serviceType', render: function (data) {
                         let serviceType;
-                        if(data=='P'){
-                            serviceType='프로그램문의';
-                        }else{
-                            serviceType='일반';
+                        if (data == 'P') {
+                            serviceType = '프로그램문의';
+                        } else {
+                            serviceType = '일반';
                         }
 
                         return serviceType;
-                    }},
+                    }
+                },
                 {data: 'responseTitle'},
                 {data: 'createDateTime'},
                 {data: 'createUserName'}
