@@ -4,12 +4,29 @@ public class SearchInfoResponse {
     private int totCnt;
     private int listNo;
     private int crId;
+    private String serviceType;
     private String customerCode;
     private String customerName;
     private String responseTitle;
     private String responseContents;
     private String createDateTime;
     private String createUserName;
+
+    @Override
+    public String toString() {
+        return "SearchInfoResponse{" +
+                "totCnt=" + totCnt +
+                ", listNo=" + listNo +
+                ", crId=" + crId +
+                ", serviceType='" + serviceType + '\'' +
+                ", customerCode='" + customerCode + '\'' +
+                ", customerName='" + customerName + '\'' +
+                ", responseTitle='" + responseTitle + '\'' +
+                ", responseContents='" + responseContents + '\'' +
+                ", createDateTime='" + createDateTime + '\'' +
+                ", createUserName='" + createUserName + '\'' +
+                '}';
+    }
 
     public int getTotCnt() {
         return totCnt;
@@ -33,6 +50,14 @@ public class SearchInfoResponse {
 
     public void setCrId(int crId) {
         this.crId = crId;
+    }
+
+    public String getResponseType() {
+        return serviceType;
+    }
+
+    public void setResponseType(String serviceType) {
+        this.serviceType = serviceType;
     }
 
     public String getCustomerCode() {
@@ -81,20 +106,5 @@ public class SearchInfoResponse {
 
     public void setCreateUserName(String createUserName) {
         this.createUserName = createUserName;
-    }
-
-    @Override
-    public String toString() {
-        return "SearchInfoResponse{" +
-                "totCnt=" + totCnt +
-                ", listNo=" + listNo +
-                ", crId=" + crId +
-                ", customerCode='" + customerCode + '\'' +
-                ", customerName='" + customerName + '\'' +
-                ", responseTitle='" + responseTitle + '\'' +
-                ", responseContents='" + responseContents + '\'' +
-                ", createDateTime='" + createDateTime + '\'' +
-                ", createUserName='" + createUserName + '\'' +
-                '}';
     }
 }

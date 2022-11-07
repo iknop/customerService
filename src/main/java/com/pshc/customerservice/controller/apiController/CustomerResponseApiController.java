@@ -27,6 +27,7 @@ public class CustomerResponseApiController {
     /* 인덱스 페이지(서비스 목록) */
     @GetMapping("/list")
     public List<SearchInfoResponse> getList(SearchInfoRequest request) {
+        log.info("SearchInfoRequest : {}", request);
         return service.getList(request);
     }
 

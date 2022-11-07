@@ -22,6 +22,12 @@ public class CustomerResponseController {
         return "customerResponse/index";
     }
 
+    @GetMapping("hsy")
+    public String home2() {
+        log.info("page: home 인덱스 리스트");
+        return "customerResponse/index_new";
+    }
+
     // 내용상세보기 페이지
     @GetMapping("/board/{crId}")
     public String show(@PathVariable int crId, Model model) {
