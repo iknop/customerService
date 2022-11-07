@@ -1,17 +1,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
-<th:block layout:fragment="css">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/layout.css}"/>
-</th:block>
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/show.css}"/>
+</head>
 <div layout:fragment="content_area">
-    <div class="container-fluid">
+    <div class="container-xxl">
         <div class="content">
-            <div id="pageTitle">
-                <h2>내용상세보기</h2>
-                <input type="hidden" name="crId" id="crId" th:value="${response.crId}">
-            </div>
-            <table class="table">
+            <input type="hidden" name="crId" id="crId" th:value="${response.crId}">
+            <table class="table table-bordered" id="customerResponse">
                 <tr>
                     <th scope="col">고객</th>
                     <input type="hidden" id="customerCode" name="customerCode" th:value="${response.customerCode}">
@@ -26,37 +23,36 @@
                     <th scope="col">제목</th>
                     <td colspan="3" th:text="${response.responseTitle}"></td>
                     <th scope="col">응대자</th>
-                    <td id="createUserCode"  th:text="${response.createUserName}"></td>
+                    <td id="createUserCode" th:text="${response.createUserName}"></td>
                 </tr>
                 <tr>
                     <th scope="col">내용</th>
                     <td colspan="5" th:text="${response.responseContents}"></td>
                 </tr>
                 <input type="hidden" name="useYN" id="useYN" th:value="${response.useYN}">
-                <tr id="resultList">
-                    <!--TODO: 처리내용등록 : SVC_in_ResponseResult-->
+                <tr >
                     <!--TODO: rowspan="댓글갯수 +1(댓글입력) "-->
                     <th rowspan="10">처리내용</th>
-
-                    <!--                <th:block th:replace="customerResponse/responseResult/responseResult"></th:block>-->
                     <!--댓글 입력-->
+                    <td id="resultList" class="w-100" colspan="5">
+
+                    </td>
+                </tr>
                 <tr>
-                    <td colspan="4">
-                        <form action="" id="responseResultInsert">
-                            <!--TODO: 로그인 아이디 값-->
+                    <td colspan="4" class="border border-0">
+                        <form  id="responseResultInsert">
                             <input type="hidden" id="resultLoginId" readonly>
                             <textarea class="form-control" id="resultContents" name="resultContents" rows="3"
                                       placeholder="처리내용을 입력하세요."></textarea>
                         </form>
                     </td>
-                    <td>
-                        <button type="button" class="btn btn-danger btn-lg" onclick="insertResult()">등록</button>
+                    <td class="border border-0">
+                        <button type="button" class="btn btn-danger btn-lg float-right" onclick="insertResult()">등록</button>
                     </td>
-                </tr>
                 </tr>
             </table>
             <div class="buttons">
-                <div class="d-grid gap-2 d-md-block">
+                <div class="d-grid gap-2 d-md-block float-right">
                     <button class="btn btn-secondary" type="submit" onclick="location.href='/'">목록</button>
                     <button class="btn btn-secondary" type="submit"
                             th:onclick="|location.href='/board/'+'${response.crId}'+'/update'|">수정

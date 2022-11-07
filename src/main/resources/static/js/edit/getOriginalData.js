@@ -2,6 +2,14 @@ let customerType;
 let customerCode;
 
 $(function () {
+    // 좌측상단 페이지명 표기
+    let h2Title = document.createElement('h2');
+    h2Title.classList.add('float-start')
+    h2Title.innerText = '내용수정';
+    let titleArea = $('#pageTitle')
+    titleArea.append(h2Title)
+
+
     customerType = getCustomerType(); // 병원(숫자)/판독의(문자)
     // console.log(customerType)
     checkCustomerTypeBox(customerType)

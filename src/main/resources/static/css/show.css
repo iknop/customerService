@@ -1,1 +1,11 @@
-@import url('initial.css');
+table#customerResponse{
+    margin-top: 50px;
+}
+table#customerResponse > tbody > tr > th{
+    background-color: #eab49d;
+}
+
+/* 처리내용 */
+table#customerResponse > tbody > tr > td#resultList > div> textarea{
+    border: none;
+}

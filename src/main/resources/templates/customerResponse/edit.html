@@ -8,9 +8,6 @@
 <div layout:fragment="content_area">
     <div class="container-fluid">
         <div class="content">
-            <div id="pageTitle">
-                <h2>내용수정</h2>
-            </div>
             <!--데이터-->
             <table class="table">
                 <tr>
@@ -18,8 +15,6 @@
                     <td>
                         <input type="hidden" name="crId" id="crId" th:value="${response.crId}">
                         <input type="hidden" name="customerCode" id="originalCsType" th:value="${response.customerCode}">
-
-                        <label class="bold-character">고객구분</label>
                         <input type="checkbox" name="customerType" value="hospital" onclick="getCheckboxValue()"
                                id="cs_hsp"><label for="cs_hsp">병원</label>
                         <input type="checkbox" name="customerType" value="doctor" onclick="getCheckboxValue()"

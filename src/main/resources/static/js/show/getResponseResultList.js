@@ -16,28 +16,30 @@ function getResultList() {
         // console.log(response);
         let loop = response.length;
         let tag = document.getElementById('resultList');
+
         for (let i = 0; i < loop; i++) {
-            let tr = document.createElement('tr');
+            let div = document.createElement('div');
+            div.classList.add('row','justify-content-around')
             // 처리내용 본문
-            let content = document.createElement('td');
-            content.setAttribute("colspan", "3");
+            let content = document.createElement('span');
+            content.classList.add('col-6','mx-1')
             content.id = `resultContents-${response[i].rrId}`;
             content.innerText = response[i].resultContents;
 
             //처리내용 수정 textarea: class d-none -> 안보이게 (*수정 시 데이터*)
             let textAreaElement = document.createElement('textarea');
-            textAreaElement.classList.add('d-none');
+            textAreaElement.classList.add('d-none','col-6','mx-1');
             textAreaElement.id = `textarea-${response[i].rrId}`;
             textAreaElement.innerText = response[i].resultContents;
 
             //처리내용 작성 시간
-            let createTime = document.createElement('td');
-            createTime.classList.add('createDateTime');
+            let createTime = document.createElement('div');
+            createTime.classList.add('createDateTime','col-4');
             createTime.innerText = response[i].createDateTime;
 
             // 처리내용 작성자(*수정 시 데이터*)
-            let name = document.createElement('td');
-            name.classList.add('createUserName');
+            let name = document.createElement('div');
+            name.classList.add('createUserName','col-1','px-0');
             name.id = `name-${response[i].rrId}`;
             name.innerText = response[i].createUserName;
             name.setAttribute('name', 'createUserName');
@@ -49,17 +51,21 @@ function getResultList() {
             rrId.setAttribute("type", "hidden");
             rrId.setAttribute("value", response[i].rrId);
 
-            tr.appendChild(content);
-            tr.appendChild(textAreaElement); // 수정 내용 입력란
-            tr.appendChild(createTime);
-            tr.appendChild(name);
-            tr.appendChild(rrId);
+            div.appendChild(content);
+            div.appendChild(textAreaElement); // 수정 내용 입력란
+            div.appendChild(createTime);
+            div.appendChild(name);
+            div.appendChild(rrId);
+
 
             // 수정버튼 생성 및 이벤트 추가
+            let buttons = document.createElement('div')
+            buttons.classList.add('col-12','row','justify-content-end')
+
             let updateBtn = document.createElement('button');
             $(updateBtn).val(response[i].rrId);
             updateBtn.id = 'btn-update-' + response[i].rrId; // 클릭시 안보이게 d-none
-            $(updateBtn).addClass('btn-update');
+            $(updateBtn).addClass('btn-update col-2 mx-3 btn btn-primary');
             updateBtn.innerText = '수정';
             $(updateBtn).on('click', (e) => {
                 const rrId = e.target.value;
@@ -69,7 +75,7 @@ function getResultList() {
             // 삭제버튼 생성 및 이벤트 추가
             let deleteBtn = document.createElement('button');
             $(deleteBtn).val(response[i].rrId);
-            $(deleteBtn).addClass('btn-delete');
+            $(deleteBtn).addClass('btn-delete col-2 mr-3 btn btn-secondary');
             deleteBtn.innerText = '삭제';
             $(deleteBtn).on('click', (e) => {
                 const rrId = e.target.value;
@@ -79,7 +85,7 @@ function getResultList() {
             let updateSaveBtn = document.createElement('button');
             $(updateSaveBtn).val(response[i].rrId);
             updateSaveBtn.id = 'btn-save-' + response[i].rrId;
-            $(updateSaveBtn).addClass('btn-save d-none');
+            $(updateSaveBtn).addClass('btn-save d-none col-2 mx-3 btn btn-primary');
             updateSaveBtn.innerText = '저장';
             $(updateSaveBtn).on('click', (e) => {
                 const rrId = e.target.value;
@@ -87,12 +93,15 @@ function getResultList() {
             });
 
 
-            tr.appendChild(updateBtn);
-            tr.appendChild(deleteBtn);
-            tr.appendChild(updateSaveBtn);
+            buttons.appendChild(deleteBtn);
+            buttons.appendChild(updateBtn);
+            buttons.appendChild(updateSaveBtn);
 
+            div.appendChild(buttons);
 
-            tag.appendChild(tr)
+            tag.appendChild(div)
+            // td.appendChild(tr)
+
         }
     }).fail(function (response) {
         console.log(response)
@@ -100,7 +109,6 @@ function getResultList() {
 }
 
 function onClickEditBtn(rrId) {
-    // rrIdL= document.querySelector(".rrId")
     let textareaId = 'textarea-' + rrId;
     let contentsId = 'resultContents-' + rrId;
     let udpateBtnID = 'btn-save-' + rrId;
@@ -114,7 +122,7 @@ function onClickEditBtn(rrId) {
 
 function onClickDeleteBtn(rrId) {
     console.log('삭제버튼 클릭, rrId : ', rrId)
-    const deleteData= {
+    const deleteData = {
         rrId: rrId,
         useYN: 'N',
         loginId: $('#name-' + rrId).data('login-id')
@@ -125,7 +133,7 @@ function onClickDeleteBtn(rrId) {
         data: deleteData
     }).done(function (response) {
         window.location.href = '/board/' + $('#crId').val();
-         // getResultList()
+        // getResultList()
         console.log(response)
     }).fail(function (response) {
         console.log(response)
@@ -153,12 +161,6 @@ function onClickSaveBtn(rrId) {
         alert(response)
         console.log(response)
     })
-
-}
-
-
-function useNotResult() {
-// TODO: 처리내용 useN
 
 }
 

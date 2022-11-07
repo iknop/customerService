@@ -8,46 +8,43 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
 </head>
 <div layout:fragment="content_area">
-    <div class="container-fluid">
-        <div class="content">
-            <nav id="pageTitle">
-                <h2>원격판독 고객응대</h2>
-            </nav>
-            <div id="search-bar">
-                <div class="cCategory">
+    <div class="container-xXl">
+        <div class="content my-0">
+            <div id="search-bar" class="row">
+                <div id="cType" class="col">
                     <!-- 라디오-->
-                    <form method="post">
-                        <label class="bold-character">고객구분</label>
-                        <input type="checkbox" name="customerType" value="hospital" onclick="getCheckboxValue()"
-                               id="cs_hsp"><label for="cs_hsp">병원</label>
-                        <input type="checkbox" name="customerType" value="doctor" onclick="getCheckboxValue()"
-                               id="cs_dr"><label for="cs_dr">판독의</label>
-                    </form>
+                    <span class="searchCategory align-middle">고객구분</span>
+                    <input class="customerType align-middle" type="checkbox" name="customerType" value="hospital"
+                           onclick="getCheckboxValue()"
+                           id="cs_hsp"><label for="cs_hsp">병원</label>
+                    <input class="customerType align-middle" type="checkbox" name="customerType" value="doctor"
+                           onclick="getCheckboxValue()" id="cs_dr"><label for="cs_dr">의사</label>
                 </div>
-                <div class="select">
-                    <select name="고객" th:name="customerCode" id="customerCode" onclick="showCustomerList()">
+                <div id="customerName" class="col">
+                    <span class="searchCategory align-middle">고객</span>
+                    <select name="고객" th:name="customerCode" id="customerCode" onclick="showCustomerList()" class="align-middle">
                         <option selected value="T">고객을 선택해주세요</option>
                     </select>
                 </div>
-                <div class="serviceType">
-                    <select class="form-select" aria-label="Default select example" name="responseType"
+                <div id="serviceType" class="col-4">
+                    <span class="searchCategory align-middle">서비스구분</span>
+                    <select class="form-select-sm align-middle" aria-label="Default select example" name="responseType"
                             id="responseType">
-                        <option selected name="serviceType" value="N">서비스를 선택해주세요</option>
+                        <option selected name="serviceType" value="N" class="align-middle">서비스를 선택해주세요</option>
                         <option value="N">일반</option>
                         <option value="P">프로그램</option>
                     </select>
                 </div>
-                <div class="btn">
-                    <button type="button" class="btn btn-primary" id="service-btn">검색</button>
-                </div>
-                <div class="writeBtn">
-                    <button class="btn btn-secondary" type="submit" onclick="location.href='/board/write'">등록</button>
+                <div class="col col-lg-2">
+                    <button type="button" class="btn btn-primary align-middle" id="service-btn">검색</button>
                 </div>
             </div>
         </div>
-        <section>
-            <div class="list">
-                <!--서비스 목록-->
+        <div class="content">
+            <section>
+                <div id="write-btn">
+                    <button class="btn btn-secondary" type="submit" onclick="location.href='/board/write'">등록</button>
+                </div><!--서비스 목록-->
                 <table class="table table-bordered" id="serviceList">
                     <thead>
                     <th>게시글 아이디</th>
@@ -60,8 +57,8 @@
                     <tbody>
                     </tbody>
                 </table>
-            </div>
-        </section>
+            </section>
+        </div>
     </div>
 </div>
 <th:blcok layout:fragment="script_area">

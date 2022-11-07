@@ -7,20 +7,16 @@
 <div layout:fragment="content_area">
     <div class="container-fluid">
         <div class="content">
-            <div id="pageTitle">
-                <h2>내용등록</h2>
-            </div>
             <table class="table">
                 <tr>
                     <th scope="col">고객</th>
                     <td>
-                        <label class="bold-character">고객구분</label>
                         <input type="checkbox" name="customerType" value="hospital" onclick="getCheckboxValue()"
                                id="cs_hsp"><label for="cs_hsp">병원</label>
                         <input type="checkbox" name="customerType" value="doctor" onclick="getCheckboxValue()"
                                id="cs_dr"><label for="cs_dr">판독의</label>
                         <select name="고객" th:name="customerCode" id="customerCode" >
-<!--                            <option selected>고객을 선택해주세요</option>-->
+                            <option selected name="customerCode">고객명을 선택해주세요</option>
                         </select>
                     </td>
                     <th scope="col">서비스구분</th>
@@ -36,7 +32,6 @@
                 <tr>
                     <th scope="col">제목</th>
                     <td><input type="text" name="responseTitle" id="responseTitle" placeholder="제목을 입력하세요">
-<!--                        <input type="text" name="loginId" id="loginId" value="admin" placeholder="로그인: admin" disabled>-->
                     </td>
                 </tr>
                 <tr>
@@ -56,6 +51,13 @@
         $(function () {
             getCheckboxValue()
             showCustomerList()
+
+            // 좌측상단 페이지명 표기
+            let h2Title = document.createElement('h2');
+            h2Title.classList.add('float-start')
+            h2Title.innerText = '내용등록';
+            let titleArea = $('#pageTitle')
+            titleArea.append(h2Title)
         })
     </script>
     <script src="/js/index/customerList.js" th:inline="javascript"></script>

@@ -1,4 +1,12 @@
 $(function(){
+    // 좌측상단 페이지명 표기
+    let h2Title = document.createElement('h2');
+    h2Title.classList.add('float-start')
+    h2Title.innerText = '내용상세보기';
+    let titleArea = $('#pageTitle')
+    titleArea.append(h2Title)
+
+
     let crId = $("#crId").val();
     $.ajax({
         type: 'GET',
@@ -13,6 +21,7 @@ $(function(){
     }).fail(function (response) {
         console.log(response)
     })
+
 })
 
 function setResponseType(){

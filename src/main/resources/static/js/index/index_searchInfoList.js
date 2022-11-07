@@ -1,5 +1,13 @@
 // 인덱스 기본화면 리스트 출력
 $(function () {
+    // 좌측상단 페이지명 표기
+    let h2Title = document.createElement('h2');
+    h2Title.classList.add('float-start')
+    h2Title.innerText = '원격판독 고객응대';
+    let titleArea = $('#pageTitle')
+    titleArea.append(h2Title)
+
+
     const searchData = {
         customerCode: "T",
         responseType: "N",
@@ -61,14 +69,21 @@ $(function () {
                 },
                 {
                     data: 'createUserName',
-                    render: function(data, type, row) {
+                    render: function (data, type, row) {
                         let a = '<a href="/board/' + row.crId + '"><i class="fa fa-edit"></i>' + row.createUserName + '</a>';
                         return a;
                     }
                 }
             ],
-            searching: false
+            searching: false,
+            "bInfo" : false
         });
+
+        // 페이지네이션 버튼 중앙 정렬
+        let paginationBtn = $('#serviceList_paginate').parent()
+        paginationBtn.removeClass('col-md-7');
+        paginationBtn.addClass('d-flex justify-content-center');
+
     }).fail(function (response) {
         console.log(response)
     })
