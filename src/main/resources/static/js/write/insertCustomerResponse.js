@@ -21,7 +21,7 @@ function insertCustomerResponse(){
         async: false
     }).done(function (response) {
         console.log(response)
-        // window.location.href='/';
+        window.location.href='/';
     }).fail(function (response) {
         console.log(response)
     })
