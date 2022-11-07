@@ -1,11 +1,26 @@
 // 인덱스 기본화면 리스트 출력
 $(function () {
     const serviceDataTable = $('#serviceList').DataTable({
+        columnDefs: [
+            {
+                targets: [0,4],
+                width: 80,
+            },
+            {
+                targets: [1],
+                width: 90,
+            },
+            {
+                targets: [3],
+                width: 150,
+            },
+        ],
         columns: [
             {
                 data: 'customerCode', render: function (data, type, row) {
                     return row.crId +`${row.customerName}(${data})`
-                }
+                },
+                className: 'text-center'
             },
             {
                 data: 'responseType',
@@ -17,16 +32,21 @@ $(function () {
                         responseType = '일반';
                     }
                     return responseType
-                }
+                },
+                className: 'text-center'
             },
             {
                 data: 'responseTitle'
             },
             {
-                data: 'createDateTime'
+                data: 'createDateTime',
+                render: function(data) {
+                    return getDateStr(new Date(data))
+                }
             },
             {
-                data: 'createUserName'
+                data: 'createUserName',
+                className: 'text-center'
             }
         ],
         searching: false,
@@ -81,3 +101,22 @@ $(function () {
         }
     })
 });
+function getDateStr(date) {
+    const dates = [date.getFullYear(), date.getMonth() + 1, date.getDate()];
+    if (dates[1] < 10) {
+        dates[1] = '0' + dates[1];
+    }
+
+    if (dates[2] < 10) {
+        dates[2] = '0' + dates[2];
+    }
+    const times = [date.getHours(), date.getMinutes(), date.getSeconds()];
+    if (times[1] < 10) {
+        times[1] = '0' + times[1];
+    }
+
+    if (times[2] < 10) {
+        times[2] = '0' + times[2];
+    }
+    return `${dates.join('-')} ${times.join(':')}`;
+}
