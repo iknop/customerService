@@ -4,19 +4,12 @@ $(function () {
 })
 // 처리내용 등록 버튼 onclick
 function insertResult() {
-    let crId = $('#crId').val();
-    console.log(crId)
-    let resultContents = $('#resultContents').val();
-    console.log(resultContents)
-
-    let loginId = $('#loginId').val();
-    console.log(loginId)
-
     const insertData = {
-        crId: crId,
-        resultContents: resultContents,
-        loginId: loginId
+        crId: $('#crId').val(),
+        resultContents: $('#resultContents').val(),
+        loginId: $('#loginId').val()
     }
+    console.log(insertData)
 
     $.ajax({
         type: 'POST',
@@ -25,6 +18,7 @@ function insertResult() {
     }).done(function (response) {
         console.log(response)
         getResultList() // dir: static/js/show/getResponseResultList.js
+        $('textarea#resultContents').val('');
     }).fail(function (response) {
         console.log(response)
     })
