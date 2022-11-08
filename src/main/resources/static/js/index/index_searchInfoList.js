@@ -82,15 +82,14 @@ $(function () {
             paginationBtn.removeClass('col-md-7');
             paginationBtn.addClass('d-flex justify-content-center');
 
-            // 등록버튼 추가
-            let btnSave_position = $('#serviceList_length').parent().next()
-            btnSave_position.addClass('text-right');
-            btnSave_position.append('<button class="btn btn-secondary" type="submit" onclick="location.href=`/board/write`">등록</button>')
-
         }).fail(function (xhr, error) {
             console.log(xhr, error)
         })
     }).click();
+    // 등록버튼 추가
+    let btnSave_position = $('#serviceList_length').parent().next()
+    btnSave_position.addClass('text-right');
+    btnSave_position.append('<button class="btn btn-secondary" type="submit" onclick="location.href=`/board/write`">등록</button>')
 
     $('#serviceList tbody').on('click','tr', function() {
         const rowData = serviceDataTable.row(this).data();
