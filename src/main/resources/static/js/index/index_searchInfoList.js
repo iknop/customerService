@@ -1,5 +1,6 @@
 // 인덱스 기본화면 리스트 출력
 $(function () {
+
     const serviceDataTable = $('#serviceList').DataTable({
         columnDefs: [
             {
@@ -18,7 +19,7 @@ $(function () {
         columns: [
             {
                 data: 'customerCode', render: function (data, type, row) {
-                    return row.crId +`${row.customerName}(${data})`
+                    return `${row.customerName}`
                 },
                 className: 'text-center'
             },

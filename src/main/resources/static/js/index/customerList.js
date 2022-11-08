@@ -4,18 +4,19 @@ function getCheckboxValue() {
     const selectedEls = document.querySelectorAll(query);
     let result = '';
 
-    // TODO:
     selectedEls.forEach((el) => {
         result += el.value;
     });
-    // return result;
-    console.log(result)
+    // console.log(result)
     showCustomerList(result)
+    // return result
 }
+
 
 // 셀렉트박스 고객목록 출력
 function showCustomerList(checkboxValue) {
-    // let customerType = getCheckboxValue();
+    // checkboxValue = getCheckboxValue()
+    console.log(checkboxValue)
     if (checkboxValue === "hospital") {
         // 병원 ajax
         $.ajax({
@@ -58,10 +59,11 @@ function showCustomerList(checkboxValue) {
         }).fail(function (response) {
             console.log(response)
         })
-    } else if (checkboxValue == "hospitaldoctor") {
-        // todo: 전체고객(병원+판독의) 조회
-
-    } else {
-        // todo: 선택값 없음
+    } else if (checkboxValue == "") {
+        let tagArea = document.getElementById('customerCode');
+        $(tagArea).empty();
+        let opt = document.createElement("option");
+        opt.text = '고객구분을 선택해주세요';
+        tagArea.appendChild(opt);
     }
 }

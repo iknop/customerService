@@ -9,38 +9,44 @@
     <div class="container-fluid">
         <div class="content">
             <!--데이터-->
-            <table class="table">
+            <table class="table table-bordered">
                 <tr>
                     <th scope="col">고객</th>
                     <td>
                         <input type="hidden" name="crId" id="crId" th:value="${response.crId}">
-                        <input type="hidden" name="customerCode" id="originalCsType" th:value="${response.customerCode}">
+                        <input type="hidden" name="customerCode" id="originalCsType"
+                               th:value="${response.customerCode}">
                         <input type="checkbox" name="customerType" value="hospital" onclick="getCheckboxValue()"
                                id="cs_hsp"><label for="cs_hsp">병원</label>
                         <input type="checkbox" name="customerType" value="doctor" onclick="getCheckboxValue()"
                                id="cs_dr"><label for="cs_dr">판독의</label>
                         <input type="hidden" id="originalCustomerCode" th:value="${response.customerCode}">
-                        <select name="고객" th:name="customerCode" id="customerCode" >
+                        <select name="고객" th:name="customerCode" id="customerCode">
 
                         </select>
                         </select></td>
                     <th scope="col">서비스구분</th>
                     <td><select name="서비스구분" id="responseType">
-                        <option selected th:value="${response.responseType}" >서비스구분을 선택하세요</option>
+                        <option selected th:value="${response.responseType}">서비스구분을 선택하세요</option>
                         <option value="P">프로그램문의</option>
                         <option value="N">일반</option>
                     </select></td>
                 </tr>
                 <tr>
                     <th scope="col">제목</th>
-                    <td><input type="text" name="제목" id="responseTitle" th:value="${response.responseTitle}" ></td>
+                    <td><input type="text" name="제목" id="responseTitle" th:value="${response.responseTitle}"></td>
                 </tr>
                 <tr>
                     <th scope="col">내용</th>
                     <td colspan="5">
-                        <textarea class="form-control" id="responseContents" rows="5"
-                                  th:value="${response.responseContents}"
-                                  name="responseContents" th:text="${response.responseContents}"></textarea>
+                        <div class="form-group col-12">
+                            <div class="textLengthWrap float-md-end mb-2">
+                                <span class="textCount">0자</span><span class="textTotal">/1000자</span>
+                            </div>
+                            <textarea class="form-control" id="responseContents" rows="5"
+                                      th:value="${response.responseContents}"
+                                      name="responseContents" th:text="${response.responseContents}"></textarea>
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -48,7 +54,7 @@
                     <td colspan="5">
                         <select name="useYN" id="useYN">
                             <option value="Y" selected>사용</option>
-                            <option value="N">삭제</option>
+                            <option id="useN" value="N">삭제</option>
                         </select>
                     </td>
                 </tr>
@@ -60,8 +66,20 @@
     </div>
 </div>
 <th:block layout:fragment="script_area">
+    <script th:inline="javascript">
+        // showTextLength()
+        let responseResultIsMoreThanZero = [[${responseResultIsMoreThanZero}]];
+        if (responseResultIsMoreThanZero === 'Y') {
+            //사용여부 삭제 옵션 선택 불가
+            $('#useN').addClass('d-none')
+        }
+    </script>
+    <script src="/js/write/showTextLength.js" th:inline="javascript"></script>
+    <!--원본입력 데이터-->
     <script src="/js/edit/getOriginalData.js" th:inline="javascript"></script>
+    <!--고객명 리스트-->
     <script src="/js/index/customerList.js" th:inline="javascript"></script>
+    <!--수정버튼 클릭: 수정 기능-->
     <script src="/js/edit/updateCustomerResponse.js" th:inline="javascript"></script>
 </th:block>
 </html>

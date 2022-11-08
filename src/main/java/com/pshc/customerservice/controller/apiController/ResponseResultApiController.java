@@ -35,7 +35,7 @@ public class ResponseResultApiController {
     @PostMapping("/save")
     public ResponseEntity<Object> insertResult(RRInsertRequestDto requestDto) {
         service.insertResult(requestDto);
-        log.info("insertResult(requestDto)");
+        log.info("RRInsertRequestDto : {}", requestDto);
         return ResponseEntity.ok().body(requestDto);
     }
     @PostMapping("/update")

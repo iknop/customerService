@@ -12,7 +12,7 @@
                 <tr>
                     <th scope="col">고객</th>
                     <input type="hidden" id="customerCode" name="customerCode" th:value="${response.customerCode}">
-                    <td id="customerInfo" th:text="${response.customerCode}+'('+${response.customerName}+')'"></td>
+                    <td id="customerInfo" th:text="${response.customerName}+'('+${response.customerCode}+ ')'"></td>
                     <th scope="col">서비스구분</th>
                     <input type="hidden" name="responseType" th:value="${response.responseType}">
                     <td name="responseType" id="responseType"></td>
@@ -23,7 +23,9 @@
                     <th scope="col">제목</th>
                     <td colspan="3" th:text="${response.responseTitle}"></td>
                     <th scope="col">응대자</th>
-                    <td id="createUserCode" th:text="${response.createUserName}"></td>
+                    <td id="createUserName" th:text="${response.createUserName}"></td>
+                    <input id="createUserCode" type="hidden" th:value="${response.createUserCode}">
+
                 </tr>
                 <tr>
                     <th scope="col">내용</th>
@@ -34,8 +36,7 @@
                     <!--TODO: rowspan="댓글갯수 +1(댓글입력) "-->
                     <th rowspan="10">처리내용</th>
                     <!--댓글 입력-->
-                    <td id="resultList" class="w-100" colspan="5">
-
+                    <td id="resultList" class="w-100 d-none" colspan="5">
                     </td>
                 </tr>
                 <tr>
@@ -47,14 +48,14 @@
                         </form>
                     </td>
                     <td class="border border-0">
-                        <button type="button" class="btn btn-danger btn-lg float-right" onclick="insertResult()">등록</button>
+                        <button type="button" class="btn btn-danger btn float-right" onclick="insertResult()">등록</button>
                     </td>
                 </tr>
             </table>
             <div class="buttons">
                 <div class="d-grid gap-2 d-md-block float-right">
                     <button class="btn btn-secondary" type="submit" onclick="location.href='/'">목록</button>
-                    <button class="btn btn-secondary" type="submit"
+                    <button id="editResponseBtn" class="btn btn-secondary d-none" type="submit"
                             th:onclick="|location.href='/board/'+'${response.crId}'+'/update'|">수정
                     </button>
                 </div>

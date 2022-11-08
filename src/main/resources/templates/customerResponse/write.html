@@ -1,23 +1,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
-<th:block layout:fragment="css">
+<head>
     <link rel="stylesheet" type="text/css" th:href="@{/css/writeAndEdit.css}"/>
-</th:block>
+</head>
 <div layout:fragment="content_area">
     <div class="container-fluid">
         <div class="content">
-            <table class="table">
+            <table class="table table-bordered">
                 <tr>
                     <th scope="col">고객</th>
                     <td>
-                        <input type="checkbox" name="customerType" value="hospital" onclick="getCheckboxValue()"
-                               id="cs_hsp"><label for="cs_hsp">병원</label>
-                        <input type="checkbox" name="customerType" value="doctor" onclick="getCheckboxValue()"
-                               id="cs_dr"><label for="cs_dr">판독의</label>
-                        <select name="고객" th:name="customerCode" id="customerCode" >
+                        <div class="clearfix">
+                        <input class="form-check-input float-start" type="checkbox" name="customerType" value="hospital" onclick="getCheckboxValue()"
+                               id="cs_hsp"><label class="form-check-label float-start" for="cs_hsp">병원</label>
+                        <input class="form-check-input float-start" type="checkbox" name="customerType" value="doctor" onclick="getCheckboxValue()"
+                               id="cs_dr"><label class="form-check-label float-start" for="cs_dr">판독의</label>
+                        <select class="form-select w-25" name="고객" th:name="customerCode" id="customerCode">
                             <option selected name="customerCode">고객명을 선택해주세요</option>
                         </select>
+                        </div>
                     </td>
                     <th scope="col">서비스구분</th>
                     <td>
@@ -31,17 +33,27 @@
                 </tr>
                 <tr>
                     <th scope="col">제목</th>
-                    <td><input type="text" name="responseTitle" id="responseTitle" placeholder="제목을 입력하세요">
+                    <td class="border border-0"><input type="text" name="responseTitle" id="responseTitle" placeholder="제목을 입력하세요" class="form-control">
                     </td>
                 </tr>
                 <tr>
                     <th scope="col">내용</th>
-                    <td colspan="5"><textarea class="form-control" id="responseContents" rows="5" placeholder="내용을 입력하세요."
-                                              name="내용"></textarea></td>
+                    <td colspan="5">
+                        <div class="form-group col-12">
+                            <div class="textLengthWrap float-md-end mb-2">
+                                <span class="textCount">0자</span><span class="textTotal">/1000자</span>
+                            </div>
+                            <textarea class="form-control" id="responseContents" rows="5"
+                                      placeholder="내용을 입력하세요."
+                                      name="내용"></textarea>
+                        </div>
+                    </td>
                 </tr>
             </table>
-            <div class="button">
-                <button class="btn btn-secondary" type="submit" onclick="insertCustomerResponse()" th:action="location">등록</button>
+            <div class="button float-end">
+                <button class="btn btn-secondary" type="submit" onclick="insertCustomerResponse()" th:action="location">
+                    등록
+                </button>
             </div>
         </div>
     </div>
@@ -51,7 +63,6 @@
         $(function () {
             getCheckboxValue()
             showCustomerList()
-
             // 좌측상단 페이지명 표기
             let h2Title = document.createElement('h2');
             h2Title.classList.add('float-start')
@@ -62,5 +73,6 @@
     </script>
     <script src="/js/index/customerList.js" th:inline="javascript"></script>
     <script src="/js/write/insertCustomerResponse.js" th:inline="javascript"></script>
+    <script src="/js/write/showTextLength.js" th:inline="javascript"></script>
 </th:block>
 </html>

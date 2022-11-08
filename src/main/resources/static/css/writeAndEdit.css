@@ -1,11 +1,23 @@
-#boardContent{
-    border:none;
+#boardContent {
+    border: none;
 }
-#titleInput{
+
+#titleInput {
     border: none;
     width: 200px;
 }
-.button{
+table >th{
+    background-color: #eab49d;
+}
+.button {
     display: inline-block;
     vertical-align: middle;
+}
+#responseTitle{
+    margin-left: 18px;
+    width: 500px;
+}
+textarea#responseContents {
+    height: 300px;
+    resize: none;
 }

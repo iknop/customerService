@@ -16,10 +16,17 @@ function getResultList() {
         // console.log(response);
         let loop = response.length;
         let tag = document.getElementById('resultList');
+        // todo tag.removechild All
+        tag.innerHTML = '';
+        // 처리내용이 존재할 때 테이블 셀 활성화
+        if(loop>0){
+            tag.classList.remove('d-none')
+        }
 
         for (let i = 0; i < loop; i++) {
             let div = document.createElement('div');
             div.classList.add('row','justify-content-around')
+
             // 처리내용 본문
             let content = document.createElement('span');
             content.classList.add('col-6','mx-1')
@@ -37,13 +44,19 @@ function getResultList() {
             createTime.classList.add('createDateTime','col-4');
             createTime.innerText = response[i].createDateTime;
 
-            // 처리내용 작성자(*수정 시 데이터*)
+            // 처리내용 작성자 이름
             let name = document.createElement('div');
             name.classList.add('createUserName','col-1','px-0');
             name.id = `name-${response[i].rrId}`;
             name.innerText = response[i].createUserName;
             name.setAttribute('name', 'createUserName');
             name.dataset.loginId = response[i].createUserCode;
+
+            // 처리내용 작성자 아이디(*수정 삭제 버튼 활성*)
+            let resultCreateUser = document.createElement('input');
+            resultCreateUser.setAttribute('type','hidden')
+            resultCreateUser.value = response[i].createUserCode;
+
 
             // 처리내용 고유 아이디값
             let rrId = document.createElement('input');
@@ -56,16 +69,17 @@ function getResultList() {
             div.appendChild(createTime);
             div.appendChild(name);
             div.appendChild(rrId);
+            div.appendChild(resultCreateUser);
 
 
             // 수정버튼 생성 및 이벤트 추가
             let buttons = document.createElement('div')
-            buttons.classList.add('col-12','row','justify-content-end')
+            buttons.classList.add('col-12','row','justify-content-end','mt-4')
 
             let updateBtn = document.createElement('button');
             $(updateBtn).val(response[i].rrId);
             updateBtn.id = 'btn-update-' + response[i].rrId; // 클릭시 안보이게 d-none
-            $(updateBtn).addClass('btn-update col-2 mx-3 btn btn-primary');
+            $(updateBtn).addClass('btn-update col-1 mx-1 btn btn-primary d-none');
             updateBtn.innerText = '수정';
             $(updateBtn).on('click', (e) => {
                 const rrId = e.target.value;
@@ -75,7 +89,7 @@ function getResultList() {
             // 삭제버튼 생성 및 이벤트 추가
             let deleteBtn = document.createElement('button');
             $(deleteBtn).val(response[i].rrId);
-            $(deleteBtn).addClass('btn-delete col-2 mr-3 btn btn-secondary');
+            $(deleteBtn).addClass('btn-delete col-1 mr-1 btn btn-secondary d-none');
             deleteBtn.innerText = '삭제';
             $(deleteBtn).on('click', (e) => {
                 const rrId = e.target.value;
@@ -85,13 +99,21 @@ function getResultList() {
             let updateSaveBtn = document.createElement('button');
             $(updateSaveBtn).val(response[i].rrId);
             updateSaveBtn.id = 'btn-save-' + response[i].rrId;
-            $(updateSaveBtn).addClass('btn-save d-none col-2 mx-3 btn btn-primary');
+            $(updateSaveBtn).addClass('btn-save d-none col-1 mx-1 btn btn-primary d-none');
             updateSaveBtn.innerText = '저장';
             $(updateSaveBtn).on('click', (e) => {
                 const rrId = e.target.value;
                 onClickSaveBtn(rrId);
             });
 
+            // 로그인 아이디 == 서비스 내용 등록자 -> 수정버튼 표시
+            let loginId = $('#loginId').val();
+            console.log(resultCreateUser.value)
+            if(loginId == resultCreateUser.value){
+                deleteBtn.classList.remove('d-none')
+                updateBtn.classList.remove('d-none')
+                // updateBtn.removeClass('d-none')
+            }
 
             buttons.appendChild(deleteBtn);
             buttons.appendChild(updateBtn);
@@ -100,8 +122,8 @@ function getResultList() {
             div.appendChild(buttons);
 
             tag.appendChild(div)
+            tag.appendChild(document.createElement('hr'))
             // td.appendChild(tr)
-
         }
     }).fail(function (response) {
         console.log(response)
