@@ -1,12 +1,9 @@
-#boardContent {
-    border: none;
+.tableHead{
+    width: 140px;
+    text-align: center;
+    font-weight: bold;
 }
-
-#titleInput {
-    border: none;
-    width: 200px;
-}
-table >th{
+table > tr > th{
     background-color: #eab49d;
 }
 .button {

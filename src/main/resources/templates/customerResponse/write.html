@@ -5,39 +5,45 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/writeAndEdit.css}"/>
 </head>
 <div layout:fragment="content_area">
-    <div class="container-fluid">
+    <div class="container-xxl">
         <div class="content">
             <table class="table table-bordered">
                 <tr>
-                    <th scope="col">고객</th>
+                    <th class="tableHead" scope="col">고객</th>
                     <td>
-                        <div class="clearfix">
-                        <input class="form-check-input float-start" type="checkbox" name="customerType" value="hospital" onclick="getCheckboxValue()"
-                               id="cs_hsp"><label class="form-check-label float-start" for="cs_hsp">병원</label>
-                        <input class="form-check-input float-start" type="checkbox" name="customerType" value="doctor" onclick="getCheckboxValue()"
-                               id="cs_dr"><label class="form-check-label float-start" for="cs_dr">판독의</label>
-                        <select class="form-select w-25" name="고객" th:name="customerCode" id="customerCode">
-                            <option selected name="customerCode">고객명을 선택해주세요</option>
-                        </select>
+                        <div class="col-10 d-flex justify-content-between align-items-center text-center">
+                            <input class="customerType mr-2" type="radio" name="customerType" value="hospital"
+                                   onclick="getCheckboxValue()"
+                                   id="cs_hsp"><label for="cs_hsp">병원</label>
+                            <input class="customerType align-middle mr-2" type="radio" name="customerType" value="doctor"
+                                   onclick="getCheckboxValue()" id="cs_dr"><label for="cs_dr">판독의</label>
+                            <div id="customerName" class="col">
+                                <span class="searchCategory align-middle">고객</span>
+                                <select name="고객" th:name="customerCode" id="customerCode" onclick="showCustomerList()"
+                                        class="align-middle">
+                                    <option selected value="T">고객을 선택해주세요</option>
+                                </select>
+                            </div>
                         </div>
                     </td>
-                    <th scope="col">서비스구분</th>
+                    <th class="tableHead" scope="col">서비스구분</th>
                     <td>
                         <select class="form-select" aria-label="Default select example" name="responseType"
                                 id="responseType">
                             <option selected name="serviceType">서비스를 선택해주세요</option>
                             <option value="N">일반</option>
-                            <option value="P">프로그램</option>
+                            <option value="P">프로그램문의</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
-                    <th scope="col">제목</th>
-                    <td class="border border-0"><input type="text" name="responseTitle" id="responseTitle" placeholder="제목을 입력하세요" class="form-control">
+                    <th class="tableHead" scope="col">제목</th>
+                    <td class="border border-0"><input type="text" name="responseTitle" id="responseTitle"
+                                                       placeholder="제목을 입력하세요" class="form-control">
                     </td>
                 </tr>
                 <tr>
-                    <th scope="col">내용</th>
+                    <th class="tableHead" scope="col">내용</th>
                     <td colspan="5">
                         <div class="form-group col-12">
                             <div class="textLengthWrap float-md-end mb-2">

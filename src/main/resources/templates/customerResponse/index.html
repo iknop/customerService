@@ -13,12 +13,12 @@
             <div id="search-bar" class="row">
                 <div id="cType" class="col">
                     <!-- 라디오-->
-                    <span class="searchCategory align-middle">고객구분</span>
-                    <input class="customerType align-middle" type="checkbox" name="customerType" value="hospital"
+                    <label class="searchCategory">고객구분</label>
+                    <input class="customerType mr-0" type="radio" name="customerType" value="hospital"
                            onclick="getCheckboxValue()"
                            id="cs_hsp"><label for="cs_hsp">병원</label>
-                    <input class="customerType align-middle" type="checkbox" name="customerType" value="doctor"
-                           onclick="getCheckboxValue()" id="cs_dr"><label for="cs_dr">의사</label>
+                    <input class="customerType align-middle" type="radio" name="customerType" value="doctor"
+                           onclick="getCheckboxValue()" id="cs_dr"><label for="cs_dr">판독의</label>
                 </div>
                 <div id="customerName" class="col">
                     <span class="searchCategory align-middle">고객</span>
@@ -30,9 +30,9 @@
                     <span class="searchCategory align-middle">서비스구분</span>
                     <select class="form-select-sm align-middle" aria-label="Default select example" name="responseType"
                             id="responseType">
-                        <option selected value="" class="align-middle">서비스를 선택해주세요</option>
+                        <option selected value=" " class="align-middle">전체</option>
                         <option value="N">일반</option>
-                        <option value="P">프로그램</option>
+                        <option value="P">프로그램문의</option>
                     </select>
                 </div>
                 <div class="col col-lg-2">

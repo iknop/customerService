@@ -13,41 +13,40 @@
                     <th scope="col">고객</th>
                     <input type="hidden" id="customerCode" name="customerCode" th:value="${response.customerCode}">
                     <td id="customerInfo" th:text="${response.customerName}+'('+${response.customerCode}+ ')'"></td>
-                    <th scope="col">서비스구분</th>
+                    <th scope="col" class="tableHead">서비스구분</th>
                     <input type="hidden" name="responseType" th:value="${response.responseType}">
                     <td name="responseType" id="responseType"></td>
-                    <th scope="col">접수일시</th>
-                    <td th:text="${response.createDateTime}"></td>
+                    <th class="tableHead" scope="col">접수일시</th>
+                    <td th:text="${response.createDateTime}" id="createDateTime"></td>
                 </tr>
                 <tr>
-                    <th scope="col">제목</th>
+                    <th class="tableHead" scope="col">제목</th>
                     <td colspan="3" th:text="${response.responseTitle}"></td>
-                    <th scope="col">응대자</th>
+                    <th scope="col" class="tableHead">응대자</th>
                     <td id="createUserName" th:text="${response.createUserName}"></td>
                     <input id="createUserCode" type="hidden" th:value="${response.createUserCode}">
 
                 </tr>
                 <tr>
-                    <th scope="col">내용</th>
+                    <th class="tableHead" scope="col">내용</th>
                     <td colspan="5" th:text="${response.responseContents}"></td>
                 </tr>
                 <input type="hidden" name="useYN" id="useYN" th:value="${response.useYN}">
                 <tr >
                     <!--TODO: rowspan="댓글갯수 +1(댓글입력) "-->
-                    <th rowspan="10">처리내용</th>
+                    <th class="tableHead" rowspan="2">처리내용</th>
                     <!--댓글 입력-->
-                    <td id="resultList" class="w-100 d-none" colspan="5">
+                    <td id="resultList" class="d-none" colspan="5">
                     </td>
+
                 </tr>
                 <tr>
-                    <td colspan="4" class="border border-0">
+                    <td colspan="5" class="border border-0">
                         <form  id="responseResultInsert">
                             <input type="hidden" id="resultLoginId" readonly>
-                            <textarea class="form-control" id="resultContents" name="resultContents" rows="3"
+                            <textarea class="form-control ResponseResultTextArea" id="resultContents" name="resultContents" rows="3"
                                       placeholder="처리내용을 입력하세요."></textarea>
                         </form>
-                    </td>
-                    <td class="border border-0">
                         <button type="button" class="btn btn-danger btn float-right" onclick="insertResult()">등록</button>
                     </td>
                 </tr>
@@ -65,6 +64,9 @@
 </div>
 
 <th:blcok layout:fragment="script_area">
+    <script type="text/javascript">
+        $('#createDateTime').text(getDateStr(new Date($('#createDateTime').text())))
+    </script>
     <!--서비스 내용 불러오기-->
     <script src="/js/show/getCustomerResponse.js" th:inline="javascript"></script>
     <!--처리내용 목록 불러오기-->

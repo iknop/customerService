@@ -9,3 +9,6 @@ table#customerResponse > tbody > tr > th{
 table#customerResponse > tbody > tr > td#resultList > div> textarea{
     border: none;
 }
+.ResponseResultTextArea {
+    width: 600px;
+}
