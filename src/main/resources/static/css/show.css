@@ -6,8 +6,10 @@ table#customerResponse > tbody > tr > th{
 }
 
 /* 처리내용 */
-table#customerResponse > tbody > tr > td#resultList > div> textarea{
-    border: none;
+.tableHead{
+    width: 140px;
+    text-align: center;
+    font-weight: bold;
 }
 .ResponseResultTextArea {
     width: 600px;

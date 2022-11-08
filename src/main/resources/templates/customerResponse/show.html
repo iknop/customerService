@@ -10,8 +10,7 @@
             <input type="hidden" name="crId" id="crId" th:value="${response.crId}">
             <table class="table table-bordered" id="customerResponse">
                 <tr>
-                    <th scope="col">고객</th>
-                    <input type="hidden" id="customerCode" name="customerCode" th:value="${response.customerCode}">
+                    <th class="tableHead" scope="col">고객</th>
                     <td id="customerInfo" th:text="${response.customerName}+'('+${response.customerCode}+ ')'"></td>
                     <th scope="col" class="tableHead">서비스구분</th>
                     <input type="hidden" name="responseType" th:value="${response.responseType}">
@@ -32,7 +31,7 @@
                     <td colspan="5" th:text="${response.responseContents}"></td>
                 </tr>
                 <input type="hidden" name="useYN" id="useYN" th:value="${response.useYN}">
-                <tr >
+                <tr>
                     <!--TODO: rowspan="댓글갯수 +1(댓글입력) "-->
                     <th class="tableHead" rowspan="2">처리내용</th>
                     <!--댓글 입력-->
