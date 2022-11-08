@@ -12,18 +12,16 @@
                     <th class="tableHead" scope="col">고객</th>
                     <td>
                         <div class="col-10 d-flex justify-content-between align-items-center text-center">
-                            <input class="customerType mr-2" type="radio" name="customerType" value="hospital"
+                            <input class="customerType mr-0" type="radio" name="customerType" value="hospital"
                                    onclick="getCheckboxValue()"
                                    id="cs_hsp"><label for="cs_hsp">병원</label>
-                            <input class="customerType align-middle mr-2" type="radio" name="customerType" value="doctor"
+                            <input class="customerType align-middle mr-0" type="radio" name="customerType" value="doctor"
                                    onclick="getCheckboxValue()" id="cs_dr"><label for="cs_dr">판독의</label>
-                            <div id="customerName" class="col">
-                                <span class="searchCategory align-middle">고객</span>
+                                <span class="searchCategory align-middle font-weight-bold">고객</span>
                                 <select name="고객" th:name="customerCode" id="customerCode" onclick="showCustomerList()"
-                                        class="align-middle">
+                                        class="align-middle form-select">
                                     <option selected value="T">고객을 선택해주세요</option>
                                 </select>
-                            </div>
                         </div>
                     </td>
                     <th class="tableHead" scope="col">서비스구분</th>
@@ -43,7 +41,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th class="tableHead" scope="col">내용</th>
+                    <th class="tableHead text-center" scope="col" style="vertical-align: center">내용</th>
                     <td colspan="5">
                         <div class="form-group col-12">
                             <div class="textLengthWrap float-md-end mb-2">

@@ -11,33 +11,40 @@
             <!--데이터-->
             <table class="table table-bordered">
                 <tr>
-                    <th scope="col">고객</th>
+                    <th class="tableHead" scope="col">고객</th>
                     <td>
                         <input type="hidden" name="crId" id="crId" th:value="${response.crId}">
                         <input type="hidden" name="customerCode" id="originalCsType"
                                th:value="${response.customerCode}">
-                        <input type="radio" name="customerType" value="hospital" onclick="getCheckboxValue()"
-                               id="cs_hsp"><label for="cs_hsp">병원</label>
-                        <input type="radio" name="customerType" value="doctor" onclick="getCheckboxValue()"
-                               id="cs_dr"><label for="cs_dr">판독의</label>
-                        <input type="hidden" id="originalCustomerCode" th:value="${response.customerCode}">
-                        <select name="고객" th:name="customerCode" id="customerCode">
 
-                        </select>
-                        </select></td>
-                    <th scope="col">서비스구분</th>
-                    <td><select name="서비스구분" id="responseType">
+                        <div class="col-10 d-flex justify-content-between align-items-center text-center">
+                            <input class="customerType mr-0" type="radio" name="customerType" value="hospital"
+                                   onclick="getCheckboxValue()"
+                                   id="cs_hsp"><label for="cs_hsp">병원</label>
+                            <input class="customerType align-middle mr-0" type="radio" name="customerType"
+                                   value="doctor" onclick="getCheckboxValue()"
+                                   id="cs_dr"><label for="cs_dr">판독의</label>
+                            <span class="searchCategory align-middle font-weight-bold">고객</span>
+                            <input type="hidden" id="originalCustomerCode" th:value="${response.customerCode}">
+                            <select name="고객" th:name="customerCode" id="customerCode" onclick="showCustomerList()"
+                                    class="align-middle form-select">
+                                <option selected value="T">고객을 선택해주세요</option>
+                            </select>
+                        </div>
+                    </td>
+                    <th class="tableHead" scope="col">서비스구분</th>
+                    <td><select name="서비스구분" id="responseType" class="form-select">
                         <option selected th:value="${response.responseType}">서비스구분을 선택하세요</option>
                         <option value="P">프로그램문의</option>
                         <option value="N">일반</option>
                     </select></td>
                 </tr>
                 <tr>
-                    <th scope="col">제목</th>
-                    <td><input type="text" name="제목" id="responseTitle" th:value="${response.responseTitle}"></td>
+                    <th class="tableHead border-0" scope="col">제목</th>
+                    <td class="border border-0"><input class="form-control" type="text" name="제목" id="responseTitle" th:value="${response.responseTitle}"></td>
                 </tr>
                 <tr>
-                    <th scope="col">내용</th>
+                    <th class="tableHead text-center" scope="col" style="vertical-align: center">내용</th>
                     <td colspan="5">
                         <div class="form-group col-12">
                             <div class="textLengthWrap float-md-end mb-2">
@@ -50,8 +57,8 @@
                     </td>
                 </tr>
                 <tr>
-                    <th scope="col">사용여부</th>
-                    <td colspan="5">
+                    <th class="tableHead" scope="col">사용여부</th>
+                    <td colspan="5" class="text-center">
                         <select name="useYN" id="useYN">
                             <option value="Y" selected>사용</option>
                             <option id="useN" value="N">삭제</option>
@@ -59,7 +66,7 @@
                     </td>
                 </tr>
             </table>
-            <div class="button">
+            <div class="justify-content-end">
                 <button class="btn btn-secondary" type="submit" th:onclick="updateResponse()">수정</button>
             </div>
         </div>

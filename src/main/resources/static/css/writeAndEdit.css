@@ -2,9 +2,11 @@
     width: 140px;
     text-align: center;
     font-weight: bold;
+    background-color: #eab49d !important;
 }
-table > tr > th{
-    background-color: #eab49d;
+
+#customerCode{
+    width: 120px;
 }
 .button {
     display: inline-block;

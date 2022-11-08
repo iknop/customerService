@@ -30,7 +30,6 @@ function showCustomerList(checkboxValue) {
             $(tagArea).empty();
             for (let i = 0; i < loop; i++) {
                 let opt = document.createElement("option");
-                opt.classList.add('form-control');
                 opt.text = response[i].hospitalName;
                 opt.value = response[i].hospitalCode;
                 tagArea.appendChild(opt);
@@ -52,7 +51,6 @@ function showCustomerList(checkboxValue) {
             $(tagArea).empty();
             for (let i = 0; i < loop; i++) {
                 let opt = document.createElement("option");
-                opt.classList.add('form-control');
                 opt.text = response[i].drName;
                 opt.value = response[i].drId;
                 tagArea.appendChild(opt);
