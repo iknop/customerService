@@ -30,6 +30,7 @@ function showCustomerList(checkboxValue) {
             $(tagArea).empty();
             for (let i = 0; i < loop; i++) {
                 let opt = document.createElement("option");
+                opt.classList.add('form-control');
                 opt.text = response[i].hospitalName;
                 opt.value = response[i].hospitalCode;
                 tagArea.appendChild(opt);
@@ -51,6 +52,7 @@ function showCustomerList(checkboxValue) {
             $(tagArea).empty();
             for (let i = 0; i < loop; i++) {
                 let opt = document.createElement("option");
+                opt.classList.add('form-control');
                 opt.text = response[i].drName;
                 opt.value = response[i].drId;
                 tagArea.appendChild(opt);
@@ -63,7 +65,8 @@ function showCustomerList(checkboxValue) {
         let tagArea = document.getElementById('customerCode');
         $(tagArea).empty();
         let opt = document.createElement("option");
-        opt.text = '고객구분을 선택해주세요';
+        opt.text = '전체';
+        opt.value = 'T';
         tagArea.appendChild(opt);
     }
 }

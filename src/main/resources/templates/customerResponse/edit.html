@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/writeAndEdit.css}"/>
 </head>
 <div layout:fragment="content_area">
-    <div class="container-fluid">
+    <div class="container-xxl">
         <div class="content">
             <!--데이터-->
             <table class="table table-bordered">
@@ -16,9 +16,9 @@
                         <input type="hidden" name="crId" id="crId" th:value="${response.crId}">
                         <input type="hidden" name="customerCode" id="originalCsType"
                                th:value="${response.customerCode}">
-                        <input type="checkbox" name="customerType" value="hospital" onclick="getCheckboxValue()"
+                        <input type="radio" name="customerType" value="hospital" onclick="getCheckboxValue()"
                                id="cs_hsp"><label for="cs_hsp">병원</label>
-                        <input type="checkbox" name="customerType" value="doctor" onclick="getCheckboxValue()"
+                        <input type="radio" name="customerType" value="doctor" onclick="getCheckboxValue()"
                                id="cs_dr"><label for="cs_dr">판독의</label>
                         <input type="hidden" id="originalCustomerCode" th:value="${response.customerCode}">
                         <select name="고객" th:name="customerCode" id="customerCode">
