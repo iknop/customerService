@@ -24,7 +24,12 @@ function showCustomerList(checkboxValue) {
             url: '/api/cs/hospitalList',
             async: false
         }).done(function (response) {
-            console.log(response)
+            const _default = {
+                'hospitalCode':'T',
+                'hospitalName': '전체'
+            }
+            console.log(_default)
+            response = [_default, ...response]
             let loop = response.length;
             let tagArea = document.getElementById('customerCode');
             $(tagArea).empty();
@@ -45,6 +50,12 @@ function showCustomerList(checkboxValue) {
             url: '/api/cs/doctorList',
             async: false
         }).done(function (response) {
+            const _default = {
+                'drId':'T',
+                'drName': '전체'
+            }
+            console.log(_default)
+            response = [_default, ...response]
             console.log(response)
             let loop = response.length;
             let tagArea = document.getElementById('customerCode');
