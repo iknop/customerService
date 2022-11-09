@@ -3,10 +3,10 @@
 }
 div#search-bar{
     border: 1px solid black;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 20px 20px 20px 20px;
-    margin-top: 30px;
     text-align: center;
+    width: 1135px;
 }
 input.customerType{
     margin: 10px;
@@ -19,11 +19,14 @@ section{
     margin-top: 30px;
     margin-bottom: 30px;
 }
-#write-btn{
-    text-align: right;
+#writeBtn{
+    text-align: center;
+    width: 60px;
+    height: 38px;
 }
 table#serviceList{
     color: black;
+    width: 1135px !important;
 }
 thead{
     background-color: #eab49d;

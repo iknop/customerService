@@ -2,6 +2,8 @@
 $(function () {
 
     const serviceDataTable = $('#serviceList').DataTable({
+        dom: '<"top">t<"bottom"p><"clear">' // 테이블, 페이지네이션 버튼만 사용
+        ,
         columnDefs: [
             {
                 targets: [0,4],
@@ -61,7 +63,7 @@ $(function () {
     let titleArea = $('#pageTitle')
     titleArea.append(h2Title)
 
-// 검색 버튼 클릭
+    // 검색 버튼 클릭
     $("#service-btn").on("click", function () {
         const searchData = {
             customerCode: $("#customerCode").val(),
@@ -87,11 +89,8 @@ $(function () {
             console.log(xhr, error)
         })
     }).click();
-    // 등록버튼 추가
-    let btnSave_position = $('#serviceList_length').parent().next()
-    btnSave_position.addClass('text-right');
-    btnSave_position.append('<button class="btn btn-secondary" type="submit" onclick="location.href=`/board/write`">등록</button>')
 
+    // row 클릭시 상세페이지 이동
     $('#serviceList tbody').on('click','tr', function() {
         const rowData = serviceDataTable.row(this).data();
         console.log(rowData);

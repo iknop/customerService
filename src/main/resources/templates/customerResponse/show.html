@@ -12,52 +12,51 @@
                 <tr>
                     <th class="tableHead" scope="col">고객</th>
                     <td id="customerInfo" th:text="${response.customerName}+'('+${response.customerCode}+ ')'"></td>
-                    <th scope="col" class="tableHead">서비스구분</th>
+                    <td class="tableHead">서비스구분</td>
                     <input type="hidden" name="responseType" th:value="${response.responseType}">
-                    <td name="responseType" id="responseType"></td>
-                    <th class="tableHead" scope="col">접수일시</th>
-                    <td th:text="${response.createDateTime}" id="createDateTime"></td>
+                    <td name="responseType" id="responseType" class="text-center"></td>
+                    <td class="tableHead" >접수일시</td>
+                    <td th:text="${response.createDateTime}" id="createDateTime" class="text-center"></td>
                 </tr>
                 <tr>
                     <th class="tableHead" scope="col">제목</th>
                     <td colspan="3" th:text="${response.responseTitle}"></td>
-                    <th scope="col" class="tableHead">응대자</th>
-                    <td id="createUserName" th:text="${response.createUserName}"></td>
+                    <td class="tableHead">응대자</td>
+                    <td id="createUserName" th:text="${response.createUserName}" class="text-center"></td>
                     <input id="createUserCode" type="hidden" th:value="${response.createUserCode}">
 
                 </tr>
-                <tr>
-                    <th class="tableHead" scope="col">내용</th>
-                    <td colspan="5" th:text="${response.responseContents}"></td>
+                <tr id="responseContentRow">
+                    <th class="tableHead align-middle" scope="col">내용</th>
+                    <td colspan="5" class="py-1" th:text="${response.responseContents}"></td>
                 </tr>
                 <input type="hidden" name="useYN" id="useYN" th:value="${response.useYN}">
                 <tr>
                     <!--TODO: rowspan="댓글갯수 +1(댓글입력) "-->
-                    <th class="tableHead" rowspan="2">처리내용</th>
+                    <th class="tableHead align-middle" rowspan="2">처리내용</th>
                     <!--댓글 입력-->
                     <td id="resultList" class="d-none" colspan="5">
                     </td>
 
                 </tr>
                 <tr>
-                    <td colspan="5" class="border border-0">
-                        <form  id="responseResultInsert">
+                    <td colspan="5" class="border-0">
+                        <form  id="responseResultInsert" class="d-flex justify-content-between">
                             <input type="hidden" id="resultLoginId" readonly>
                             <textarea class="form-control ResponseResultTextArea" id="resultContents" name="resultContents" rows="3"
                                       placeholder="처리내용을 입력하세요."></textarea>
-                        </form>
                         <button type="button" class="btn btn-danger btn float-right" onclick="insertResult()">등록</button>
+                        </form>
                     </td>
                 </tr>
             </table>
-            <div class="buttons">
-                <div class="d-grid gap-2 d-md-block float-right">
-                    <button class="btn btn-secondary" type="submit" onclick="location.href='/'">목록</button>
-                    <button id="editResponseBtn" class="btn btn-secondary d-none" type="submit"
-                            th:onclick="|location.href='/board/'+'${response.crId}'+'/update'|">수정
+
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-secondary mr-1" type="submit" onclick="location.href='/'" style="width: 100px;">목록</button>
+                    <button class="btn btn-secondary d-none" id="editResponseBtn"  type="submit"
+                            th:onclick="|location.href='/board/'+'${response.crId}'+'/update'|" style="width: 100px;">수정
                     </button>
                 </div>
-            </div>
         </div>
     </div>
 </div>

@@ -1,22 +1,37 @@
-.tableHead{
+.tableHead {
     width: 140px;
     text-align: center;
     font-weight: bold;
     background-color: #eab49d !important;
 }
 
-#customerCode{
-    width: 120px;
+#customerCode {
+    width: 160px !important;
 }
+
 .button {
     display: inline-block;
     vertical-align: middle;
 }
-#responseTitle{
+
+#responseTitle {
     margin-left: 18px;
     width: 500px;
 }
+
 textarea#responseContents {
     height: 300px;
     resize: none;
+}
+
+#responseType {
+    width: 240px;
+}
+
+#responseTitle {
+    width: 900px;
+}
+
+#useYN {
+    width: 80px;
 }

@@ -13,9 +13,12 @@
                 <tr>
                     <th class="tableHead" scope="col">고객</th>
                     <td>
+                        <!--hidden 시작-->
                         <input type="hidden" name="crId" id="crId" th:value="${response.crId}">
                         <input type="hidden" name="customerCode" id="originalCsType"
                                th:value="${response.customerCode}">
+                        <input type="hidden" id="originalCustomerCode" th:value="${response.customerCode}">
+                        <!--hidden 끝-->
 
                         <div class="col-10 d-flex justify-content-between align-items-center text-center">
                             <input class="customerType mr-0" type="radio" name="customerType" value="hospital"
@@ -24,24 +27,27 @@
                             <input class="customerType align-middle mr-0" type="radio" name="customerType"
                                    value="doctor" onclick="getCheckboxValue()"
                                    id="cs_dr"><label for="cs_dr">판독의</label>
-                            <span class="searchCategory align-middle font-weight-bold">고객</span>
-                            <input type="hidden" id="originalCustomerCode" th:value="${response.customerCode}">
                             <select name="고객" th:name="customerCode" id="customerCode" onclick="showCustomerList()"
-                                    class="align-middle form-select">
+                                    class="align-middle form-select ml-3">
                                 <option selected value="T">고객을 선택해주세요</option>
                             </select>
                         </div>
                     </td>
-                    <th class="tableHead" scope="col">서비스구분</th>
-                    <td><select name="서비스구분" id="responseType" class="form-select">
-                        <option selected th:value="${response.responseType}">서비스구분을 선택하세요</option>
-                        <option value="P">프로그램문의</option>
-                        <option value="N">일반</option>
-                    </select></td>
+                    <td class="tableHead">서비스구분</td>
+                    <td class="d-flex justify-content-center border-0">
+                        <select name="서비스구분" id="responseType" class="form-select">
+                            <option selected th:value="${response.responseType}">서비스구분을 선택하세요</option>
+                            <option value="P">프로그램문의</option>
+                            <option value="N">일반</option>
+                        </select>
+                    </td>
                 </tr>
+                <!--row1-->
                 <tr>
-                    <th class="tableHead border-0" scope="col">제목</th>
-                    <td class="border border-0"><input class="form-control" type="text" name="제목" id="responseTitle" th:value="${response.responseTitle}"></td>
+                    <th class="tableHead" scope="col">제목</th>
+                    <td class="border border-0" colspan="5"><input class="form-control" type="text" name="제목"
+                                                                   id="responseTitle"
+                                                                   th:value="${response.responseTitle}"></td>
                 </tr>
                 <tr>
                     <th class="tableHead text-center" scope="col" style="vertical-align: center">내용</th>
@@ -57,17 +63,20 @@
                     </td>
                 </tr>
                 <tr>
-                    <th class="tableHead" scope="col">사용여부</th>
-                    <td colspan="5" class="text-center">
-                        <select name="useYN" id="useYN">
-                            <option value="Y" selected>사용</option>
-                            <option id="useN" value="N">삭제</option>
-                        </select>
+                    <th class="tableHead">사용여부</th>
+                    <td colspan="5">
+                        <div class="d-flex justify-content-center">
+                            <select name="useYN" id="useYN" class="form-select">
+                                <option value="Y" selected>사용</option>
+                                <option id="useN" value="N">삭제</option>
+                            </select>
+                        </div>
                     </td>
                 </tr>
             </table>
-            <div class="justify-content-end">
-                <button class="btn btn-secondary" type="submit" th:onclick="updateResponse()">수정</button>
+            <div class="d-flex justify-content-center">
+                <button class="btn btn-danger btn-lg w-25" type="submit" th:onclick="updateResponse()">수정
+                </button>
             </div>
         </div>
     </div>

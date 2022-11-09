@@ -1,16 +1,25 @@
 table#customerResponse{
     margin-top: 50px;
 }
-table#customerResponse > tbody > tr > th{
-    background-color: #eab49d;
-}
+/*table#customerResponse > tbody > tr > th{*/
+/*    background-color: #eab49d;*/
+/*}*/
 
 /* 처리내용 */
 .tableHead{
     width: 140px;
     text-align: center;
     font-weight: bold;
+    background-color: #eab49d !important;
+}
+#responseContentRow{
+    height: 280px;
 }
 .ResponseResultTextArea {
     width: 600px;
+}
+/* 처리내용 입력란 */
+#resultContents{
+    height: 100px;
+    width: 840px;
 }

@@ -7,25 +7,29 @@
 <div layout:fragment="content_area">
     <div class="container-xxl">
         <div class="content">
-            <table class="table table-bordered">
+            <table class="table">
                 <tr>
                     <th class="tableHead" scope="col">고객</th>
                     <td>
                         <div class="col-10 d-flex justify-content-between align-items-center text-center">
-                            <input class="customerType mr-0" type="radio" name="customerType" value="hospital"
+                            <div class="form-check">
+                            <input class="form-check-input mr-0" type="radio" name="customerType" value="hospital"
                                    onclick="getCheckboxValue()"
-                                   id="cs_hsp"><label for="cs_hsp">병원</label>
-                            <input class="customerType align-middle mr-0" type="radio" name="customerType" value="doctor"
-                                   onclick="getCheckboxValue()" id="cs_dr"><label for="cs_dr">판독의</label>
-                                <span class="searchCategory align-middle font-weight-bold">고객</span>
+                                   id="cs_hsp"><label class="form-check-label" for="cs_hsp">병원</label>
+                            </div>
+                            <div class="form-check">
+                            <input class="form-check-input mr-0" type="radio" name="customerType"
+                                   value="doctor"
+                                   onclick="getCheckboxValue()" id="cs_dr"><label class="form-check-label" for="cs_dr">판독의</label>
+                            </div>
                                 <select name="고객" th:name="customerCode" id="customerCode" onclick="showCustomerList()"
-                                        class="align-middle form-select">
-                                    <option selected value="T">고객을 선택해주세요</option>
-                                </select>
+                                    class="align-middle form-select ml-3">
+                                <option selected value="T">고객을 선택해주세요</option>
+                            </select>
                         </div>
                     </td>
-                    <th class="tableHead" scope="col">서비스구분</th>
-                    <td>
+                    <td class="tableHead">서비스구분</td>
+                    <td class="d-flex justify-content-center">
                         <select class="form-select" aria-label="Default select example" name="responseType"
                                 id="responseType">
                             <option selected name="serviceType">서비스를 선택해주세요</option>
@@ -36,8 +40,9 @@
                 </tr>
                 <tr>
                     <th class="tableHead" scope="col">제목</th>
-                    <td class="border border-0"><input type="text" name="responseTitle" id="responseTitle"
-                                                       placeholder="제목을 입력하세요" class="form-control">
+                    <td class="border border-0" colspan="5">
+                        <input type="text" name="responseTitle" id="responseTitle"
+                               placeholder="제목을 입력하세요" class="form-control">
                     </td>
                 </tr>
                 <tr>
@@ -54,8 +59,9 @@
                     </td>
                 </tr>
             </table>
-            <div class="button float-end">
-                <button class="btn btn-secondary" type="submit" onclick="insertCustomerResponse()" th:action="location">
+            <div class="d-flex justify-content-center">
+                <button class="btn btn-danger btn-lg w-25" type="submit" onclick="insertCustomerResponse()"
+                        th:action="location">
                     등록
                 </button>
             </div>
