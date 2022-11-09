@@ -25,17 +25,17 @@ function getResultList() {
 
         for (let i = 0; i < loop; i++) {
             let div = document.createElement('div');
-            div.classList.add('row','justify-content-end')
+            div.classList.add('row','justify-content-end','px-0')
 
             // 처리내용 본문
             let content = document.createElement('span');
-            content.classList.add('col-8','mx-1')
+            content.classList.add('col-8','mr-1','px-0')
             content.id = `resultContents-${response[i].rrId}`;
             content.innerText = response[i].resultContents;
 
             //처리내용 수정 textarea: class d-none -> 안보이게 (*수정 시 데이터*)
             let textAreaElement = document.createElement('textarea');
-            textAreaElement.classList.add('form-control','d-none','mx-1','ResponseResultTextArea');
+            textAreaElement.classList.add('form-control','d-none','mr-1','ResponseResultTextArea');
             textAreaElement.id = `textarea-${response[i].rrId}`;
             textAreaElement.innerText = response[i].resultContents;
 
@@ -75,7 +75,7 @@ function getResultList() {
 
             // 수정버튼 생성 및 이벤트 추가
             let buttons = document.createElement('div')
-            buttons.classList.add('col-12','row','justify-content-end','m-2')
+            buttons.classList.add('row','justify-content-end','pr-5','my-2')
 
             let updateBtn = document.createElement('button');
             $(updateBtn).val(response[i].rrId);

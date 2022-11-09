@@ -8,19 +8,19 @@
     <div class="container-xxl">
         <div class="content">
             <input type="hidden" name="crId" id="crId" th:value="${response.crId}">
-            <table class="table table-bordered" id="customerResponse">
+            <table class="table" id="customerResponse">
                 <tr>
                     <th class="tableHead" scope="col">고객</th>
-                    <td id="customerInfo" th:text="${response.customerName}+'('+${response.customerCode}+ ')'"></td>
+                    <td id="customerInfo" class="px-4" th:text="${response.customerName}+'('+${response.customerCode}+ ')'"></td>
                     <td class="tableHead">서비스구분</td>
                     <input type="hidden" name="responseType" th:value="${response.responseType}">
                     <td name="responseType" id="responseType" class="text-center"></td>
-                    <td class="tableHead" >접수일시</td>
+                    <td class="tableHead">접수일시</td>
                     <td th:text="${response.createDateTime}" id="createDateTime" class="text-center"></td>
                 </tr>
                 <tr>
                     <th class="tableHead" scope="col">제목</th>
-                    <td colspan="3" th:text="${response.responseTitle}"></td>
+                    <td class="px-4" colspan="3" th:text="${response.responseTitle}"></td>
                     <td class="tableHead">응대자</td>
                     <td id="createUserName" th:text="${response.createUserName}" class="text-center"></td>
                     <input id="createUserCode" type="hidden" th:value="${response.createUserCode}">
@@ -28,11 +28,10 @@
                 </tr>
                 <tr id="responseContentRow">
                     <th class="tableHead align-middle" scope="col">내용</th>
-                    <td colspan="5" class="py-1" th:text="${response.responseContents}"></td>
+                    <td colspan="5" class="p-4" th:text="${response.responseContents}"></td>
                 </tr>
                 <input type="hidden" name="useYN" id="useYN" th:value="${response.useYN}">
                 <tr>
-                    <!--TODO: rowspan="댓글갯수 +1(댓글입력) "-->
                     <th class="tableHead align-middle" rowspan="2">처리내용</th>
                     <!--댓글 입력-->
                     <td id="resultList" class="d-none" colspan="5">
@@ -40,29 +39,34 @@
 
                 </tr>
                 <tr>
-                    <td colspan="5" class="border-0">
-                        <form  id="responseResultInsert" class="d-flex justify-content-between">
+                    <td colspan="5">
+                        <form id="responseResultInsert" class="d-flex justify-content-between">
                             <input type="hidden" id="resultLoginId" readonly>
-                            <textarea class="form-control ResponseResultTextArea" id="resultContents" name="resultContents" rows="3"
+                            <textarea class="form-control ResponseResultTextArea" id="resultContents"
+                                      name="resultContents" rows="3"
                                       placeholder="처리내용을 입력하세요."></textarea>
-                        <button type="button" class="btn btn-danger btn float-right" onclick="insertResult()">등록</button>
+                            <button type="button" class="btn btn-danger btn float-right" onclick="insertResult()">등록
+                            </button>
                         </form>
                     </td>
                 </tr>
             </table>
 
-                <div class="d-flex justify-content-end">
-                    <button class="btn btn-secondary mr-1" type="submit" onclick="location.href='/'" style="width: 100px;">목록</button>
-                    <button class="btn btn-secondary d-none" id="editResponseBtn"  type="submit"
-                            th:onclick="|location.href='/board/'+'${response.crId}'+'/update'|" style="width: 100px;">수정
-                    </button>
-                </div>
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-secondary mr-1" type="submit" onclick="location.href='/'" style="width: 100px;">
+                    목록
+                </button>
+                <button class="btn btn-secondary d-none" id="editResponseBtn" type="submit"
+                        th:onclick="|location.href='/board/'+'${response.crId}'+'/update'|" style="width: 100px;">수정
+                </button>
+            </div>
         </div>
     </div>
 </div>
 
 <th:blcok layout:fragment="script_area">
     <script type="text/javascript">
+        <!--시간 표시 방식 설정-->
         $('#createDateTime').text(getDateStr(new Date($('#createDateTime').text())))
     </script>
     <!--서비스 내용 불러오기-->
