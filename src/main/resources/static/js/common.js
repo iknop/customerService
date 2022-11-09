@@ -1,3 +1,17 @@
+$(function() {
+    const isUpdatePage = window.location.pathname.includes('update');
+    if (isUpdatePage) {
+        $('#otherID').addClass('d-none');
+        $('#btn-change-loginId').addClass('d-none');
+    }
+
+    $('#btn-change-loginId').on('click', function() {
+        const otherID = $('#otherID').val();
+        console.log('click!')
+        window.location = window.location.pathname + '?otherID=' + otherID;
+    })
+});
+
 function getDateStr(date) {
     const dates = [date.getFullYear(), date.getMonth() + 1, date.getDate()];
     if (dates[1] < 10) {
@@ -16,4 +30,7 @@ function getDateStr(date) {
         times[2] = '0' + times[2];
     }
     return `${dates.join('-')} ${times.join(':')}`;
+}
+
+function onClickBtnChangeLoginId() {
 }
