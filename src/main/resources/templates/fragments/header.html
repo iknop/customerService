@@ -7,10 +7,11 @@
     <div class="container-fluid">
       <span id="pageTitle" class="float-start">
       </span>
-      <div class="float-end text-end d-grid">
+      <div class="float-end text-end d-grid" id="defaultIDSection">
         <span id="company"  th:utext="'21세기영상의학과(' + ${LOGIN_ID} + ')'">
         </span>
-        <label for="otherID"></label><input type="text" placeholder="다른 ID를 입력하세요." id="otherID">
+        <label for="otherID"></label>
+        <input type="text" placeholder="다른 ID를 입력하세요." id="otherID">
         <button class="btn btn-outline-primary btn-sm mt-2" id="btn-change-loginId" >로그인ID 변경</button>
       </div>
       <input type="hidden" id="loginId" name="loginId" th:value="${LOGIN_ID}">

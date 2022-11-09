@@ -1,6 +1,7 @@
 *{
     text-decoration: none;
 }
+
 div#search-bar{
     border: 1px solid black;
     border-radius: 10px;
@@ -27,9 +28,6 @@ section{
 table#serviceList{
     color: black;
     width: 1135px !important;
-}
-thead{
-    background-color: #eab49d;
 }
 table#serviceList > tbody > tr > td > a {
     color: black;
