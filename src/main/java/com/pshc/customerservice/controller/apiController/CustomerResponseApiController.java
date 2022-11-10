@@ -41,7 +41,7 @@ public class CustomerResponseApiController {
     @PostMapping("/write")
     public CRInsertRequestDto insertCustomerResponse(CRInsertRequestDto request) {
         service.insertCustomerResponse(request);
-        log.info("service: insertCustomerResponse");
+        log.info(request);
         return request;
     }
 

@@ -29,7 +29,10 @@
                 </tr>
                 <tr id="responseContentRow">
                     <th class="tableHead table-primary align-middle" scope="col">내용</th>
-                    <td colspan="5" class="p-4" th:text="${response.responseContents}"></td>
+                    <td colspan="5" class="p-4">
+                        <div style="white-space:pre;" th:text="${response.responseContents}">
+                        </div>
+                    </td>
                 </tr>
                 <input type="hidden" name="useYN" id="useYN" th:value="${response.useYN}">
                 <tr>
