@@ -45,6 +45,13 @@ div.content {
     margin: 0 100px 100px 100px;
 }
 
+table .tableHead{
+    width: 140px;
+    text-align: center;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
 footer {
     height: 180px;
     text-align: center;

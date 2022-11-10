@@ -25,13 +25,13 @@
                 <div id="customerName" class="col-4 row d-flex align-items-center">
                     <div class="col-4 searchCategory align-middle">고객</div>
                     <select th:name="customerCode" id="customerCode" onclick="showCustomerList()"
-                            class="form-select align-middle col-7">
+                            class="form-select align-middle col-7 text-center">
                         <option selected value="T">전체</option>
                     </select>
                 </div>
                 <div class="col-3 d-flex justify-content-between align-items-center text-center">
                     <div class="col-6 searchCategory font-weight-bold">서비스구분</div>
-                    <select class="form-select align-middle col-6" aria-label="Default select example"
+                    <select class="form-select align-middle col-6 text-center" aria-label="Default select example"
                             name="responseType"
                             id="responseType">
                         <option selected value=" " class="align-middle">전체</option>
@@ -49,7 +49,7 @@
                 </button>
             </div>
         </div>
-        <section class="container justify-content-center p-0">
+        <section class="container justify-content-center p-0 mt-0">
             <table class="table" id="serviceList">
                 <thead class="table-primary">
                 <tr>

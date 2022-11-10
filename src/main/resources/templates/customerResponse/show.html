@@ -8,7 +8,7 @@
     <div class="container-xxl">
         <div class="content">
             <input type="hidden" name="crId" id="crId" th:value="${response.crId}">
-            <table class="table" id="customerResponse">
+            <table class="table border" id="customerResponse">
                 <tr>
                     <th class="tableHead table-primary" scope="col">고객</th>
                     <td id="customerInfo" class="px-4" th:text="${response.customerName}+'('+${response.customerCode}+ ')'"></td>
@@ -45,7 +45,7 @@
                             <textarea class="form-control ResponseResultTextArea" id="resultContents"
                                       name="resultContents" rows="3"
                                       placeholder="처리내용을 입력하세요."></textarea>
-                            <button type="button" class="btn btn-primary btn float-right" onclick="insertResult()">등록
+                            <button type="button" class="btn btn-primary" onclick="insertResult()">등록
                             </button>
                         </form>
                     </td>

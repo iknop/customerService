@@ -3,7 +3,7 @@
 }
 
 div#search-bar{
-    border: 2px solid rgba(210, 210, 210, 0.99);
+    border: 1px solid #D2D2D2FC;
     background-color: #cfe2ff6b;
     border-radius: 10px;
     padding: 20px 20px 20px 20px;
