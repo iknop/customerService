@@ -16,6 +16,6 @@ $(function () {
             // 입력불가 알림
             alert('1000자까지만 입력 가능합니다.');
         }
-
     })
+    $('.textCount').text(($('#responseContents').val().length + '자'));
 })
