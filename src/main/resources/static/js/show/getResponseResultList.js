@@ -141,7 +141,6 @@ function onClickEditBtn(rrId) {
     $('#' + udpateBtnID).removeClass('d-none');
     $('#' + contentsId).addClass('d-none');
     $('.btn-update').addClass('d-none');
-
 }
 
 function onClickDeleteBtn(rrId) {
