@@ -25,7 +25,7 @@ function getResultList() {
 
         for (let i = 0; i < loop; i++) {
             let div = document.createElement('div');
-            div.classList.add('row','justify-content-end','px-0')
+            div.classList.add('row','justify-content-between','pl-4')
 
             // 처리내용 본문
             let content = document.createElement('span');
