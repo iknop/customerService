@@ -11,7 +11,8 @@
             <table class="table border" id="customerResponse">
                 <tr>
                     <th class="tableHead table-primary" scope="col">고객</th>
-                    <td id="customerInfo" class="px-4" th:text="${response.customerName}+'('+${response.customerCode}+ ')'"></td>
+                    <td id="customerInfo" class="px-4"
+                        th:text="${response.customerName}+'('+${response.customerCode}+ ')'"></td>
                     <td class="tableHead table-primary">서비스구분</td>
                     <input type="hidden" name="responseType" th:value="${response.responseType}">
                     <td name="responseType" id="responseType" class="text-center"></td>

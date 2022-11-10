@@ -4,6 +4,8 @@ $(function () {
     const serviceDataTable = $('#serviceList').DataTable({
         dom: '<"top">t<"bottom"p><"clear">' // 테이블, 페이지네이션 버튼만 사용
         ,
+        order: [[3,'desc']]
+        ,
         columnDefs: [
             {
                 targets: [0,4],
