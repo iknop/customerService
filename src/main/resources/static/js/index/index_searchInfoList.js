@@ -7,7 +7,7 @@ $(function () {
         columnDefs: [
             {
                 targets: [0,4],
-                width: 80,
+                width: 100,
             },
             {
                 targets: [1],

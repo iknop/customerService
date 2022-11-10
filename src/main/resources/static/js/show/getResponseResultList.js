@@ -26,33 +26,35 @@ function getResultList() {
 
         for (let i = 0; i < loop; i++) {
             let div = document.createElement('div');
-            div.classList.add('row', 'justify-content-between', 'pl-4')
+            div.classList.add('row', 'justify-content-around')
+            $(div).css('position','relative').css('height', '80px')
 
             // 처리내용 본문
             let content = document.createElement('span');
-            content.classList.add('col-8', 'mr-1', 'px-0')
+            content.classList.add('col-8', 'mr-1', 'py-2')
             content.id = `resultContents-${response[i].rrId}`;
             content.innerText = response[i].resultContents;
 
             //처리내용 수정 textarea: class d-none -> 안보이게 (*수정 시 데이터*)
             let textAreaElement = document.createElement('textarea');
-            textAreaElement.classList.add('form-control', 'd-none', 'mr-1', 'ResponseResultTextArea');
+            textAreaElement.classList.add('form-control', 'col-8','d-none', 'mr-1', 'ResponseResultTextArea');
             textAreaElement.id = `textarea-${response[i].rrId}`;
             textAreaElement.innerText = response[i].resultContents;
 
             //처리내용 작성 시간
             let createTime = document.createElement('div');
-            createTime.classList.add('createDateTime', 'col-2', 'px-0', 'mx-3');
+            createTime.classList.add('createDateTime', 'col-3', 'px-0');
+            $(createTime).css('line-height', '40px')
             let dateStr = getDateStr(new Date(response[i].createDateTime))
-            createTime.innerText = dateStr;
+            createTime.innerHTML = dateStr + '<br>' + response[i].createUserName;
 
-            // 처리내용 작성자 이름
-            let name = document.createElement('div');
-            name.classList.add('createUserName', 'col-1', 'px-0', 'mr-2');
-            name.id = `name-${response[i].rrId}`;
-            name.innerText = response[i].createUserName;
-            name.setAttribute('name', 'createUserName');
-            name.dataset.loginId = response[i].createUserCode;
+            // // 처리내용 작성자 이름
+            // let name = document.createElement('div');
+            // name.classList.add('createUserName', 'col-1', 'px-0', 'text-right');
+            // name.id = `name-${response[i].rrId}`;
+            // name.innerText = response[i].createUserName;
+            // name.setAttribute('name', 'createUserName');
+            // name.dataset.loginId = response[i].createUserCode;
 
             // 처리내용 작성자 아이디(*수정 삭제 버튼 활성*)
             let resultCreateUser = document.createElement('input');
@@ -69,41 +71,54 @@ function getResultList() {
             div.appendChild(content);
             div.appendChild(textAreaElement); // 수정 내용 입력란
             div.appendChild(createTime);
-            div.appendChild(name);
+            // div.appendChild(name);
             div.appendChild(rrId);
             div.appendChild(resultCreateUser);
 
 
             // 수정버튼 생성 및 이벤트 추가
             let buttons = document.createElement('div')
-            buttons.classList.add('row', 'justify-content-end', 'pr-5', 'my-2')
-
-            let updateBtn = document.createElement('button');
-            $(updateBtn).val(response[i].rrId);
-            updateBtn.id = 'btn-update-' + response[i].rrId; // 클릭시 안보이게 d-none
-            $(updateBtn).addClass('btn-update col-1 mx-1 btn btn-primary d-none');
-            updateBtn.innerText = '수정';
-            $(updateBtn).on('click', (e) => {
-                const rrId = e.target.value;
-                onClickEditBtn(rrId);
-            });
+            buttons.classList.add('buttons', 'col-1', 'px-0', 'd-flex')
+            $(buttons).css('position', 'absolute').css('top', '5px').css('right', '0px')
+                .css('flex-direction', 'column-reverse').css('align-items', 'baseline')
 
             // 삭제버튼 생성 및 이벤트 추가
             let deleteBtn = document.createElement('button');
             $(deleteBtn).val(response[i].rrId);
-            $(deleteBtn).addClass('btn-delete col-1 mr-1 btn btn-secondary d-none');
+            deleteBtn.id = 'btn-delete-' + response[i].rrId;
+            $(deleteBtn).addClass('btn-delete mt-1 btn btn-secondary d-none');
             deleteBtn.innerText = '삭제';
             $(deleteBtn).on('click', (e) => {
                 const rrId = e.target.value;
                 onClickDeleteBtn(rrId);
             });
+            // 수정버튼
+            let updateBtn = document.createElement('button');
+            $(updateBtn).val(response[i].rrId);
+            updateBtn.id = 'btn-update-' + response[i].rrId; // 클릭시 안보이게 d-none
+            $(updateBtn).addClass('btn-update mt-1 btn btn-primary d-none');
+            updateBtn.innerText = '수정';
+            $(updateBtn).on('click', (e) => {
+                onClickEditBtn(e.target.value);
+            });
+
+            // 수정취소 버튼
+            let rollbackBtn = document.createElement('button');
+            $(rollbackBtn).val(response[i].rrId);
+            rollbackBtn.id = 'btn-rollback-' + response[i].rrId;
+            $(rollbackBtn).addClass('btn-rollback mt-1 btn btn-secondary d-none');
+            rollbackBtn.innerText = '취소';
+            $(rollbackBtn).on('click', (e) => {
+                onClickRollbackBtn(e.target.value);
+            });
+
             // 수정 저장 버튼
-            let updateSaveBtn = document.createElement('button');
-            $(updateSaveBtn).val(response[i].rrId);
-            updateSaveBtn.id = 'btn-save-' + response[i].rrId;
-            $(updateSaveBtn).addClass('btn-save d-none col-1 mx-1 btn btn-primary d-none');
-            updateSaveBtn.innerText = '저장';
-            $(updateSaveBtn).on('click', (e) => {
+            let saveBtn = document.createElement('button');
+            $(saveBtn).val(response[i].rrId);
+            saveBtn.id = 'btn-save-' + response[i].rrId;
+            $(saveBtn).addClass('btn-save mt-1 btn btn-primary d-none');
+            saveBtn.innerText = '저장';
+            $(saveBtn).on('click', (e) => {
                 const rrId = e.target.value;
                 onClickSaveBtn(rrId);
             });
@@ -114,17 +129,19 @@ function getResultList() {
             if (loginId == resultCreateUser.value) {
                 deleteBtn.classList.remove('d-none')
                 updateBtn.classList.remove('d-none')
-                // updateBtn.removeClass('d-none')
             }
 
             buttons.appendChild(deleteBtn);
             buttons.appendChild(updateBtn);
-            buttons.appendChild(updateSaveBtn);
+            buttons.appendChild(rollbackBtn);
+            buttons.appendChild(saveBtn);
 
             div.appendChild(buttons);
 
             tag.appendChild(div)
-            tag.appendChild(document.createElement('hr'))
+            const line = document.createElement('hr')
+            $(line).css('border-top','1px solid')
+            tag.appendChild(line)
             // td.appendChild(tr)
         }
     }).fail(function (response) {
@@ -132,15 +149,16 @@ function getResultList() {
     })
 }
 
-function onClickEditBtn(rrId) {
-    let textareaId = 'textarea-' + rrId;
-    let contentsId = 'resultContents-' + rrId;
-    let udpateBtnID = 'btn-save-' + rrId;
-    console.log(textareaId)
-    $('#' + textareaId).removeClass('d-none');
-    $('#' + udpateBtnID).removeClass('d-none');
-    $('#' + contentsId).addClass('d-none');
-    $('.btn-update').addClass('d-none');
+function onClickEditBtn(rrId) { // 수정버튼 클릭시
+    // textarea, 취소, 저장버튼은 display
+    $('#textarea-' + rrId).removeClass('d-none');
+    $('#btn-rollback-' + rrId).removeClass('d-none');
+    $('#btn-save-' + rrId).removeClass('d-none');
+
+    // contents, 삭제, 수정버튼은 d-none
+    $('#resultContents-' + rrId).addClass('d-none');
+    $('#btn-delete-' + rrId).addClass('d-none');
+    $('#btn-update-' + rrId).addClass('d-none');
 }
 
 function onClickDeleteBtn(rrId) {
@@ -161,7 +179,17 @@ function onClickDeleteBtn(rrId) {
     }).fail(function (response) {
         console.log(response)
     })
+}
+function onClickRollbackBtn(rrId) {
+    // textarea, 취소, 저장버튼은 d-none
+    $('#textarea-' + rrId).addClass('d-none');
+    $('#btn-rollback-' + rrId).addClass('d-none');
+    $('#btn-save-' + rrId).addClass('d-none');
 
+    // contents, 삭제, 수정버튼은 display
+    $('#resultContents-' + rrId).removeClass('d-none');
+    $('#btn-delete-' + rrId).removeClass('d-none');
+    $('#btn-update-' + rrId).removeClass('d-none');
 }
 
 // 수정 저장 버튼
