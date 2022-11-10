@@ -48,14 +48,6 @@ function getResultList() {
             let dateStr = getDateStr(new Date(response[i].createDateTime))
             createTime.innerHTML = dateStr + '<br>' + response[i].createUserName;
 
-            // // 처리내용 작성자 이름
-            // let name = document.createElement('div');
-            // name.classList.add('createUserName', 'col-1', 'px-0', 'text-right');
-            // name.id = `name-${response[i].rrId}`;
-            // name.innerText = response[i].createUserName;
-            // name.setAttribute('name', 'createUserName');
-            // name.dataset.loginId = response[i].createUserCode;
-
             // 처리내용 작성자 아이디(*수정 삭제 버튼 활성*)
             let resultCreateUser = document.createElement('input');
             resultCreateUser.setAttribute('type', 'hidden')
@@ -139,10 +131,11 @@ function getResultList() {
             div.appendChild(buttons);
 
             tag.appendChild(div)
-            const line = document.createElement('hr')
-            $(line).css('border-top','1px solid')
-            tag.appendChild(line)
-            // td.appendChild(tr)
+            if (i !== loop-1) {
+                const line = document.createElement('hr')
+                $(line).css('border-top','1px solid')
+                tag.appendChild(line)
+            }
         }
     }).fail(function (response) {
         console.log(response)
