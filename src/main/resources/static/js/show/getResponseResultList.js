@@ -21,6 +21,8 @@ function getResultList() {
         // 처리내용이 존재할 때 테이블 셀 활성화
         if (loop > 0) {
             tag.classList.remove('d-none')
+        }else if(loop == 0){
+            tag.classList.add('d-none')
         }
 
         for (let i = 0; i < loop; i++) {
@@ -170,8 +172,10 @@ function onClickDeleteBtn(rrId) {
         url: '/api/result/delete',
         data: deleteData
     }).done(function (response) {
-        window.location.href = '/board/' + $('#crId').val();
-        console.log(response)
+        // window.location.href = '/board/' + $('#crId').val();
+        // console.log(response)
+        getResultList() // dir: static/js/show/getResponseResultList.js
+        $('textarea#resultContents').val(''); // 계속 쌓이지 않게 비우기
     }).fail(function (response) {
         console.log(response)
     })
@@ -203,7 +207,9 @@ function onClickSaveBtn(rrId) {
         url: '/api/result/update',
         data: updateData
     }).done(function (response) {
-        window.location.href = '/board/' + $('#crId').val();
+        // window.location.href = '/board/' + $('#crId').val();
+        getResultList() // dir: static/js/show/getResponseResultList.js
+        $('textarea#resultContents').val(''); // 계속 쌓이지 않게 비우기
     }).fail(function (response) {
         alert(response)
         console.log(response)
