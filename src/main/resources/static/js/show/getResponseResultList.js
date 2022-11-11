@@ -26,13 +26,16 @@ function getResultList() {
         for (let i = 0; i < loop; i++) {
             let div = document.createElement('div');
             div.classList.add('row', 'justify-content-around')
-            $(div).css('position','relative').css('height', '80px')
+            $(div).css('position','relative')
 
             // 처리내용 본문
             let content = document.createElement('span');
             content.classList.add('col-8', 'mr-1', 'py-2')
             content.id = `resultContents-${response[i].rrId}`;
             content.innerText = response[i].resultContents;
+            content.style.whiteSpace = "pre-line";
+            content.style.wordBreak = "break-all";
+
 
             //처리내용 수정 textarea: class d-none -> 안보이게 (*수정 시 데이터*)
             let textAreaElement = document.createElement('textarea');

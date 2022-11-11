@@ -24,6 +24,10 @@ function insertResult() {
     }
     console.log(insertData)
 
+    if(insertData.resultContents == ''){
+       return alert("처리내용을 입력하지 않았습니다.")
+    }
+
     $.ajax({
         type: 'POST',
         url: '/api/result/save',
@@ -31,7 +35,7 @@ function insertResult() {
     }).done(function (response) {
         console.log(response)
         getResultList() // dir: static/js/show/getResponseResultList.js
-        $('textarea#resultContents').val('');
+        $('textarea#resultContents').val(''); // 계속 쌓이지 않게 비우기
     }).fail(function (response) {
         console.log(response)
     })
