@@ -18,10 +18,11 @@ function getResultList() {
         let loop = response.length;
         let tag = document.getElementById('resultList');
         tag.innerHTML = '';
-        // 처리내용이 존재할 때 테이블 셀 활성화
         if (loop > 0) {
+        // 처리내용이 존재할 때 테이블 셀 활성화
             tag.classList.remove('d-none')
         }else if(loop == 0){
+            // 입력된 처리내용 모두 삭제했을 때 테이블 셀 숨기기
             tag.classList.add('d-none')
         }
 
