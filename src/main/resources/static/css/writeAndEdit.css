@@ -35,3 +35,6 @@ textarea#responseContents {
 #useYN {
     width: 80px;
 }
+.textCount{
+    color: green;
+}

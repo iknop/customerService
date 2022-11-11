@@ -51,7 +51,7 @@ function checkCustomerTypeBox(type) {
 // 서비스 구분: 일반/프로그램
 function showResponseTypeName() {
     let responseTypeCode = $('#responseType').val();
-    if (responseTypeCode == 'P') {
+    if (responseTypeCode == 'N') {
         $('#responseType option:eq(1)').prop('selected', true)
     } else {
         $('#responseType option:eq(2)').prop('selected', true)
