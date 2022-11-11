@@ -1,23 +1,33 @@
-table#customerResponse{
+table#customerResponse {
     margin-top: 50px;
 }
+
 /*table#customerResponse > tbody > tr > th{*/
 /*    background-color: #eab49d;*/
 /*}*/
 
 /* 처리내용 */
 
-#responseContentRow{
+#responseContentRow {
     height: 280px;
 }
+
+#responseContents {
+    white-space: pre-line;
+    word-break: break-all;
+    /*width: 906px !important;*/
+}
+
 .ResponseResultTextArea {
     width: 600px;
 }
+
 /* 처리내용 입력란 */
-#resultContents{
+#resultContents {
     height: 100px;
     width: 89%;
 }
-#resultContents + button{
+
+#resultContents + button {
     width: 10%
 }

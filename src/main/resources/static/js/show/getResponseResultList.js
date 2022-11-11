@@ -14,10 +14,9 @@ function getResultList() {
         data: crId,
         async: false
     }).done(function (response) {
-        // console.log(response);
+        console.log(response);
         let loop = response.length;
         let tag = document.getElementById('resultList');
-        // todo tag.removechild All
         tag.innerHTML = '';
         // 처리내용이 존재할 때 테이블 셀 활성화
         if (loop > 0) {
@@ -159,15 +158,16 @@ function onClickDeleteBtn(rrId) {
     const deleteData = {
         rrId: rrId,
         useYN: 'N',
-        loginId: $('#name-' + rrId).data('login-id')
+        loginId: $('#loginId').val()
     }
+    console.log('deleteData : ', deleteData)
+
     $.ajax({
         type: 'POST',
         url: '/api/result/delete',
         data: deleteData
     }).done(function (response) {
         window.location.href = '/board/' + $('#crId').val();
-        // getResultList()
         console.log(response)
     }).fail(function (response) {
         console.log(response)
@@ -191,7 +191,7 @@ function onClickSaveBtn(rrId) {
     const updateData = {
         rrId: rrId,
         resultContents: $('#textarea-' + rrId).val(),
-        loginId: $('#name-' + rrId).data('login-id')
+        loginId: $('#loginId').val()
     }
     // console.log(updateData)
 
