@@ -1,4 +1,4 @@
-package com.pshc.customerservice.controller;
+package com.pshc.customerservice.crm.controller;
 // importing required classes
 
 import java.util.Arrays;

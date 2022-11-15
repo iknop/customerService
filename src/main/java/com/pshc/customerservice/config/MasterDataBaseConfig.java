@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
@@ -37,7 +38,7 @@ public class MasterDataBaseConfig {
         //세션 생성 시, 빌드된 DataSource를 세팅하고 SQL문을 관리할 mapper.xml의 경로를 알려준다.
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(masterDataSource);
-        sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath:src/main/resources/mapperCrm/*.xml"));
+        sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath:/mapperCrm/*.xml"));
         return sqlSessionFactoryBean.getObject();
     }
 
@@ -48,3 +49,31 @@ public class MasterDataBaseConfig {
     }
 
 }
+
+//@Configuration
+//public class MasterDataBaseConfig {
+//
+//
+//        @Bean
+//        @ConfigurationProperties(prefix = "spring.first.datasource")
+//        public DataSource firstDataSource() {
+//
+//            return DataSourceBuilder.create().build();
+//        }
+//
+//        @Bean
+//        public SqlSessionFactory firstSqlSessionFactory(DataSource firstDataSource, ApplicationContext applicationContext) throws Exception {
+//
+//            SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+//            sqlSessionFactoryBean.setDataSource(firstDataSource);
+//            sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath:mapper/first/*.xml"));
+//            return sqlSessionFactoryBean.getObject();
+//        }
+//
+//        @Bean
+//        public SqlSessionTemplate firstSqlSessionTemplate(SqlSessionFactory firstSqlSessionFactory) throws Exception {
+//
+//            return new SqlSessionTemplate(firstSqlSessionFactory);
+//        }
+//
+//}

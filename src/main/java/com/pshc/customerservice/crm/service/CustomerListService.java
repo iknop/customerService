@@ -1,7 +1,8 @@
-package com.pshc.customerservice.service;
+package com.pshc.customerservice.crm.service;
 
-import com.pshc.customerservice.dto.customerList.*;
-import com.pshc.customerservice.mapper.CustomerListMapper;
+import com.pshc.customerservice.crm.dto.customerList.DoctorListResponse;
+import com.pshc.customerservice.crm.dto.customerList.HospitalListResponse;
+import com.pshc.customerservice.crm.mapper.CustomerListMapper;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

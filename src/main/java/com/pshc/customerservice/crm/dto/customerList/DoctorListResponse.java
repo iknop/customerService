@@ -1,4 +1,4 @@
-package com.pshc.customerservice.dto.customerList;
+package com.pshc.customerservice.crm.dto.customerList;
 
 public class DoctorListResponse {
     private String drId;

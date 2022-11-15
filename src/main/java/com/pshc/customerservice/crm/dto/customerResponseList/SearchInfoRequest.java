@@ -1,4 +1,4 @@
-package com.pshc.customerservice.dto.customerResponseList;
+package com.pshc.customerservice.crm.dto.customerResponseList;
 
 public class SearchInfoRequest {
     private String customerCode;

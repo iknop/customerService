@@ -1,4 +1,4 @@
-package com.pshc.customerservice.dto.customerResponse;
+package com.pshc.customerservice.crm.dto.customerResponse;
 
 public class CRUpdateRequestDto {
     private int crId;

@@ -1,11 +1,11 @@
-package com.pshc.customerservice.mapper;
+package com.pshc.customerservice.crm.mapper;
 
 
-import com.pshc.customerservice.dto.customerResponse.CRInsertRequestDto;
-import com.pshc.customerservice.dto.customerResponse.CRSelectResponseDto;
-import com.pshc.customerservice.dto.customerResponse.CRUpdateRequestDto;
-import com.pshc.customerservice.dto.customerResponseList.SearchInfoRequest;
-import com.pshc.customerservice.dto.customerResponseList.SearchInfoResponse;
+import com.pshc.customerservice.crm.dto.customerResponse.CRInsertRequestDto;
+import com.pshc.customerservice.crm.dto.customerResponse.CRSelectResponseDto;
+import com.pshc.customerservice.crm.dto.customerResponse.CRUpdateRequestDto;
+import com.pshc.customerservice.crm.dto.customerResponseList.SearchInfoRequest;
+import com.pshc.customerservice.crm.dto.customerResponseList.SearchInfoResponse;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

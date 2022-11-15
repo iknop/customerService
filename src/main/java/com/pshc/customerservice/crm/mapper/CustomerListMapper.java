@@ -1,8 +1,8 @@
-package com.pshc.customerservice.mapper;
+package com.pshc.customerservice.crm.mapper;
 
 
-import com.pshc.customerservice.dto.customerList.DoctorListResponse;
-import com.pshc.customerservice.dto.customerList.HospitalListResponse;
+import com.pshc.customerservice.crm.dto.customerList.DoctorListResponse;
+import com.pshc.customerservice.crm.dto.customerList.HospitalListResponse;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

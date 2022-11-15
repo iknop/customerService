@@ -1,4 +1,4 @@
-package com.pshc.customerservice.local;
+package com.pshc.customerservice.local.service;
 
 import com.pshc.customerservice.local.dto.userAccount.UserAccountCreateRequestDto;
 import com.pshc.customerservice.local.mapper.UserMapper;
@@ -9,14 +9,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
     @Autowired
-    UserMapper userMapper;
+    UserMapper mapper;
 
-    public UserService(UserMapper userMapper) {
-        this.userMapper = userMapper;
+    public UserService(UserMapper mapper) {
+        this.mapper = mapper;
     }
 
     public void createUser(UserAccountCreateRequestDto requestDto) {
-        userMapper.createUser(requestDto);
+        mapper.createUser(requestDto);
     }
 }
 

@@ -1,4 +1,4 @@
-package com.pshc.customerservice.controller.apiController;
+package com.pshc.customerservice.crm.controller.apiController;
 
 import com.pshc.customerservice.crm.dto.responseResult.RRInsertRequestDto;
 import com.pshc.customerservice.crm.dto.responseResult.RRListResponseDto;

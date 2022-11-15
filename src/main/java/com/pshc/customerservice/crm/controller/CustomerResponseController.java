@@ -1,4 +1,4 @@
-package com.pshc.customerservice.controller;
+package com.pshc.customerservice.crm.controller;
 
 import com.pshc.customerservice.crm.dto.customerResponse.CRSelectResponseDto;
 import com.pshc.customerservice.crm.service.CustomerResponseService;
@@ -32,11 +32,6 @@ public class CustomerResponseController {
         return "customerResponse/index";
     }
 
-    @GetMapping("hsy")
-    public String home2() {
-        log.info("page: home 인덱스 리스트");
-        return "customerResponse/index_new";
-    }
 
     // 내용상세보기 페이지
     @GetMapping("/board/{crId}")

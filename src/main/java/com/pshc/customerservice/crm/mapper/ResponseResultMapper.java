@@ -1,9 +1,9 @@
-package com.pshc.customerservice.mapper;
+package com.pshc.customerservice.crm.mapper;
 
-import com.pshc.customerservice.dto.responseResult.RRInsertRequestDto;
-import com.pshc.customerservice.dto.responseResult.RRListResponseDto;
-import com.pshc.customerservice.dto.responseResult.RRUpdateRequestDto;
-import com.pshc.customerservice.dto.responseResult.RRUseNRequestDto;
+import com.pshc.customerservice.crm.dto.responseResult.RRInsertRequestDto;
+import com.pshc.customerservice.crm.dto.responseResult.RRListResponseDto;
+import com.pshc.customerservice.crm.dto.responseResult.RRUpdateRequestDto;
+import com.pshc.customerservice.crm.dto.responseResult.RRUseNRequestDto;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

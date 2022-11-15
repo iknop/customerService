@@ -1,6 +1,6 @@
-package com.pshc.customerservice.crm.mapper;
+package com.pshc.customerservice.local.mapper;
 
-import com.pshc.customerservice.crm.dto.userAccount.UserAccountCreateRequestDto;
+import com.pshc.customerservice.local.dto.userAccount.UserAccountCreateRequestDto;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

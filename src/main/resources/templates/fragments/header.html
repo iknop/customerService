@@ -2,19 +2,156 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 <div th:fragment="header">
-  <header class="header p-0 my-4">
-    <!--header-->
-    <div class="container-fluid">
-      <span id="pageTitle" class="float-start">
-      </span>
-      <div class="float-end text-end d-grid" id="defaultIDSection">
-        <span id="company"  th:utext="'21세기영상의학과(' + ${LOGIN_ID} + ')'">
-        </span>
-        <label for="otherID"></label>
-        <input type="text" placeholder="다른 ID를 입력하세요." class="form-control" id="otherID">
-        <button class="btn btn-outline-primary btn-sm mt-2" id="btn-change-loginId" >로그인ID 변경</button>
-      </div>
-      <input type="hidden" id="loginId" name="loginId" th:value="${LOGIN_ID}">
+    <div class="header p-0 my-4">
+        <!--header-->
+        <div class="container-fluid">
+          <span id="pageTitle" class="float-start">
+          </span>
+            <!--      <div class="float-end text-end d-grid" id="defaultIDSection">-->
+            <!--        <span id="company"  th:utext="'21세기영상의학과(' + ${LOGIN_ID} + ')'">-->
+            <!--        </span>-->
+            <!--        <label for="otherID"></label>-->
+            <!--        <input type="text" placeholder="다른 ID를 입력하세요." class="form-control" id="otherID">-->
+            <!--        <button class="btn btn-outline-primary btn-sm mt-2" id="btn-change-loginId" >로그인ID 변경</button>-->
+            <!--      </div>-->
+            <!--      <input type="hidden" id="loginId" name="loginId" th:value="${LOGIN_ID}">-->
+            <div class="float-end text-end d-grid">
+                <button class="btn btn-outline-primary btn-sm mt-2" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                    로그인
+                </button>
+                <!-- 로그인/회원가입 Modal 시작-->
+                <div class="modal fade text-left" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true" role="dialog">
+                    <div role="document" class="modal-dialog">
+                        <div class="modal-content">
+                            <!--Modal header 시작-->
+                            <div class="modal-header row justify-content-between mx-1 mx-sm-3 mb-0 pb-0 border-0">
+                                <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <div class="tabs active" id="tab01">
+                                            <h6 class="font-weight-bold">로그인</h6>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <div class="tabs" id="tab02">
+                                            <h6 class=" text-muted">회원가입</h6>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="line"></div>
+                            <div class="modal-body p-0">
+                                <!--**로그인 시작**-->
+                                <fieldset id="tab011" class="show">
+                                    <div class="bg-light">
+                                        <h5 class="text-center mb-4 mt-0 pt-4">로그인</h5>
+                                        <div class="bg-light">
+                                            <div class="content">
+                                                <form action="#" class=""
+                                                      autocomplete="off"
+                                                      role="tabpanel">
+                                                    <!--아이디-->
+                                                    <div class="mb-3">
+                                                        <label for="si-userId" class="form-label">아이디</label>
+                                                        <input class="form-control" type="text" id="si-userId"
+                                                               placeholder="이메일주소@email.com" required>
+                                                        <div class="invalid-feedback">정보가 잘못되었습니다.</div>
+                                                    </div>
+                                                    <!--비밀번호-->
+                                                    <div class="mb-3">
+                                                        <label for="si-password" class="form-label">비밀번호</label>
+                                                        <div class="password-toggle">
+                                                            <input id="si-password" type="password" class="form-control"
+                                                                   required>
+                                                        </div>
+                                                    </div>
+                                                    <!--아이디 정보 기억-->
+                                                    <div class="mb-3 d-flex flex-wrap justify-content-between">
+                                                        <div class="form-check mb-2">
+                                                            <input id="si-remember" type="checkbox"
+                                                                   class="form-check-input">
+                                                            <label for="si-remember" class="for-check-label">로그인 정보
+                                                                기억하기</label>
+                                                        </div>
+                                                        <a class="fs-sm" href="3">비밀번호 찾기</a>
+                                                    </div>
+                                                    <button class="btn btn-primary btn-shadow d-block w-100"
+                                                            type="submit">로그인
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <!--**로그인 끝**-->
+                                <!--**회원가입 시작**-->
+                                <fieldset id="tab021">
+                                    <div class="bg-light">
+                                        <h5 class="text-center mb-4 mt-0 pt-4">회원가입</h5>
+                                        <div class="content">
+                                            <form action="#" class=""
+                                                  autocomplete="off"
+                                                  role="tabpanel">
+                                                <!--로그인 아이디-->
+                                                <div class="mb-3">
+                                                    <label for="su-userLoginId" class="form-label">아이디</label>
+                                                    <input type="text" class="form-control" placeholder="아이디"
+                                                           id="su-userLoginId">
+                                                </div>
+                                                <!--이름-->
+                                                <div class="mb-3">
+                                                    <label for="su-name" class="form-label">이름</label>
+                                                    <input type="text" class="form-control" placeholder="이름"
+                                                           id="su-name">
+                                                </div>
+                                                <!--닉네임-->
+                                                <div class="mb-3">
+                                                    <label for="su-nickname" class="form-label">닉네임</label>
+                                                    <input type="text" class="form-control" placeholder="닉네임"
+                                                           id="su-nickname">
+                                                </div>
+                                                <!--이메일-->
+                                                <div class="mb-3">
+                                                    <label for="su-email" class="form-label">이메일</label>
+                                                    <input type="email" class="form-control" placeholder="이메일@email.com"
+                                                           id="su-email">
+                                                </div>
+                                                <!--비밀번호-->
+                                                <div class="mb-3">
+                                                    <label for="su-password" class="form-label">비밀번호</label>
+                                                    <input type="password" class="form-control" id="su-password">
+                                                </div>
+                                                <!--비밀번호 확인-->
+                                                <div class="mb-3">
+                                                    <label for="su-passwordConfirm" class="form-label">비밀번호 확인</label>
+                                                    <input type="password" class="form-control" id="su-passwordConfirm">
+                                                </div>
+                                                <!--전화번호-->
+                                                <div class="mb-3">
+                                                    <label for="su-phoneNumber" class="form-label">전화번호</label>
+                                                    <input type="text" class="form-control" placeholder="-없이 입력하세요"
+                                                           id="su-phoneNumber">
+                                                </div>
+                                                <!--전화번호-->
+                                                <div class="mb-3">
+                                                    <label for="su-homeAddress" class="form-label">주소</label>
+                                                    <input type="text" class="form-control" id="su-homeAddress">
+                                                </div>
+                                                <button class="btn btn-primary btn-shadow d-block w-100" type="submit" onclick="signIn()">
+                                                    회원가입
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <!--**회원가입 끝**-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Modal 끝-->
+            </div>
+        </div>
     </div>
-  </header>
 </div>

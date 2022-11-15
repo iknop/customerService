@@ -1,4 +1,4 @@
-package com.pshc.customerservice.dto.responseResult;
+package com.pshc.customerservice.crm.dto.responseResult;
 
 public class RRUseNRequestDto {
     private int rrId;

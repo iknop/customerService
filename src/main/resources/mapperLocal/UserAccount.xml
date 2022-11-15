@@ -7,11 +7,12 @@
                 #{userLoginId},
                 #{userName},
                 #{nickname},
-                #{emailAddreess},
+                #{emailAddress},
+                #{userPwd},
                 #{phoneNumber},
                 #{homeAddress},
-                #{RETURN_CODE, mode=out, jdbcType=CHAR, javaType=String},
-                #{ErrorMessage, mode=out, jdbcType=NVARCHAR, javaType=String}
+                #{return_code, mode=OUT, jdbcType=CHAR, javaType=String},
+                #{errorMessage, mode=OUT, jdbcType=NVARCHAR, javaType=String}
             )
         }
     </insert>
