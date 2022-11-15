@@ -1,17 +1,12 @@
 package com.pshc.customerservice.controller;
 
-import com.pshc.customerservice.dto.customerResponse.CRSelectResponseDto;
-import com.pshc.customerservice.dto.customerResponse.CRUpdateRequestDto;
-import com.pshc.customerservice.dto.responseResult.RRListResponseDto;
-import com.pshc.customerservice.service.CustomerResponseService;
-import com.pshc.customerservice.service.ResponseResultService;
+import com.pshc.customerservice.crm.dto.customerResponse.CRSelectResponseDto;
+import com.pshc.customerservice.crm.service.CustomerResponseService;
+import com.pshc.customerservice.crm.service.ResponseResultService;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Log4j2
 @Controller
@@ -84,6 +79,5 @@ public class CustomerResponseController {
         log.info("page: board > edit 수정하기");
         return "customerResponse/edit";
     }
-
 
 }

@@ -1,17 +1,16 @@
 package com.pshc.customerservice.controller.apiController;
 
-import com.pshc.customerservice.dto.responseResult.RRInsertRequestDto;
-import com.pshc.customerservice.dto.responseResult.RRListResponseDto;
-import com.pshc.customerservice.dto.responseResult.RRUpdateRequestDto;
-import com.pshc.customerservice.dto.responseResult.RRUseNRequestDto;
-import com.pshc.customerservice.service.ResponseResultService;
+import com.pshc.customerservice.crm.dto.responseResult.RRInsertRequestDto;
+import com.pshc.customerservice.crm.dto.responseResult.RRListResponseDto;
+import com.pshc.customerservice.crm.dto.responseResult.RRUpdateRequestDto;
+import com.pshc.customerservice.crm.dto.responseResult.RRUseNRequestDto;
+import com.pshc.customerservice.crm.service.ResponseResultService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
 
 @Log4j2
 @RestController

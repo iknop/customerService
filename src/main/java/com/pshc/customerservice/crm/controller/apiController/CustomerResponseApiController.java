@@ -1,11 +1,11 @@
 package com.pshc.customerservice.controller.apiController;
 
-import com.pshc.customerservice.dto.customerResponse.CRInsertRequestDto;
-import com.pshc.customerservice.dto.customerResponse.CRSelectResponseDto;
-import com.pshc.customerservice.dto.customerResponse.CRUpdateRequestDto;
-import com.pshc.customerservice.dto.customerResponseList.SearchInfoRequest;
-import com.pshc.customerservice.dto.customerResponseList.SearchInfoResponse;
-import com.pshc.customerservice.service.CustomerResponseService;
+import com.pshc.customerservice.crm.dto.customerResponse.CRInsertRequestDto;
+import com.pshc.customerservice.crm.dto.customerResponse.CRSelectResponseDto;
+import com.pshc.customerservice.crm.dto.customerResponse.CRUpdateRequestDto;
+import com.pshc.customerservice.crm.dto.customerResponseList.SearchInfoRequest;
+import com.pshc.customerservice.crm.dto.customerResponseList.SearchInfoResponse;
+import com.pshc.customerservice.crm.service.CustomerResponseService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.pshc.customerservice.mapper.ResponseResultMapper">
-    <select id="getResultList" resultType="com.pshc.customerservice.dto.responseResult.RRListResponseDto"
+<mapper namespace="com.pshc.customerservice.crm.mapper.ResponseResultMapper">
+    <select id="getResultList" resultType="com.pshc.customerservice.crm.dto.responseResult.RRListResponseDto"
             parameterType="int"
             statementType="CALLABLE">
         {
@@ -10,7 +10,7 @@
             )
             }
     </select>
-    <insert id="insertResult" parameterType="com.pshc.customerservice.dto.responseResult.RRInsertRequestDto"
+    <insert id="insertResult" parameterType="com.pshc.customerservice.crm.dto.responseResult.RRInsertRequestDto"
             statementType="CALLABLE">
         {
             call dbo.SVC_in_ResponseResult(
@@ -22,7 +22,8 @@
             )
             }
     </insert>
-    <update id="updateResult" parameterType="com.pshc.customerservice.dto.responseResult.RRUpdateRequestDto" statementType="CALLABLE">
+    <update id="updateResult" parameterType="com.pshc.customerservice.crm.dto.responseResult.RRUpdateRequestDto"
+            statementType="CALLABLE">
         {
             call dbo.SVC_un_ResponseResult(
                 #{rrId},
@@ -33,7 +34,8 @@
             )
             }
     </update>
-    <update id="useNResult" parameterType="com.pshc.customerservice.dto.responseResult.RRUseNRequestDto" statementType="CALLABLE">
+    <update id="useNResult" parameterType="com.pshc.customerservice.crm.dto.responseResult.RRUseNRequestDto"
+            statementType="CALLABLE">
         {
             call dbo.SVC_un_ResponseResultYN(
                 #{rrId},
@@ -44,5 +46,4 @@
             )
             }
     </update>
-
 </mapper>

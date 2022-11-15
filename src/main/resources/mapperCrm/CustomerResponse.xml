@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.pshc.customerservice.mapper.CustomerResponseMapper">
-    <select id="getList" resultType="com.pshc.customerservice.dto.customerResponseList.SearchInfoResponse"
-            parameterType="com.pshc.customerservice.dto.customerResponseList.SearchInfoRequest"
+<mapper namespace="com.pshc.customerservice.crm.mapper.CustomerResponseMapper">
+    <select id="getList" resultType="com.pshc.customerservice.crm.dto.customerResponseList.SearchInfoResponse"
+            parameterType="com.pshc.customerservice.crm.dto.customerResponseList.SearchInfoRequest"
             statementType="CALLABLE">
         {
             call dbo.SVC_sd_CustomerService(
@@ -13,7 +13,7 @@
             )
             }
     </select>
-    <select id="getResponseById" resultType="com.pshc.customerservice.dto.customerResponse.CRSelectResponseDto"
+    <select id="getResponseById" resultType="com.pshc.customerservice.crm.dto.customerResponse.CRSelectResponseDto"
             parameterType="int">
         {
             call dbo.SVC_sr_CustomerService(
@@ -21,7 +21,7 @@
             )
             }
     </select>
-    <insert id="insertCustomerResponse" parameterType="com.pshc.customerservice.dto.customerResponse.CRInsertRequestDto"
+    <insert id="insertCustomerResponse" parameterType="com.pshc.customerservice.crm.dto.customerResponse.CRInsertRequestDto"
             statementType="CALLABLE">
         {
             call dbo.SVC_in_CustomerResponse(
@@ -35,7 +35,7 @@
             )
             }
     </insert>
-    <update id="updateCustomerResponse" parameterType="com.pshc.customerservice.dto.customerResponse.CRUpdateRequestDto"
+    <update id="updateCustomerResponse" parameterType="com.pshc.customerservice.crm.dto.customerResponse.CRUpdateRequestDto"
             statementType="CALLABLE">
         {
             call dbo.SVC_un_CustomerResponse(

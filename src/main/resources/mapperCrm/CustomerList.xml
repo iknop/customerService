@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.pshc.customerservice.mapper.CustomerListMapper">
+<mapper namespace="com.pshc.customerservice.crm.mapper.CustomerListMapper">
     <!--서비스 목록 조회-->
-    <select id="getList" resultType="com.pshc.customerservice.dto.customerResponseList.SearchInfoResponse"
-            parameterType="com.pshc.customerservice.dto.customerResponseList.SearchInfoRequest" statementType="CALLABLE">
+    <select id="getList" resultType="com.pshc.customerservice.crm.dto.customerResponseList.SearchInfoResponse"
+            parameterType="com.pshc.customerservice.crm.dto.customerResponseList.SearchInfoRequest" statementType="CALLABLE">
         {
             call dbo.SVC_sd_CustomerService(
                 #{customerCode},
@@ -14,14 +14,14 @@
             }
     </select>
     <!--병원명 조회-->
-    <select id="getHospitalList" resultType="com.pshc.customerservice.dto.customerList.HospitalListResponse"
+    <select id="getHospitalList" resultType="com.pshc.customerservice.crm.dto.customerList.HospitalListResponse"
             statementType="CALLABLE">
         {
             call dbo.COM_sd_HospitalList()
             }
     </select>
     <!--의사명 조회-->
-    <select id="getDoctorList" resultType="com.pshc.customerservice.dto.customerList.DoctorListResponse"
+    <select id="getDoctorList" resultType="com.pshc.customerservice.crm.dto.customerList.DoctorListResponse"
             statementType="CALLABLE">
         {
             call dbo.COM_sd_ReadingDrList()

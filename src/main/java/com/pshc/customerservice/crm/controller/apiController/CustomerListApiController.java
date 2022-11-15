@@ -1,8 +1,8 @@
 package com.pshc.customerservice.controller.apiController;
 
-import com.pshc.customerservice.dto.customerList.DoctorListResponse;
-import com.pshc.customerservice.dto.customerList.HospitalListResponse;
-import com.pshc.customerservice.service.CustomerListService;
+import com.pshc.customerservice.crm.dto.customerList.DoctorListResponse;
+import com.pshc.customerservice.crm.dto.customerList.HospitalListResponse;
+import com.pshc.customerservice.crm.service.CustomerListService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
