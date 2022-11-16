@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pshc.customerservice.local.mapper.UserMapper">
-    <insert id="createUser" parameterType="com.pshc.customerservice.local.dto.userAccount.UserAccountCreateRequestDto" statementType="CALLABLE">
+    <insert id="createUser" parameterType="com.pshc.customerservice.local.dto.userAccount.UserAccountCreateRequestDto"
+            statementType="CALLABLE">
         {
             call dbo.CREATE_USER(
                 #{userLoginId},
@@ -14,6 +15,25 @@
                 #{return_code, mode=OUT, jdbcType=CHAR, javaType=String},
                 #{errorMessage, mode=OUT, jdbcType=NVARCHAR, javaType=String}
             )
-        }
+            }
     </insert>
+    <select id="getLoginUserInfo" parameterType="com.pshc.customerservice.local.dto.userAccount.UserLoginRequestDto"
+            resultType="com.pshc.customerservice.local.dto.userAccount.UserLoginResponseDto" statementType="CALLABLE">
+        {
+            call dbo.GET_LOGIN_INFO(
+                #{userLoginId},
+                #{userPwd}
+            )
+            }
+    </select>
+    <select id="checkLoginInfo" parameterType="com.pshc.customerservice.local.dto.userAccount.UserLoginRequestDto"
+            resultType="int" statementType="CALLABLE">
+        {
+            call dbo.CHECK_LOGIN(
+                #{userLoginId},
+                #{userPwd},
+                #{resultCode, mode = OUT, jdbcType=CHAR, javaType=String}
+            )
+            }
+    </select>
 </mapper>

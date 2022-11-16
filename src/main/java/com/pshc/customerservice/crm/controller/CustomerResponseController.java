@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class CustomerResponseController {
     CustomerResponseService customerResponseService;
     ResponseResultService responseResultService;
-    String LOGIN_ID = "admin";
+    String LOGIN_ID = "";
 
     public CustomerResponseController(CustomerResponseService customerResponseService, ResponseResultService responseResultService) {
         this.customerResponseService = customerResponseService;
