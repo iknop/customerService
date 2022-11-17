@@ -27,12 +27,12 @@
             }
     </select>
     <select id="checkLoginInfo" parameterType="com.pshc.customerservice.local.dto.userAccount.UserLoginRequestDto"
-            resultType="int" statementType="CALLABLE">
+            statementType="CALLABLE">
         {
             call dbo.CHECK_LOGIN(
                 #{userLoginId},
                 #{userPwd},
-                #{resultCode, mode = OUT, jdbcType=CHAR, javaType=String}
+                #{resultCode, mode = OUT, jdbcType= CHAR}
             )
             }
     </select>

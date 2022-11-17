@@ -26,8 +26,8 @@ public class UserService {
         log.info(mapper.getLoginUserInfo(requestDto));
         return mapper.getLoginUserInfo(requestDto);
     }
-    public int checkLoginInfo(UserLoginRequestDto requestDto){
-        return mapper.checkLoginInfo(requestDto);
+    public void checkLoginInfo(UserLoginRequestDto requestDto){
+        mapper.checkLoginInfo(requestDto);
     }
 }
 

@@ -9,44 +9,46 @@ public class UserLoginResponseDto {
     private int phoneNumber;
     private String homeAddress;
 
+
+    // 공백값들 trim()
     public String getUserLoginId() {
-        return userLoginId;
+        return userLoginId.trim();
     }
 
     public void setUserLoginId(String userLoginId) {
-        this.userLoginId = userLoginId;
+        this.userLoginId = userLoginId.trim();
     }
 
     public String getUserName() {
-        return userName;
+        return userName.trim();
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.userName = userName.trim();
     }
 
     public String getNickname() {
-        return nickname;
+        return nickname.trim();
     }
 
     public void setNickname(String nickname) {
-        this.nickname = nickname;
+        this.nickname = nickname.trim();
     }
 
     public String getEmailAddress() {
-        return emailAddress;
+        return emailAddress.trim();
     }
 
     public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
+        this.emailAddress = emailAddress.trim();
     }
 
     public String getUserPwd() {
-        return userPwd;
+        return userPwd.trim();
     }
 
     public void setUserPwd(String userPwd) {
-        this.userPwd = userPwd;
+        this.userPwd = userPwd.trim();
     }
 
     public int getPhoneNumber() {
@@ -58,11 +60,11 @@ public class UserLoginResponseDto {
     }
 
     public String getHomeAddress() {
-        return homeAddress;
+        return homeAddress.trim();
     }
 
     public void setHomeAddress(String homeAddress) {
-        this.homeAddress = homeAddress;
+        this.homeAddress = homeAddress.trim();
     }
 
     @Override

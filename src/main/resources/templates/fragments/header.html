@@ -7,21 +7,27 @@
         <div class="container-fluid">
           <span id="pageTitle" class="float-start">
           </span>
-                  <div class="float-end text-end d-grid" id="defaultIDSection">
-                    <span id="company"  th:utext="'21세기영상의학과(' + ${LOGIN_ID} + ')'">
-                    </span>
-                    <label for="otherID"></label>
-                    <input type="text" placeholder="다른 ID를 입력하세요." class="form-control" id="otherID">
-                    <button class="btn btn-outline-primary btn-sm mt-2" id="btn-change-loginId" >로그인ID 변경</button>
-                  </div>
-                  <input type="hidden" id="loginId" name="loginId" th:value="${LOGIN_ID}">
-            <div class="float-end text-end d-grid">
-                <button class="btn btn-outline-primary btn-sm mt-2" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal">
-                    로그인
-                </button>
+            <div class="float-end text-end d-grid" id="defaultIDSection">
+                <a class="navbar-tool hstack" href="#loginModal" data-bs-toggle="modal">
+                    <!--                    <input id="loginUserId" class="form-control" disabled>-->
+                    <i class="bi bi-person mr-2" style="font-size: 2rem; color: cornflowerblue;"></i>
+                    <div class="navbar-tool-icon-box">
+                        <div class="navbar-tool-text ms-n3 vstack text-left"><small style="color: cornflowerblue;"
+                                                                                    id="userNameDisplay">Hello, Sign
+                            in</small>My Account
+                        </div>
+                        <!--                <span id="company" th:utext="'21세기영상의학과(' + ${LOGIN_ID} + ')'">-->
+                        <!--                    </span>-->
+                        <!--                <label for="otherID"></label>-->
+                        <!--                <input type="text" placeholder="다른 ID를 입력하세요." class="form-control" id="otherID">-->
+                        <!--                <button class="btn btn-outline-primary btn-sm mt-2" id="btn-change-loginId">로그인ID 변경</button>-->
+                    </div>
+                </a>
+            </div>
+            <!--            <input type="hidden" id="loginId" name="loginId" th:value="${LOGIN_ID}">-->
+            <div class="float-end text-end d-grid mr-4">
                 <!-- 로그인/회원가입 Modal 시작-->
-                <div class="modal fade text-left" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <div class="modal fade text-left" id="loginModal" tabindex="-1" aria-labelledby="loginModal"
                      aria-hidden="true" role="dialog">
                     <div role="document" class="modal-dialog">
                         <div class="modal-content">
@@ -77,7 +83,7 @@
                                                         <a class="fs-sm" href="3">비밀번호 찾기</a>
                                                     </div>
                                                     <button class="btn btn-primary btn-shadow d-block w-100"
-                                                            type="submit" onclick="login()">로그인
+                                                            type="submit" onclick="check_login()">로그인
                                                     </button>
                                                 </form>
                                             </div>
@@ -138,7 +144,8 @@
                                                     <label for="su-homeAddress" class="form-label">주소</label>
                                                     <input type="text" class="form-control" id="su-homeAddress">
                                                 </div>
-                                                <button class="btn btn-primary btn-shadow d-block w-100" type="submit" onclick="signUp()">
+                                                <button class="btn btn-primary btn-shadow d-block w-100" type="submit"
+                                                        onclick="signUp()">
                                                     회원가입
                                                 </button>
                                             </form>

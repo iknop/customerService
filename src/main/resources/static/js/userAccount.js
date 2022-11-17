@@ -30,8 +30,9 @@ $(function () {
     });
 
 });
+
 // 회원가입
-function signUp(){
+function signUp() {
     const signUpData = {
         userLoginId: $('#su-userLoginId').val(),
         userName: $('#su-name').val(),
@@ -46,48 +47,65 @@ function signUp(){
         type: 'POST',
         url: '/api/user/signUp',
         data: signUpData
-    }).done(function(response){
+    }).done(function (response) {
         console.log(response)
         window.location.href = '/'
-    }).fail(function (response){
+    }).fail(function (response) {
         console.log(response)
         alert(JSON.stringify(response))
     });
 }
-// 로그인 사용자 정보 가져오기
-function login(){
-    const loginData = {
-        userLoginId:$('#si-userId').val(),
-        userPwd:$('#si-password').val()
-    }
 
+// 로그인 값 체크: 리턴해서 정보 불러오기
+function check_login() {
+    const checkData = {
+        userLoginId: $('#si-userId').val(),
+        userPwd: $('#si-password').val()
+    }
     $.ajax({
         type: 'POST',
-        url: 'api/user/login',
-        data: loginData
+        url: 'api/user/check-Login',
+        data: checkData
     }).done(function (response) {
         console.log(response)
-        // window.location.href= '/'
-        $('#loginId').val(response.userLoginId)
-        $('#loginId').text(response.userLoginId)
+
+        // 성공:0, 등록id 없음: -1, pwd 잘못됨: -2
+        if (response === -2) {
+            alert('로그인 정보를 잘못 입력하셨습니다.')
+        } else if (response === -1) {
+            alert('존재하지 않는 ID입니다.')
+        } else {
+            login(response)
+            $('#loginModal').modal('hide'); // 모달창 닫기
+        }
     }).fail(function (response) {
         alert(JSON.stringify(response))
     })
 }
-// 로그인 값 체크
-function check_login(){
-    const checkData = {
-        userLoginId:$('#si-userId').val(),
-        userPwd:$('#si-password').val()
-    }
-        .ajax({
+
+// 로그인 사용자 정보 가져오기
+function login(response) {
+
+    let loginInfoFound = response
+    console.log(loginInfoFound)
+
+    if (loginInfoFound === 0) {
+        const loginData = {
+            userLoginId: $('#si-userId').val(),
+            userPwd: $('#si-password').val()
+        }
+
+        $.ajax({
             type: 'POST',
-            url: 'api/user/check-Login',
-            data: checkData
+            url: 'api/user/login',
+            data: loginData
         }).done(function (response) {
             console.log(response)
-
+            $('#userNameDisplay').val(response.userLoginId)
+            $('#userNameDisplay').text("안녕하세요, " +response.nickname+ " 님")
         }).fail(function (response) {
             alert(JSON.stringify(response))
         })
+    }
 }
+

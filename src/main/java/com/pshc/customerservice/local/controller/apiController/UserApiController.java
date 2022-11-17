@@ -35,9 +35,10 @@ public class UserApiController {
         log.info(service.loginUser(requestDto));
         return service.loginUser(requestDto);
     }
-
     @PostMapping("/check-Login")
     public int checkLoginInfo(UserLoginRequestDto requestDto) {
-        return service.checkLoginInfo(requestDto);
+        log.info("RequestDto : {}", requestDto);
+        service.checkLoginInfo(requestDto);
+        return requestDto.getResultCode();
     }
 }
