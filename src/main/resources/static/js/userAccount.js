@@ -124,7 +124,7 @@ function su_correctIdInput(event){
 
 }
 
-// 부트스트랩 검증
+// 부트스트랩 입력 검증
 (() => {
     'use strict'
 
