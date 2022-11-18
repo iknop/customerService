@@ -3,10 +3,9 @@ $(function () {
     // 로그인/회원가입 모달
     $('.tabs').click(function () {
         $('.tabs').removeClass('active');
-        $('.tabs h6').removeClass('font-weight-bold');
         $('.tabs h6').addClass('text-muted');
         $(this).children('h6').removeClass('text-muted');
-        $(this).children('h6').removeClass('font-weight-bold');
+        $(this).children('h6').addClass('text-primary');
         $(this).addClass('active');
 
         current_fs = $('.active');
@@ -40,7 +39,7 @@ function signUp() {
         emailAddress: $('#su-email').val(),
         userPwd: $('#su-password').val(),
         phoneNumber: $('#su-phoneNumber').val(),
-        homeAddress: $('#su-homeAddress').val()
+        homeAddress: $('#su-homeAddress1').val()+', '+ $('#su-homeAddress2').val()
     }
 
     $.ajax({
@@ -49,7 +48,9 @@ function signUp() {
         data: signUpData
     }).done(function (response) {
         console.log(response)
-        window.location.href = '/'
+
+        $('#loginModal').modal('hide');
+        alert('회원가입이 완료되었습니다! \n반갑습니다 '+ response.userName+ ' 님 ♥')
     }).fail(function (response) {
         console.log(response)
         alert(JSON.stringify(response))
@@ -108,4 +109,38 @@ function login(response) {
         })
     }
 }
+
+// 로그인 아이디 입력 검증: 영문 소문자만
+function su_correctIdInput(event){
+
+    // 아이디: 한글, 영문 대문자 입력 방지
+    const idRule = /[^0-9a-z]/g; // 아이디 입력 조건: 숫자, 소문자 영문만 가능
+    const idInput = event.target; // 아이디 입력창
+
+    // test(): 문자열이 정규 표현식을 만족하는지 판별, boolean
+    if (idRule.test(idInput.value)) {
+        idInput.value = idInput.value.replace(idRule, '');
+    }
+
+}
+
+// 부트스트랩 검증
+(() => {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+        }, false)
+    })
+})()
 

@@ -3,10 +3,14 @@ package com.pshc.customerservice.crm.controller;
 import com.pshc.customerservice.crm.dto.customerResponse.CRSelectResponseDto;
 import com.pshc.customerservice.crm.service.CustomerResponseService;
 import com.pshc.customerservice.crm.service.ResponseResultService;
+import com.pshc.customerservice.local.dto.userAccount.UserAccountCreateRequestDto;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Log4j2
 @Controller
@@ -23,12 +27,12 @@ public class CustomerResponseController {
 
     // 홈: 서비스 목록
     @GetMapping
-    public String home(@RequestParam(defaultValue = "admin") String otherID, Model model) {
+    public String home(@RequestParam(defaultValue = "admin") String otherID, UserAccountCreateRequestDto requestDto, Model model) {
         log.info("page: home 인덱스 리스트");
-        if (!otherID.equals(LOGIN_ID)) {
-            LOGIN_ID = otherID;
-        }
-        model.addAttribute("LOGIN_ID", LOGIN_ID);
+//        if (!otherID.equals(LOGIN_ID)) {
+//            LOGIN_ID = otherID;
+//        }
+//        model.addAttribute("LOGIN_ID", LOGIN_ID);
         return "customerResponse/index";
     }
 
