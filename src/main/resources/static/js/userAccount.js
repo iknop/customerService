@@ -39,7 +39,7 @@ function signUp() {
         emailAddress: $('#su-email').val(),
         userPwd: $('#su-password').val(),
         phoneNumber: $('#su-phoneNumber').val(),
-        homeAddress: $('#su-homeAddress1').val()+', '+ $('#su-homeAddress2').val()
+        homeAddress: $('#su-homeAddress1').val() + ', ' + $('#su-homeAddress2').val()
     }
 
     $.ajax({
@@ -50,7 +50,7 @@ function signUp() {
         console.log(response)
 
         $('#loginModal').modal('hide');
-        alert('회원가입이 완료되었습니다! \n반갑습니다 '+ response.userName+ ' 님 ♥')
+        alert('회원가입이 완료되었습니다! \n반갑습니다 ' + response.userName + ' 님 ♥')
     }).fail(function (response) {
         console.log(response)
         alert(JSON.stringify(response))
@@ -103,33 +103,37 @@ function login(response) {
         }).done(function (response) {
             console.log(response)
             $('#userNameDisplay').val(response.userLoginId)
-            $('#userNameDisplay').text("안녕하세요, " +response.nickname+ " 님")
+            $('#userNameDisplay').text("안녕하세요, " + response.nickname + " 님")
         }).fail(function (response) {
             alert(JSON.stringify(response))
         })
     }
 }
 
-// 로그인 아이디 입력 검증: 영문 소문자만
-function su_correctIdInput(event){
+// 로그인 아이디 입력 검증: 영문 대소문자, 숫자만
+function su_correctIdInput(event) {
 
     // 아이디: 한글, 영문 대문자 입력 방지
-    const idRule = /[^0-9a-z]/g; // 아이디 입력 조건: 숫자, 소문자 영문만 가능
+    const idRule = /[^0-9a-zA-Z-_]/g; // 아이디 입력 조건: 숫자, 소문자 영문만 가능
     const idInput = event.target; // 아이디 입력창
 
     // test(): 문자열이 정규 표현식을 만족하는지 판별, boolean
     if (idRule.test(idInput.value)) {
-        idInput.value = idInput.value.replace(idRule, '');
+        // idInput.value = idInput.value.replace(idRule, '');
+        $('#invalid-id-con').addClass('d-block')
+    } else {
+
+        $('#invalid-id-con').removeClass('d-block')
     }
 
 }
 
-// 부트스트랩 입력 검증
+// 회원가입: 부트스트랩 입력 검증
 (() => {
     'use strict'
 
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    const forms = document.querySelectorAll('.needs-validation')
+    const forms = document.querySelectorAll('.needs-validation') // form 태그
 
     // Loop over them and prevent submission
     Array.from(forms).forEach(form => {

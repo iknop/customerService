@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pshc.customerservice.local.mapper.UserMapper">
+    <!-- createUser: 회원 가입 -->
     <insert id="createUser" parameterType="com.pshc.customerservice.local.dto.userAccount.UserAccountCreateRequestDto"
             statementType="CALLABLE">
         {
@@ -17,6 +18,7 @@
             )
             }
     </insert>
+    <!-- getLoginUserInfo: 로그인 사용자 정보 불러오기 -->
     <select id="getLoginUserInfo" parameterType="com.pshc.customerservice.local.dto.userAccount.UserLoginRequestDto"
             resultType="com.pshc.customerservice.local.dto.userAccount.UserLoginResponseDto" statementType="CALLABLE">
         {
@@ -26,6 +28,7 @@
             )
             }
     </select>
+    <!-- checkLoginInfo: 로그인 실패/성공; 0=성공, -1=아이디 없음,-2= 아이디에 일치하지 않는 비밀번호 -->
     <select id="checkLoginInfo" parameterType="com.pshc.customerservice.local.dto.userAccount.UserLoginRequestDto"
             statementType="CALLABLE">
         {

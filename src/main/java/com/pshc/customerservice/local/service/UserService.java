@@ -18,15 +18,19 @@ public class UserService {
         this.mapper = mapper;
     }
 
+    //    회원가입
     public void createUser(UserAccountCreateRequestDto requestDto) {
         mapper.createUser(requestDto);
     }
 
-    public UserLoginResponseDto loginUser(UserLoginRequestDto requestDto){
+    //    로그인 사용자 정보 불러오기
+    public UserLoginResponseDto loginUser(UserLoginRequestDto requestDto) {
         log.info(mapper.getLoginUserInfo(requestDto));
         return mapper.getLoginUserInfo(requestDto);
     }
-    public void checkLoginInfo(UserLoginRequestDto requestDto){
+
+    //    로그인 실패/성공; 0=성공, -1=아이디 없음,-2= 아이디에 일치하지 않는 비밀번호
+    public void checkLoginInfo(UserLoginRequestDto requestDto) {
         mapper.checkLoginInfo(requestDto);
     }
 }
